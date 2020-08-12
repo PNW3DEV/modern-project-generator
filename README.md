@@ -1,4 +1,4 @@
-# ignw-project-generator
+# modern-project-generator
 Project Generator - Micro-generator framework that makes it easy for an entire team to create web project files with a level of uniformity.
 
 
