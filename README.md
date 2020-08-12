@@ -6,9 +6,9 @@ Project Generator - Micro-generator framework that makes it easy for an entire t
 * NodeJS
 
 ### Getting Started
-**Add ignw-project-generator to your project**
+**Add modern-project-generator to your project**
 ```
-npm install --save-dev ignw-project-generator
+npm install --save-dev modern-project-generator
 ```
 
 ## Usage
