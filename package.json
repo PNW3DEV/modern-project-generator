@@ -1,0 +1,28 @@
+{
+  "name": "project-generator",
+  "version": "1.0.0",
+  "description": "Plop Generator to scaffold js/ts projects",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "plop",
+    "plop": "plop"
+  },
+  "author": "Desmond G. Jones <desmondpnw3dev>",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "node-plop": "^0.26.2",
+    "plop": "^2.7.4",
+    "plop-pack-npm-install": "^0.3.0"
+  },
+  "bin": {
+    "plop:project": "./index.js"
+  },
+  "devDependencies": {
+    "@types/jest": "^26.0.9",
+    "@types/node": "^13.13.15",
+    "fs": "0.0.1-security",
+    "ts-lint": "^4.5.1",
+    "typescript": "^3.9.7"
+  }
+}

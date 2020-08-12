@@ -1,0 +1,19 @@
+version: '3'
+services:
+  pge-moonshot-api:
+    container_name: {{ name }}
+    build:
+      context: ./
+    expose:
+      - '4000'
+    ports:
+      - '4000:4000'
+    volumes:
+      - './src:/app/src'
+      - './tests:/app/tests'
+      - './coverage:/app/coverage'
+      - './.env:/app/.env'
+    # env_file: ./.env
+    environment:
+      - GOOGLE_APPLICATION_CREDENTIALS=./sa.json
+    entrypoint: npm start

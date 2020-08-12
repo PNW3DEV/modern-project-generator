@@ -1,0 +1,22 @@
+{
+  "include": ["templates/**/*.ts"],
+  "exclude": ["node_modules", "**/**/**.test.ts"],
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es2019",
+    "lib": ["es2020", "esnext.asynciterable"],
+    "baseUrl": ".",
+    "outDir": "dist/",
+    "esModuleInterop": true,
+    "noImplicitAny": false,
+    "sourceMap": true,
+    "declaration": true,
+    "declarationMap": true,
+    "removeComments": true,
+    "resolveJsonModule": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "types": ["node"],
+    "typeRoots": ["node_modules/@types"]
+  }
+}
