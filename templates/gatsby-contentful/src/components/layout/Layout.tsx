@@ -168,9 +168,7 @@ export default function PersistentDrawerLeft(props: { children: any }) {
         variant="persistent"
         anchor="left"
         open={open}
-        classes={{
-          paper: classes.drawerPaper,
-        }}
+        classes={style.drawerClasses}
       >
         <div className={classes.drawerHeader}>
           <IconButton onClick={handleDrawerClose}>

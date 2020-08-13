@@ -1,26 +1,26 @@
-import AppBar from '@material-ui/core/AppBar';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import Divider from '@material-ui/core/Divider';
-import Drawer from '@material-ui/core/Drawer';
-import Hidden from "@material-ui/core/Hidden"
-import IconButton from '@material-ui/core/IconButton';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import { Theme, createStyles, makeStyles, useTheme } from '@material-ui/core/styles';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import MailIcon from '@material-ui/icons/Mail';
-import MenuIcon from '@material-ui/icons/Menu';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import clsx from 'clsx';
-import { graphql, useStaticQuery } from "gatsby"
-import Img from "gatsby-image"
-import React from 'react';
-import { useTranslation } from 'react-i18next';
+import AppBar from './@material-ui/core/AppBar';
+import CssBaseline from './@material-ui/core/CssBaseline';
+import Divider from './@material-ui/core/Divider';
+import Drawer from './@material-ui/core/Drawer';
+import Hidden from "./@material-ui/core/Hidden"
+import IconButton from './@material-ui/core/IconButton';
+import List from './@material-ui/core/List';
+import ListItem from './@material-ui/core/ListItem';
+import ListItemIcon from './@material-ui/core/ListItemIcon';
+import ListItemText from './@material-ui/core/ListItemText';
+import { Theme, createStyles, makeStyles, useTheme } from './@material-ui/core/styles';
+import Toolbar from './@material-ui/core/Toolbar';
+import Typography from './@material-ui/core/Typography';
+import ChevronLeftIcon from './@material-ui/icons/ChevronLeft';
+import ChevronRightIcon from './@material-ui/icons/ChevronRight';
+import MailIcon from './@material-ui/icons/Mail';
+import MenuIcon from './@material-ui/icons/Menu';
+import InboxIcon from './@material-ui/icons/MoveToInbox';
+import clsx from './clsx';
+import { graphql, useStaticQuery } from "./gatsby"
+import Img from "./gatsby-image"
+import React from './react';
+import { useTranslation } from './react-i18next';
 
 import useVersion from '../../hooks/useVersion'
 
@@ -168,9 +168,7 @@ export default function PersistentDrawerLeft(props: { children: any }) {
         variant="persistent"
         anchor="left"
         open={open}
-        classes={{
-          paper: classes.drawerPaper,
-        }}
+        classes={style.drawerClasses}
       >
         <div className={classes.drawerHeader}>
           <IconButton onClick={handleDrawerClose}>
