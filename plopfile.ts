@@ -53,8 +53,8 @@ module.exports = async (plop) => {
       const startingPath = `${cwd}/${data.name}`
       const startingTemplatePath = `./templates/${data.workspace}`
 
-      /* RECURRSIVE FILE MERGER BY WORKSPACE */
-      const recurrsiveFiles = (path, templateDir) => {
+      /* RECURSIVE FILE MERGER BY WORKSPACE */
+      const recursiveFiles = (path, templateDir) => {
         const files = fs.readdirSync(templateDir)
         files.forEach(file => {
           if (!file.includes('.prompt') && !fs.existsSync(`${path}/${file.replace('.prompt', '')}`)) {
@@ -67,7 +67,7 @@ module.exports = async (plop) => {
                 abortOnFail: false
               })
             } else {
-              return recurrsiveFiles(`${path}/${file}`, `${templateDir}/${file}`)
+              return recursiveFiles(`${path}/${file}`, `${templateDir}/${file}`)
             }
           }
         })
@@ -75,7 +75,7 @@ module.exports = async (plop) => {
       }
 
       /* GENERATE SELECTED WORKSPACE FILES */
-      actions = recurrsiveFiles(startingPath, startingTemplatePath)
+      actions = recursiveFiles(startingPath, startingTemplatePath)
 
       /* UTIL FILES */
       data.utils.forEach(util => {
@@ -103,9 +103,9 @@ module.exports = async (plop) => {
       })
 
       /* CYPRESS/E2E FILES */
-      if (['gatsby', 'create-react-app', 'next'].includes(data.workspace)) {
+      if (['gatsby', 'gatsby-contentful', 'create-react-app', 'next'].includes(data.workspace)) {
         // add cypress e2e workspace && install cypress deps
-        actions = recurrsiveFiles(`${startingPath}-e2e/`, './templates/cypress-e2e')
+        actions = recursiveFiles(`${startingPath}-e2e/`, './templates/cypress-e2e')
         actions.push({
           type: 'npmInstall',
           path: `${startingPath}-e2e/`,
