@@ -11,6 +11,7 @@
   "author": "Desmond G. Jones <desmondpnw3dev>",
   "license": "UNLICENSED",
   "dependencies": {
+    "edit-json-file": "^1.4.1",
     "node-plop": "^0.26.2",
     "plop": "^2.7.4",
     "plop-pack-npm-install": "^0.3.0"

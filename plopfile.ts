@@ -1,5 +1,6 @@
 require('plop')
 const fs = require('fs')
+const editJSONFile = require('edit-json-file')
 
 module.exports = async (plop) => {
   const cwd = process.cwd()
@@ -113,6 +114,16 @@ module.exports = async (plop) => {
         })
       }
 
+      /* Add to Lerna/Workspaces */
+      const lernaFile = editJSONFile(`${cwd}/lerna.json`)
+      const rootPackageFile = editJSONFile(`${cwd}/package.json`)
+      const currentPackages = lernaFile.get('packages') || rootPackageFile.get('workspaces') || []
+      lernaFile.set('packages', [...currentPackages, data.name])
+      rootPackageFile.set('workspaces', [...currentPackages, data.name])
+      lernaFile.save()
+      rootPackageFile.save()
+
+      /* Install Dependencies */
       console.info('Install Dependencies', actions)
       actions.push({
         type: 'npmInstall',

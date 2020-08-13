@@ -22,12 +22,6 @@ steps:
     entrypoint: npm
     args: ['prune', '--production']
 
-  - id: build container and run unit/integration test
-    name: 'gcr.io/cloud-builders/docker'
-    env:
-      - NODE_ENV=development
-    args: ['build', '-f', './server/docker/Test.Dockerfile', '-t', 'gcr.io/$PROJECT_ID/{{name}}-test:$COMMIT_SHA', '.']
-
   - id: build container
     name: 'gcr.io/cloud-builders/docker'
     env:
@@ -53,7 +47,7 @@ steps:
   #   args:
   #     - 'run'
   #     - 'deploy'
-  #     - 'oed-bff-server'
+  #     - '{{name}}'
   #     - '--image'
   #     - 'gcr.io/$PROJECT_ID/{{name}}:$COMMIT_SHA'
   #     - '--platform'
