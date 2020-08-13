@@ -2,9 +2,41 @@ require('plop')
 const fs = require('fs')
 const editJSONFile = require('edit-json-file')
 
-module.exports = async (plop) => {
+module.exports = (plop) => {
   const cwd = process.cwd()
+  let prompts = []
   plop.load('plop-pack-npm-install', null, null)
+
+  /* GENERATE PROMPTS RECURSIVELY */
+  const recursivePrompts = (templateDir) => {
+    const dir = fs.readdirSync(templateDir)
+    dir.forEach((file, idx) => {
+      const path = `${templateDir}/${file}`
+      if (!file.includes('.') && !file.endsWith('file')) {
+        return recursivePrompts(path)
+      } else if (idx === dir.length - 1) {
+        const choices = fs.readdirSync(templateDir)
+          .filter(filename => filename.includes('.prompt'))
+          .map(filename => ({ description: `${templateDir}/${filename}`, value: filename, checked: false }))
+
+        if (choices.length) {
+          prompts.push({
+            type: 'checkbox',
+            name: templateDir,
+            message: `What ${templateDir} additional files do you want`,
+            choices,
+            when: (answers) => answers.workspace === templateDir
+              .replace('./templates/', '')
+              .split('/')[0]
+          })
+        }
+      }
+    })
+    return prompts
+  }
+
+  prompts = recursivePrompts(`./templates`)
+
   plop.setGenerator('project', {
     description: 'Web Project Files',
     /* CUSTOM PROMPTS */
@@ -18,36 +50,19 @@ module.exports = async (plop) => {
       {
         type: 'input',
         name: 'organization',
-        message: 'organization name'
+        message: 'organization name',
+        when: (somethting) => {
+          console.log(somethting);
+          return true
+
+        }
       },
       {
         type: 'input',
         name: 'name',
         message: 'workspace name'
       },
-      {
-				type: 'checkbox',
-				name: 'utils',
-				message: 'What utils do you want?',
-				choices: [
-					{name: 'Bunyan Logger', value: 'logger', checked: false},
-					{name: 'Firebase', value: 'firebase', checked: false},
-				]
-      },
-      {
-				type: 'checkbox',
-				name: 'pipelines',
-				message: 'What CI/CD pipelines do you want?',
-				choices: [
-          { description: 'Google Cloud Build Fast Deploy', value: 'cloudbuild-fast-deploy', checked: false },
-          { description: 'Google Cloud Build Merge Checks', value: 'cloudbuild-merge-checks', checked: false },
-          { description: 'Google Cloud Build Deployment', value: 'cloudbuild-deploy', checked: false },
-          // TODO: add additional CI/CD templates
-          // { name: 'Gitlab Merge Checks', value: '.gitlab-ci', checked: false },
-          // { name: 'Azure Pipelines', value: 'azure', checked: false },
-          // { name: 'GitHub Actions', value: 'github', checked: false },
-				]
-			}
+      ...prompts
     ],
     actions: (data) => {
       let actions = []
@@ -56,20 +71,23 @@ module.exports = async (plop) => {
 
       /* RECURSIVE FILE MERGER BY WORKSPACE */
       const recursiveFiles = (path, templateDir) => {
+        const tmpDir = templateDir.replace('.', '')
         const files = fs.readdirSync(templateDir)
         files.forEach(file => {
-          if (!file.includes('.prompt') && !fs.existsSync(`${path}/${file.replace('.prompt', '')}`)) {
-            if ((file.includes('.') || file.endsWith('file')) && !file.includes('.storybook')) {
-              actions.push({
-                type: 'add',
-                path: `${path}/${file}`,
-                templateFile: `${templateDir}/${file}`,
-                skipIfExists: true,
-                abortOnFail: false
-              })
-            } else {
-              return recursiveFiles(`${path}/${file}`, `${templateDir}/${file}`)
+          if ((file.includes('.') || file.endsWith('file')) && !file.includes('.storybook')) {
+            const action = {
+              type: 'add',
+              path: `${path}/${file}`,
+              templateFile: `${templateDir}/${file}`,
+              skipIfExists: true,
+              abortOnFail: false
             }
+            if (data[''][tmpDir] && !data[''][tmpDir].find(f => f === file)) {
+              action.skip = 'Skipped'
+            }
+            actions.push(action)
+          } else if (!file.includes('.prompt')) {
+            return recursiveFiles(`${path}/${file}`, `${templateDir}/${file}`, 'actions')
           }
         })
         return actions
@@ -77,31 +95,6 @@ module.exports = async (plop) => {
 
       /* GENERATE SELECTED WORKSPACE FILES */
       actions = recursiveFiles(startingPath, startingTemplatePath)
-
-      /* UTIL FILES */
-      data.utils.forEach(util => {
-        if (data.workspace !== 'serverless-cloud-functions') {
-          actions.push({
-            type: 'add',
-            path: `${startingPath}/src/util/${util}.ts`,
-            templateFile: `${startingTemplatePath}/src/util/${util}.prompt.ts`,
-            skipIfExists: true,
-            abortOnFail: false
-          })
-        }
-      })
-
-      /* PIPELINE FILES */
-      data.pipelines.forEach(pipeline => {
-        if (data.workspace !== 'serverless-cloud-functions') {
-          actions.push({
-            type: 'add',
-            path: `${startingPath}/pipelines/${pipeline}.yaml`,
-            templateFile: `${startingTemplatePath}/pipelines/${pipeline}.prompt.yaml`,
-            skipIfExists: true
-          })
-        }
-      })
 
       /* CYPRESS/E2E FILES */
       if (['gatsby', 'gatsby-contentful', 'create-react-app', 'next'].includes(data.workspace)) {
@@ -119,6 +112,7 @@ module.exports = async (plop) => {
       const rootPackageFile = editJSONFile(`${cwd}/package.json`)
       const currentPackages = lernaFile.get('packages') || rootPackageFile.get('workspaces') || []
       lernaFile.set('packages', [...currentPackages, data.name])
+      lernaFile.set('version', 'independent')
       rootPackageFile.set('workspaces', [...currentPackages, data.name])
       lernaFile.save()
       rootPackageFile.save()
