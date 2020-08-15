@@ -21,9 +21,11 @@ module.exports = (plop) => {
 
         if (choices.length) {
           prompts.push({
-            type: 'checkbox',
+            type: choices.length > 1 ? 'checkbox' : 'confirm',
             name: templateDir,
-            message: `What ${templateDir} additional files do you want`,
+            message: choices.length > 1 ?
+              `What additional ${templateDir} files do you want` :
+              `Do you want to include ${choices[0].description.replace('.prompt', '')}?`,
             choices,
             when: (answers) => answers.workspace === templateDir
               .replace('./templates/', '')
@@ -51,11 +53,6 @@ module.exports = (plop) => {
         type: 'input',
         name: 'organization',
         message: 'organization name',
-        when: (somethting) => {
-          console.log(somethting);
-          return true
-
-        }
       },
       {
         type: 'input',
@@ -77,13 +74,18 @@ module.exports = (plop) => {
           if ((file.includes('.') || file.endsWith('file')) && !file.includes('.storybook')) {
             const action = {
               type: 'add',
-              path: `${path}/${file}`,
+              path: `${path}/${file}`.replace('.prompt', ''),
               templateFile: `${templateDir}/${file}`,
               skipIfExists: true,
               abortOnFail: false
             }
-            if (data[''][tmpDir] && !data[''][tmpDir].find(f => f === file)) {
-              action.skip = 'Skipped'
+            const isPrompt = file.includes('.prompt')
+            const dirExists = data[''][tmpDir]
+            const isBoolean = typeof data[''][tmpDir] === 'boolean'
+            const isMultiplePrompt = isPrompt && dirExists && !isBoolean && !data[''][tmpDir].find(f => f === file)
+            const isSinglePrompt = isPrompt && !data[''][tmpDir]
+            if (isMultiplePrompt || isSinglePrompt) {
+              action.skip = () => `Skipped ${action.path}`
             }
             actions.push(action)
           } else if (!file.includes('.prompt')) {
