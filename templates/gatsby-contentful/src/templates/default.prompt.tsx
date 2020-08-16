@@ -8,7 +8,7 @@ import { LandingHeroImage } from '../components/contentful-blocks/LandingHeroIma
 import ContetnfulRichText from '../components/contentful-rich-text'
 import LeftNavBlock from '../components/utility/left-nav-block'
 import { useTranslation } from '../hooks/useTranslation'
-import { getFromStorage } from '../util/storage-utils'
+import { load as getFromStorage } from '../util/storage'
 
 export const DefaultTemplate = ({ pageContext }: any) => {
   const locale = getFromStorage('locale')
@@ -18,6 +18,7 @@ export const DefaultTemplate = ({ pageContext }: any) => {
   const [heroContent] = entries.filter((p: any) => p.image)
   const [markup] = entries.filter((p: any) => p.content)
   const { t } = useTranslation()
+  const style = { margin: '20px 0', padding: 30, backgroundColor: 'white', borderRadius: 5 }
   return (
     <>
       <Helmet>
@@ -36,7 +37,7 @@ export const DefaultTemplate = ({ pageContext }: any) => {
             <LeftNavBlock
               label={menu.label || t('SHORTCUTS')}
               menuItems={
-                menu.links.map((link: any) => ({
+                menu.links.map((link: { title: string; slug: string; }) => ({
                 label: link.title,
                 url: link.slug
               }))}
@@ -46,7 +47,7 @@ export const DefaultTemplate = ({ pageContext }: any) => {
         <div className="content-container">
           {markup && <ContetnfulRichText markup={markup.content.json} />}
           {!markup && <h4>No Contentful entries have been created for this dynamic page yet.</h4>}
-          <div style={{ margin: '20px 0', padding: 30, backgroundColor: 'white', borderRadius: 5 }}>
+          <div style={style}>
             <p>You can <a href={`https://app.contentful.com/spaces/416ywc1laqmd/entries/${page.contentful_id}`}>
               edit this page in Contentful
               </a>

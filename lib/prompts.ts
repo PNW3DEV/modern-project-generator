@@ -1,7 +1,11 @@
 import fs from 'fs'
 
+import { prompts as contentfulPrompts } from './contentful'
+
 export default () => {
   let prompts = []
+  prompts.push(...contentfulPrompts)
+
   /* GENERATE PROMPTS RECURSIVELY */
   const recursivePrompts = (templateDir) => {
     const dir = fs.readdirSync(templateDir)
@@ -22,7 +26,7 @@ export default () => {
               `What additional ${templateDir} files do you want` :
               `Do you want to include ${choices[0].description.replace('.prompt', '')}?`,
             choices,
-            when: (answers) => answers.workspace === templateDir
+            when: (answers: {[k:string]: any}) => answers.workspace === templateDir
               .replace('./templates/', '')
               .split('/')[0]
           })

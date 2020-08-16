@@ -6,7 +6,16 @@ import actions from './lib/actions'
 import prompts from './lib/prompts'
 import { validatePackageName } from './lib/validations'
 
-export default (plop: any) => {
+interface Plop {
+  load: (arg0: string, arg1: any, arg2: any) => void;
+  setGenerator: (arg0: string, arg1: {
+    description: string;
+    prompts: any[];
+    actions: (data: { [ k: string ]: any }) => any[];
+  }) => void
+}
+
+export default (plop: Plop) => {
   plop.load('plop-pack-npm-install', null, null)
   plop.setGenerator('project', {
     description: 'Web Project Files',
@@ -16,7 +25,8 @@ export default (plop: any) => {
         type: 'list',
         name: 'workspace',
         default: 'create-react-app',
-        choices: fs.readdirSync('./templates').map(dir => ({ name: dir, value: dir }))
+        choices: fs.readdirSync('./templates')
+          .map(dir => ({ name: dir, value: dir }))
       },
       {
         type: 'input',
@@ -31,7 +41,7 @@ export default (plop: any) => {
         validate: validatePackageName,
       },
       /* RECURSIVE/DYNAMIC PROMPTS */
-      ...prompts()
+      ...prompts(),
     ],
     actions
   })

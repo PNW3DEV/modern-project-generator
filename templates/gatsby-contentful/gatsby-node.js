@@ -5,19 +5,6 @@
  */
 
 const path = require('path')
-// const _ = require(`lodash`)
-// const { slash } = require(`gatsby-core-utils`)
-
-// Disable
-/*
-exports.onCreateBabelConfig = ({ actions, stage }) => {
-  if (stage === 'develop') {
-    actions.setBabelPlugin({
-      name: `babel-plugin-istanbul`,
-    })
-  }
-}
-*/
 
 exports.onCreateWebpackConfig = function onCreateWebpackConfig({ actions, stage, loaders, getConfig }) {
   if (stage === "build-html") {
@@ -41,18 +28,7 @@ exports.onCreateWebpackConfig = function onCreateWebpackConfig({ actions, stage,
             use: [
               loaders.js()
             ]
-          },
-          // {
-          //   test: /\.ts|.tsx$/,
-          //   enforce: 'post', // needed if you're using Babel
-          //   include: path.resolve(`src/`), // instrument only sources with Istanbul
-          //   exclude: [/node_modules/],
-          //   loader: 'istanbul-instrumenter-loader',
-          //   options: {
-          //     debug: true,
-          //     esModules: true // needed if you're using Babel
-          //   }
-          // }
+          }
         ]
       }
     })

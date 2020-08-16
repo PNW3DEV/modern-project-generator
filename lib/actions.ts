@@ -1,15 +1,19 @@
 import fs  from 'fs'
 
-import editJSONFile  from 'edit-json-file'
+import { actionsHandler as contentfulActionsHandler } from './contentful'
+import { generateWorkspaceConfig } from './workspaces'
 
-export default (data) => {
+type AnyObj = { [k: string]: any }
+
+export default (data: AnyObj) => {
+  let actions: AnyObj[] = []
+
   const cwd = process.cwd()
-  let actions = []
   const startingPath = `${cwd}/${data.name}`
   const startingTemplatePath = `./templates/${data.workspace}`
 
   /* RECURSIVE FILE MERGER BY WORKSPACE */
-  const recursiveFiles = (path, templateDir) => {
+  const recursiveFiles = (path: string, templateDir: string) => {
     const tmpDir = templateDir.replace('.', '')
     const files = fs.readdirSync(templateDir)
     files.forEach(file => {
@@ -25,7 +29,7 @@ export default (data) => {
         const isPrompt = file.includes('.prompt')
         const dirExists = data[''][tmpDir]
         const isBoolean = typeof data[''][tmpDir] === 'boolean'
-        const isMultiplePrompt = isPrompt && dirExists && !isBoolean && !data[''][tmpDir].find(f => f === file)
+        const isMultiplePrompt = isPrompt && dirExists && !isBoolean && !data[''][tmpDir].find((f: string) => f === file)
         const isSinglePrompt = isPrompt && !data[''][tmpDir]
         if (isMultiplePrompt || isSinglePrompt) {
           action.skip = () => `Skipped ${action.path}`
@@ -52,26 +56,25 @@ export default (data) => {
     })
   }
 
+  /* CONTENTFUL SUPPORT */
+  contentfulActionsHandler(data)
+
   /* Add to Lerna/Workspaces */
-  const lernaFile = editJSONFile(`${cwd}/lerna.json`)
-  const rootPackageFile = editJSONFile(`${cwd}/package.json`)
-  const currentPackages = lernaFile.get('packages') || rootPackageFile.get('workspaces') || []
-  lernaFile.set('packages', [...currentPackages, data.name])
-  lernaFile.set('version', 'independent')
-  rootPackageFile.set('workspaces', [...currentPackages, data.name])
-  lernaFile.save()
-  rootPackageFile.save()
+  generateWorkspaceConfig(data)
 
   /* Install Dependencies */
   console.info('Install Dependencies', actions)
-  actions.push({
-    type: 'npmInstall',
-    path: `${cwd}/${data.name}`,
-    verbose: true
+  const directoriesToInsall = [`${cwd}/${data.name}`, cwd]
+  directoriesToInsall.forEach(dir => {
+    actions.push({
+      type: 'npmInstall',
+      path: dir,
+      verbose: true
+    })
   })
 
   /* DEDUPE ACTIONS */
-  const uniqueActions = actions.reduce((acc, curr) => {
+  const uniqueActions: AnyObj = actions.reduce((acc: AnyObj, curr: AnyObj) => {
     acc[curr.path] = curr
     return acc
   }, {})

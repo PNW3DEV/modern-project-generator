@@ -39,7 +39,11 @@
     "pretest:e2e": "npm run pretest:ci",
     "test:e2e": "lerna exec --scope @{{organization}}/server npm run start:ci & npm run start:ci & wait-on http://localhost:5000 && NODE_ENV=local CYPRESS_BASE_URL=http://localhost:5000 cypress run --headless",
     "test:ci": "npm run start:ci & wait-on http://localhost:5000 && NODE_ENV=local CYPRESS_BASE_URL=http://localhost:5000 cypress run --headless",
-    "t": "ts-node ./scripts/translations.ts"
+    "t": "ts-node ./scripts/translations.ts",
+    "postinstall": "node ./bin/hello.js",
+    "setup": "node ./bin/setup.js",
+    "preview": "gatsby develop --host 0.0.0.0",
+    "refresh": "curl -X POST http://localhost:8000/__refresh"
   },
   "dependencies": {
     "@material-ui/core": "^4.11.0",
