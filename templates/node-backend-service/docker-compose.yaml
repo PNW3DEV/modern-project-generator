@@ -15,7 +15,8 @@ services:
       - './tests:/tests'
       - './coverage:/coverage'
     environment:
-      - GOOGLE_APPLICATION_CREDENTIALS=./service-accounts/sa.development.json
+      - CI_TEST=true
+      # - GOOGLE_APPLICATION_CREDENTIALS=./service-accounts/sa.development.json
     entrypoint: npm run start:watch
   {{dashCase name}}-service-test:
     container_name: {{dashCase name}}-service-test
@@ -32,7 +33,8 @@ services:
       - './tests:/appp/tests'
       - './coverage:/appp/coverage'
     environment:
-      - GOOGLE_APPLICATION_CREDENTIALS=./service-accounts/sa.development.json
+      - CI_TEST=true
+      # - GOOGLE_APPLICATION_CREDENTIALS=./service-accounts/sa.development.json
     entrypoint: npm test
   # {{dashCase name}}-service-production:
   #   container_name: {{dashCase name}}-service-api-production
@@ -46,6 +48,7 @@ services:
   #   volumes:
   #     - './dist:/app/dist'
   #     - './package.json:/app/package.json'
-  #   environment:
+    # environment:
+    #   - CI_TEST=true
   #     - GOOGLE_APPLICATION_CREDENTIALS=./service-accounts/sa.production.json
   #   entrypoint: npm run prod

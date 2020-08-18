@@ -1,17 +1,17 @@
 import type { RequestHandler } from "express-serve-static-core"
 import { NextFunction, Request, Response } from "express"
 import firebase from '../util/firebase'
-import log from '../util/logger'
+import { RequestContext } from "src/interfaces/request.interface"
 
 const auth = firebase.auth()
 
 export const decodeToken: RequestHandler = async (
-  req: Request | any,
+  req: RequestContext | any,
   res: Response,
   next: NextFunction,
 ) => {
   if (!req.headers.authorization) {
-    log.error('Missing Auth Headers', req.headers)
+    req.log.error('Missing Auth Headers', req.headers)
     return res.status(400).json({
       error: {
         message: "You did not specify any jwt for this request",
@@ -25,10 +25,10 @@ export const decodeToken: RequestHandler = async (
     // Decoding this token returns the userpayload and all the other token claims you added while creating the custom token
     req.token = req.headers.authorization.replace('Bearer ', '')
     req.user = await auth.verifyIdToken(req.token)
-    log.info('verified user token', req.token, req.user)
+    req.log.info('verified user token', req.token, req.user)
     next()
   } catch (error) {
-    log.error(error, `bad token sent: ${req.token}`)
+    req.log.error(error, `bad token sent: ${req.token}`)
     return res.status(401).json({ error })
   }
 }
@@ -42,7 +42,7 @@ export const isAuthorized: RequestHandler = async (
   if (req.user) {
     next()
   } else {
-    log.error('Unauthorized')
+    req.log.error('Unauthorized')
     return res.status(401).json({
       error: {
         message:

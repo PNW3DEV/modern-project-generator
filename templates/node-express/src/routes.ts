@@ -1,6 +1,6 @@
 import { Request, Response, Router } from 'express'
 
-import * as testController from './controllers/test-controller'
+import * as versionController from './controllers/version-controller'
 import { decodeToken, isAuthorized } from './middleware/token.middleware'
 
 export const routes = (router: Router) => {
@@ -12,13 +12,13 @@ export const routes = (router: Router) => {
     })
   })
 
-  /* sample test routes */
+  /* Insert Routes/Handlers from Controllers */
   router
-    .route('/test')
-    .post(decodeToken, isAuthorized, testController.post)
+    .route('/version')
+    .post(decodeToken, isAuthorized, versionController.post)
   router
-    .route('/test')
-    .get(testController.get)
+    .route('/version')
+    .get(versionController.get)
 }
 
 export default routes

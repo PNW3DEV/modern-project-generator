@@ -15,5 +15,6 @@ services:
       - './.env:/app/.env'
     # env_file: ./.env
     environment:
-      - GOOGLE_APPLICATION_CREDENTIALS=./sa.json
+      - CI_TEST=true
+      # - GOOGLE_APPLICATION_CREDENTIALS=./sa.json
     entrypoint: npm start

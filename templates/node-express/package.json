@@ -27,6 +27,7 @@
   "dependencies": {
     "ajv": "^6.12.3",
     "bunyan": "^1.8.14",
+    "bunyan-middleware": "^1.0.0",
     "colors": "^1.4.0",
     "cors": "^2.8.5",
     "debug": "^4.1.1",

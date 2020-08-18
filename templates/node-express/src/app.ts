@@ -9,6 +9,7 @@ import helmet from 'helmet'
 import xssFilter from 'x-xss-protection'
 
 import { HealthCheck } from './interfaces/health-check.interface'
+import loggerMiddleware from './middleware/logger.middleware'
 import routes from './routes'
 
 const app = express()
@@ -37,6 +38,9 @@ app.use(cors(corsOptions))
 // Sets "X-XSS-Protection: 1; mode=block".
 app.use(xssFilter({ reportUri: '/report-xss-violation' }))
 app.use(helmet())
+
+// Add Logging Middleware
+app.use(loggerMiddleware)
 
 // Add cors headers
 app.use((_: Request, res: Response, next: NextFunction): void => {
