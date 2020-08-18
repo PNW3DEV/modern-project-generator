@@ -38,12 +38,12 @@ export const logger: any = bunyan.createLogger({
     {
       // stream: process.stdout,
       level: 'info',
-      stream: myRawStream('info') as Stream
+      stream: myRawStream('info') as any
     },
     {
       // stream: process.stdout,
       level: 'error',
-      stream: myRawStream('error') as Stream
+      stream: myRawStream('error') as any
     },
     {
       type: 'rotating-file',

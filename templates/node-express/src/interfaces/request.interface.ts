@@ -7,7 +7,7 @@ export interface RequestContext extends Request {
     info: Logger
     warn: Logger
     error: Logger
-  }
+  }|any // TODO: fix types
 }
 
-export default RequestSchema
+export default interface RequestSchema extends RequestContext {}

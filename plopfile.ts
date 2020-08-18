@@ -15,7 +15,7 @@ interface Plop {
   }) => void
 }
 
-export default (plop: Plop) => {
+module.exports = (plop: Plop) => {
   plop.load('plop-pack-npm-install', null, null)
   plop.setGenerator('project', {
     description: 'Web Project Files',

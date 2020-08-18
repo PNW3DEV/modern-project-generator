@@ -32,6 +32,7 @@ const server: ApolloServer = new ApolloServer({
 
 // Initialize the app
 export const app = express()
+// app.use()
 
 // GraphQL endpoint
 server.applyMiddleware({ app, path: '/graphql' })
