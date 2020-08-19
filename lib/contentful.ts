@@ -1,12 +1,12 @@
 import fs from 'fs'
+// import exportFile from "../contentful/export.json"
+import { writeFileSync } from "fs"
 import path from "path"
 
 import chalk from "chalk"
 
 // import spaceImport from "contentful-import"
 
-// import exportFile from "../contentful/export.json"
-const { writeFileSync } = require("fs");
 const argv = require("yargs-parser")(process.argv.slice(2));
 
 export const initMessage = (message: string) => {
