@@ -3,7 +3,7 @@ Project Generator - Micro-generator framework that makes it easy for an entire t
 
 
 ### Prerequisites
-* NodeJS
+* NodeJS LTS
 
 ### Getting Started
 **Add modern-project-generator to your project**

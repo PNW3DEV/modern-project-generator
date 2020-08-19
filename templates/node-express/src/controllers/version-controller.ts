@@ -1,9 +1,8 @@
-import { Response } from 'express'
+import { Request, Response } from 'express'
 
-import { RequestContext } from '../interfaces/request.interface'
 import { getVersion } from '../services/version-service'
 
-export const get = (req: RequestContext, res: Response) => {
+export const get = (req: Request, res: Response) => {
   try {
     // make async call to service
     const versions = getVersion()
@@ -14,7 +13,7 @@ export const get = (req: RequestContext, res: Response) => {
   }
 }
 
-export const post = (req: RequestContext, res: Response) => {
+export const post = (req: Request, res: Response) => {
   try {
     // make async call to service
     res.status(204).send()

@@ -13,6 +13,18 @@ import corsMiddleware, { corsOptions } from './middleware/cors.middleware'
 import loggerMiddleware from './middleware/logger.middleware'
 import routes from './routes'
 
+type Logger = (...msg: any[]) => void
+
+declare global {
+  namespace Express {
+    export interface Request {
+       logger?: Logger
+       token?: string
+       user: { [k: string]: any }
+    }
+  }
+}
+
 const app = express()
 const router = express.Router()
 

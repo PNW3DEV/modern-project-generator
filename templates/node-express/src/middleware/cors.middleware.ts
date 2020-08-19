@@ -1,5 +1,4 @@
-import { NextFunction, Response } from 'express'
-import { RequestContext } from 'src/interfaces/request.interface'
+import { NextFunction, Request, Response } from 'express'
 
 const headers1 = 'Origin, X-Requested-With, Content-Type, Accept'
 const headers2 = 'Authorization, Access-Control-Allow-Credentials, x-access-token'
@@ -7,12 +6,12 @@ const headers2 = 'Authorization, Access-Control-Allow-Credentials, x-access-toke
 const clientHeaderOrigin = process.env.CLIENT_URL || ''
 const whitelist = [clientHeaderOrigin]
 
-export const corsOptions = (req: RequestContext|any, callback: (...args: any) => any): void => {
+export const corsOptions = (req: Request, callback: (...args: any) => any): void => {
   const originIsWhitelisted = process.env.JEST_TEST || process.env.CI_TEST || whitelist.indexOf(req.headers.origin) !== -1
   callback(originIsWhitelisted ? null : `The CORS policy for this site does not allow access from the specified Origin: ${req.headers.origin}`, originIsWhitelisted)
 }
 
-export default (_: RequestContext, res: Response, next: NextFunction): void => {
+export default (_: Request, res: Response, next: NextFunction): void => {
   res.header('Access-Control-Allow-Origin', process.env.CI_TEST ? '*' : whitelist[0])
   res.header(
     'Access-Control-Allow-Methods',
