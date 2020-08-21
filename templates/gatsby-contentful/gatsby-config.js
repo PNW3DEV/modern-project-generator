@@ -1,8 +1,5 @@
-const activeEnv =
-  process.env.GATSBY_ACTIVE_ENV || process.env.NODE_ENV || "development"
-require('dotenv').config({
-  path: `./environments/.env.${activeEnv}`
-})
+const activeEnv = process.env.GATSBY_ACTIVE_ENV || process.env.NODE_ENV || "development"
+require('dotenv').config({ path: `./.env.${activeEnv}`})
 const siteTitle = "{{name}}"
 const siteDescription =
   "A Gatsby/React/Typescript App"
@@ -11,8 +8,8 @@ const siteUrl = `https://${process.env.REACT_APP_PROJECT_ID}.web.app`
 const siteImage = `${siteUrl}/icons/icon_512x512.png`
 const siteKeywords = ["gatsby", "typescript", "starter", "javascript", "react"]
 const { version } = require('./package.json')
-const getCSP = require('./csp')
-const cspList = getCSP(activeEnv)
+// const getCSP = require('./csp')
+// const cspList = getCSP(activeEnv)
 
 module.exports = {
   siteMetadata: {
@@ -59,6 +56,7 @@ module.exports = {
     `gatsby-plugin-sharp`,
     "gatsby-plugin-react-helmet",
     `gatsby-plugin-typescript`,
+    "gatsby-transformer-remark",
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -111,11 +109,11 @@ module.exports = {
     //   }
     // },
     {
-      resolve: 'gatsby-source-contentful', // run npm install gatsby-source-contentful
+      resolve: 'gatsby-source-contentful',
       options: {
-        spaceId: process.env.GATSBY_CONTENTFUL_SPACE_ID,
-        accessToken: process.env.GATSBY_CONTENTFUL_ACCESS_TOKEN,
-        host: process.env.GATSBY_CONTENTFUL_HOST,
+        spaceId: process.env.CONTENTFUL_SPACE_ID,
+        accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
+        host: activeEnv === 'production' ? undefined : 'preview.contentful.com',
         environment: 'master',
         useNameForId: false,
       },
@@ -131,8 +129,8 @@ module.exports = {
             "X-XSS-Protection: 1; mode=block",
             "Referrer-Policy: no-referrer",
             "Feature-Policy: microphone 'self'",
-            "Expect-CT: max-age=86400, report-uri='https://YOURKEY.report-uri.com/b/g/h'",
-            "Report-To: 'group':'default', 'max_age':31536000, 'endpoints':[{'url':'https://YOURKEY.report-uri.com/b/g/h'}],'include_subdomains':true'",
+            // "Expect-CT: max-age=86400, report-uri='https://YOURKEY.report-uri.com/b/g/h'",
+            // "Report-To: 'group':'default', 'max_age':31536000, 'endpoints':[{'url':'https://YOURKEY.report-uri.com/b/g/h'}],'include_subdomains':true'",
           ]}, // option to add more headers. `Link` headers are transformed by the below criteria
         allPageHeaders: [], // option to add headers for all pages. `Link` headers are transformed by the below criteria
         mergeSecurityHeaders: true, // boolean to turn off the default security headers

@@ -13,10 +13,13 @@ import Typography from '@material-ui/core/Typography';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import React, { FunctionComponent } from 'react'
 
-interface SignInSideProps {
-  // TODO: INSERT PROP TYPES
+export  interface SignInSideProps {
+  location: {
+    origin: string
+    pathname: string
+  }
+  redirectUrl: string
 }
-
 
 function Copyright() {
   return (
@@ -128,6 +131,7 @@ export const SignInSide: FunctionComponent<SignInSideProps> = (props) => {
             <Box mt={5}>
               <Copyright />
             </Box>
+            <Grid item id={'firebaseui-auth-container'} />
           </div>
         </div>
       </Grid>

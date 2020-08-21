@@ -3,10 +3,9 @@
  *
  * See: https://www.gatsbyjs.org/docs/node-apis/
  */
-
 const path = require('path')
 
-exports.onCreateWebpackConfig = function onCreateWebpackConfig({ actions, stage, loaders, getConfig }) {
+exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
   if (stage === "build-html") {
     actions.setWebpackConfig({
       module: {
@@ -19,187 +18,46 @@ exports.onCreateWebpackConfig = function onCreateWebpackConfig({ actions, stage,
       },
     })
   }
-  if (stage === 'develop') {
-    actions.setWebpackConfig({
-      module: {
-        rules: [
-          {
-            test: /react-hot-loader/,
-            use: [
-              loaders.js()
-            ]
-          }
-        ]
-      }
-    })
-  }
-
-  const config = getConfig();
-
-  /*
-  This is updating the Gatsy CoreJS for polyfills.
-  Enabling URLSearchParams for IE11
-  Gastby is till using CoreJS 2 where CoreJS 3 is the current version.
-  https://github.com/gatsbyjs/gatsby/issues/17136
-  https://github.com/gatsbyjs/gatsby/issues/15601
-   */
-  const coreJs2config = config.resolve.alias['core-js'];
-  delete config.resolve.alias['core-js']
-  config.resolve.alias[`core-js/modules`] = `${coreJs2config}/modules`
-  try {
-    config.resolve.alias[`core-js/es`] = path.dirname(require.resolve('core-js/es'));
-  } catch (err) { }
-  actions.replaceWebpackConfig(config);
 }
 
-// const documents = {}
-// exports.onPreExtractQueries = ({ store }) => {
-//   store.subscribe(async () => {
-//     const lastAction = store.getState().lastAction
-//     const { componentPath } = lastAction.payload
-//     console.log(componentPath)
-//     if (componentPath) {
-//       documents[componentPath] = parseGraphQLSDL(componentPath, readFileSync(componentPath), { noLocation: true })
-//     }
-//   })
-// }
-
-exports.onPostBootstrap = async ({ store }) => {
-  // only do this if we just need to generate types for tests. otherwise we need the build to continue.
-  if (process.env.CI_TEST) {
-      console.log('Exiting early for CI pipeline, no bundles needed')
-      process.exit(0)
-  }
-}
-
-/**
- * Create the dynamic pages from Contentful
- * @param graphql
- * @param actions
- */
 exports.createPages = ({ graphql, actions }) => {
-    const { createPage } = actions
-    return graphql(`
-      query buildDynamicPages {
-        allContentfulPage(filter: {slug: {ne: null}}) {
-          nodes {
-            node_locale
-            contentful_id
-            slug
-            title
-            browserTitle
-            template
-            menu: shortcutsMenu {
-              label: menuLabel
-              links {
-                ... on ContentfulPage {
-                  id
+  const { createPage } = actions
+
+  return new Promise((resolve, reject) => {
+    const blogPost = path.resolve('./src/templates/news-post.tsx')
+    resolve(
+      graphql(
+        `
+          {
+            allContentfulBlogPost {
+              edges {
+                node {
                   title
                   slug
-                }
-                ... on ContentfulApplicationPage {
-                  id
-                  title
-                  slug: url
-                }
-              }
-            }
-            entries {
-              ... on ContentfulPageMarkupContentBlock {
-                content {
-                  id
-                  json
-                }
-              }
-              ... on ContentfulLandingHeroHeader {
-                heading
-                subheading
-                ctaLink
-                ctaText
-                image {
-                  file {
-                    url
-                  }
+                  contentful_id
                 }
               }
             }
           }
+        `
+      ).then(result => {
+        if (result.errors) {
+          console.log(result.errors)
+          reject(result.errors)
         }
-      }
-    `)
-    .then(result => {
-      if (result.errors) {
-        throw result.errors
-      }
 
-      // create a map of nodes by slug and locale since we will get a flat list of all nodes back.
-      const pageContextMap = {}
-      for (const page of result.data.allContentfulPage.nodes) {
-        const route = page.slug && page.slug.substring(0, 1) !== '/'
-          ? `/${page.slug}`
-          : page.slug;
-
-        if (!pageContextMap[route]) {
-          pageContextMap[route] = {}
-        }
-        pageContextMap[route][page.node_locale] = page
-      }
-
-      Object.entries(pageContextMap).forEach(([route, pages]) => {
-        const template = path.resolve(
-          `./src/templates/${pages.en.template || 'default'}.tsx`
-        )
-        createPage({
-          path: route || '404',
-          component: template,
-          context: {
-            en: pages.en,
-            es: pages.es
-          },
+        const posts = result.data.allContentfulBlogPost.edges
+        posts.forEach(post => {
+          createPage({
+            path: `/news/${post.node.slug}/`,
+            component: blogPost,
+            context: {
+              slug: post.node.slug,
+              contentful_id: post.node.contentful_id
+            },
+          })
         })
-    })
+      })
+    )
   })
 }
-
-// const Promise = require('bluebird')
-// const path = require('path')
-
-// exports.createPages = ({ graphql, actions }) => {
-//   const { createPage } = actions
-
-//   return new Promise((resolve, reject) => {
-//     const blogPost = path.resolve('./src/templates/blog-post.js')
-//     resolve(
-//       graphql(
-//         `
-//           {
-//             allContentfulBlogPost {
-//               edges {
-//                 node {
-//                   title
-//                   slug
-//                 }
-//               }
-//             }
-//           }
-//         `
-//       ).then(result => {
-//         if (result.errors) {
-//           console.log(result.errors)
-//           reject(result.errors)
-//         }
-
-//         const posts = result.data.allContentfulBlogPost.edges
-//         posts.forEach(post => {
-//           createPage({
-//             path: `/blog/${post.node.slug}/`,
-//             component: blogPost,
-//             context: {
-//               slug: post.node.slug,
-//             },
-//           })
-//         })
-//       })
-//     )
-//   })
-// }

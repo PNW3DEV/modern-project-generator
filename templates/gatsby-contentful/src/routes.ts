@@ -1,7 +1,9 @@
+// GET FROM CONTENTFUL
 const ROUTES = {
-  LOGIN: '/',
-  REGISTRATION: '/registration',
+  HOME: '/',
+  LOGIN: '/auth/sign-in',
+  REGISTRATION: '/auth/sign-up',
   ACCOUNT: '/account',
 }
 export default ROUTES
-export const PUBLIC_ROUTES = [ROUTES.LOGIN, ROUTES.REGISTRATION]
+export const PUBLIC_ROUTES = [ROUTES.HOME, ROUTES.LOGIN, ROUTES.REGISTRATION]

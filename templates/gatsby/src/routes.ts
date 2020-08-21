@@ -1,6 +1,8 @@
+// GET FROM CONTENTFUL
 const ROUTES = {
-  LOGIN: '/',
-  REGISTRATION: '/registration',
+  HOME: '/',
+  LOGIN: '/auth/sign-in',
+  REGISTRATION: '/auth/registration',
   ACCOUNT: '/account',
 }
 export default ROUTES

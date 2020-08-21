@@ -29,15 +29,15 @@ export const AuthContext: Context<AuthContext> = createContext<AuthContext>({
 })
 
 export const AuthProvider: FC = ({ children }) => {
-  if (!!!process.env.REACT_APP_API_KEY) {
-    return (
-      <AuthContext.Provider
-        value={AuthContext as any}
-      >
-        {children}
-      </AuthContext.Provider>
-    )
-  }
+  // if (!!!process.env.REACT_APP_API_KEY) {
+  //   return (
+  //     <AuthContext.Provider
+  //       value={AuthContext as any}
+  //     >
+  //       {children}
+  //     </AuthContext.Provider>
+  //   )
+  // }
   const sessionTimeOut = parseInt(process.env.SESSION_TIMEOUT || '1800')
   const [user, loading, error] = useAuthState(firebase.auth && firebase.auth())
   const [timeRemaining, setTimeRemaining] = useState(sessionTimeOut)
@@ -86,10 +86,11 @@ export const AuthProvider: FC = ({ children }) => {
   useEffect(() => {
     if (loading) return
 
-    if (!user) {
-      !PUBLIC_ROUTES.includes(location.pathname.replace(/\/$/, '')) && navigate(ROUTES.LOGIN, { replace: true })
-      return
-    }
+    // if (!user) {
+    //   !PUBLIC_ROUTES.includes(location.pathname.replace(/\/$/, ''))
+    //     && navigate(ROUTES.LOGIN, { replace: true })
+    //   return
+    // }
 
     setupTimers()
     return removeTimers

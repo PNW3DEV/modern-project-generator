@@ -46,8 +46,12 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-interface SignInProps {
-  // TODO: INSERT PROP TYPES
+export interface SignInProps {
+  location: {
+    origin: string
+    pathname: string
+  }
+  redirectUrl: string
 }
 
 export const SignIn: FunctionComponent<SignInProps> = ({}) => {
@@ -116,6 +120,7 @@ export const SignIn: FunctionComponent<SignInProps> = ({}) => {
       <Box mt={8}>
         <Copyright />
       </Box>
+      <Grid item id={'firebaseui-auth-container'} />
     </Container>
   );
 }

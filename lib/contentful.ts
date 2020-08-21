@@ -6,6 +6,7 @@ import path from "path"
 import chalk from "chalk"
 
 // import spaceImport from "contentful-import"
+// import spaceExport from "contentful-export"
 
 const argv = require("yargs-parser")(process.argv.slice(2));
 
