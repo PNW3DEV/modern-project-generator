@@ -16,6 +16,7 @@ const NewsPostTemplate = (props: any) => {
   const badInlineStyle = { margin: '20px 0', padding: 30, backgroundColor: 'white', borderRadius: 5 }
   const badStyle = { margin: '8px 3em' }
   const badStyle2 = { display: 'block' }
+  const heroStyle = { maxHeight: '30em' }
 
   return (
     <Layout title={`${siteTitle} - ${post.title}`}>
@@ -23,6 +24,7 @@ const NewsPostTemplate = (props: any) => {
         <Helmet title={`${post.title} | ${siteTitle}`} />
         <div className="hero">
           <Img
+            style={heroStyle}
             className="heroImage"
             alt={post.title}
             fluid={post.heroImage.fluid}

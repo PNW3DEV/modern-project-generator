@@ -11,6 +11,8 @@ import { Link } from "gatsby"
 import React from "react"
 import { useTranslation } from 'react-i18next';
 
+import ROUTES from "../../routes"
+
 const useStyles = makeStyles((theme: Theme) => ({
   paper: {
     marginTop: theme.spacing(8),
@@ -37,9 +39,9 @@ const useStyles = makeStyles((theme: Theme) => ({
 }))
 
 interface ForgotPasswordProps {
-  email: string
-  handleChange: (event: any) => void
-  handleSubmit: () => any
+  email?: string
+  handleChange?: (event: any) => void
+  handleSubmit?: () => any
 }
 
 export default function ForgotPassword(props: ForgotPasswordProps) {
@@ -80,10 +82,10 @@ export default function ForgotPassword(props: ForgotPasswordProps) {
         </Button>
         <Grid
           container={true}
-          classes={classes.gridStyle}
+          className={classes.gridStyle}
         >
           <Grid item={true}>
-            <Link to={"/"}>{t('Back to Sign in')}</Link>
+            <Link to={ROUTES.LOGIN}>{t('Back to Sign in')}</Link>
           </Grid>
         </Grid>
       </div>

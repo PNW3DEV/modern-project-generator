@@ -112,7 +112,7 @@ export const SignInForm = ({ classes }: any) => (
       </Button>
       <Grid container>
         <Grid item xs>
-          <Link to="#" className={classes.link}>
+          <Link to={ROUTES.FORGOT_PASSWORD} className={classes.link}>
             Forgot password?
           </Link>
         </Grid>
