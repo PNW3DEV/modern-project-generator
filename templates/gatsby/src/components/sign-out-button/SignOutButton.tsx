@@ -1,24 +1,27 @@
-import React, { FunctionComponent, useContext } from 'react'
 import Button from '@material-ui/core/Button'
 import ExitToAppIcon from "@material-ui/icons/ExitToApp"
-import { useTranslation } from 'react-i18next'
+import { navigate } from 'gatsby'
+import React, { FunctionComponent, useContext } from 'react'
+
 import { AuthContext } from '../../providers/AuthProvider'
+import ROUTES from '../../routes'
 
 interface SignOutButtonProps {
-  // TODO: INSERT PROP TYPES
+  signInButtonLabel: string
+  signOutButtonLabel: string
 }
 
-const SignOutButton: FunctionComponent<SignOutButtonProps> = () => {
-  const { t } = useTranslation()
-  const { signOut } = useContext(AuthContext)
+const SignOutButton: FunctionComponent<SignOutButtonProps> = (props) => {
+  const { signOut, user } = useContext(AuthContext)
+  const signInHandler = async () => navigate(ROUTES.LOGIN)
 
   return (
     <Button
       color="inherit"
-      onClick={signOut}
-      endIcon={<ExitToAppIcon />}
+      onClick={user ? signOut : signInHandler}
+      endIcon={user && <ExitToAppIcon />}
     >
-      {t("userMenu.signOut")}
+      {user ? props.signOutButtonLabel : props.signInButtonLabel}
     </Button>
   )
 }

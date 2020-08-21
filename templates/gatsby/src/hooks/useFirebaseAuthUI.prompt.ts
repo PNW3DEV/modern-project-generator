@@ -1,22 +1,21 @@
-import { navigate } from 'gatsby';
+// import { navigate } from 'gatsby'
 import { useEffect, useState } from 'react'
 import  { useContext } from 'react'
 
 import firebase from '../lib/firebase'
 import firebaseui from '../lib/firebaseUI'
-import { TransitionContext } from '../providers/TransitionProvider'
-import ROUTES from '../routes'
+import { TransitionContext, TransitionContextActionType } from '../providers/TransitionProvider'
 
-export default (props: { location: { origin: string, pathname: string }, redirectUrl: string }) => {
-  const { setState: updateTransition, state: loadingState } = useContext(TransitionContext)
-  const [token, setToken] = useState(typeof window !== 'undefined' && localStorage.token || '')
-  const isSignedIn = token && props.location.pathname === ROUTES.LOGIN
+export default (props: { location: { origin: string, pathname: string }, redirectUrl: string  | '/dashboard' }) => {
+  const { dispatch: updateTransition, state: loadingState } = useContext(TransitionContext)
+  const [token, setToken] = useState(typeof window !== 'undefined' && localStorage.token || '') // check fb auth
+  const isSignedIn = token && props.location.pathname === "/"
 
-  useEffect(() => {
-    if (isSignedIn) {
-      navigate(props.redirectUrl)
-    }
-  }, [token, setToken])
+  // useEffect(() => {
+  //   if (isSignedIn) {
+  //     navigate(props.redirectUrl)
+  //   }
+  // }, [token])
 
   if (typeof window !== 'undefined') {
     useEffect(() => {
@@ -25,11 +24,11 @@ export default (props: { location: { origin: string, pathname: string }, redirec
         callbacks: {
           signInSuccessWithAuthResult: (_: any, _redirectUrl: string) => true,
           uiShown: () => {
-            if (!!loadingState.open) {
-              updateTransition({
-                open: false,
-              })
-            }
+            // if (!!loadingState.open) {
+              // updateTransition({
+              //   type: TransitionContextActionType.END
+              // })
+            // }
           }
         },
         credentialHelper: firebaseui.auth.CredentialHelper.NONE,
@@ -39,7 +38,14 @@ export default (props: { location: { origin: string, pathname: string }, redirec
         signInOptions: [
           // Leave the lines as is for the providers you want to offer your users.
           firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-          firebase.auth.PhoneAuthProvider.PROVIDER_ID
+          firebase.auth.PhoneAuthProvider.PROVIDER_ID,
+          firebase.auth.FacebookAuthProvider.PROVIDER_ID,
+          firebase.auth.TwitterAuthProvider.PROVIDER_ID,
+          firebase.auth.GithubAuthProvider.PROVIDER_ID,
+          // firebase.auth.EmailAuthProvider.PROVIDER_ID,
+          // 'apple.com',
+          // 'microsoft.com',
+          // 'yahoo.com'
         ],
         // Terms of service url.
         // tosUrl: '<your-tos-url>',
@@ -61,7 +67,7 @@ export default (props: { location: { origin: string, pathname: string }, redirec
 
       if (ui.isPendingRedirect()) {
         updateTransition({
-          open: true
+          type: TransitionContextActionType.START
         })
       }
 

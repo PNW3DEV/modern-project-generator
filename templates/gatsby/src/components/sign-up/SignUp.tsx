@@ -6,19 +6,21 @@ import Container from '@material-ui/core/Container';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Grid from '@material-ui/core/Grid';
-import Link from '@material-ui/core/Link';
 import { Theme, makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+import { Link } from 'gatsby';
 import React, { FunctionComponent } from 'react'
 
-function Copyright() {
+import ROUTES from '../../routes'
+
+function Copyright({ classes }: any) {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
-      <Link color="inherit" href="https://material-ui.com/">
-        Your Website
+      <Link color="inherit" to="#" className={classes.link}>
+        Contentful Demo
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
@@ -44,6 +46,11 @@ const useStyles = makeStyles((theme: Theme) => ({
   submit: {
     margin: theme.spacing(3, 0, 2),
   },
+  link: {
+    textDecoration: 'none',
+    borderBottom: 'none',
+    color: theme.palette.primary.main,
+  }
 }));
 
 interface SignUpProps {
@@ -129,7 +136,7 @@ const SignUp: FunctionComponent<SignUpProps> = (props) => {
           </Button>
           <Grid container justify="flex-end">
             <Grid item>
-              <Link href="#" variant="body2">
+              <Link to={ROUTES.LOGIN} className={classes.link}>
                 Already have an account? Sign in
               </Link>
             </Grid>
@@ -137,7 +144,7 @@ const SignUp: FunctionComponent<SignUpProps> = (props) => {
         </form>
       </div>
       <Box mt={5}>
-        <Copyright />
+        <Copyright classes={classes} />
       </Box>
     </Container>
   );
