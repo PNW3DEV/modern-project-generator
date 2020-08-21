@@ -5,6 +5,31 @@ import { generateWorkspaceConfig } from './workspaces'
 
 type AnyObj = { [k: string]: any }
 
+const getAppendAction = (file: string, templateDir: string, action: any) => {
+  if (file.includes('append')) {
+    const appendAction = { ...action }
+    appendAction.type = 'modify'
+    appendAction.pattern = /(-- APPEND ITEMS HERE --)/gi
+    appendAction.template = fs.readFileSync(`${templateDir}/${file}`).toString()
+    appendAction.path = appendAction.path.replace('.append', '')
+    return appendAction
+  }
+  return action
+}
+
+const getPromptAction = (file: string, tmpDir: string, data: any, action: any) => {
+  const promptAction = { ...action }
+  const isPrompt = file.includes('.prompt')
+  const dirExists = data[''][tmpDir]
+  const isBoolean = typeof data[''][tmpDir] === 'boolean'
+  const isMultiplePrompt = isPrompt && dirExists && !isBoolean && !data[''][tmpDir].find((f: string) => f === file)
+  const isSinglePrompt = isPrompt && !data[''][tmpDir]
+  if (isMultiplePrompt || isSinglePrompt) {
+    promptAction.skip = () => `Skipped ${action.path}`
+  }
+  return promptAction
+}
+
 export default (data: AnyObj) => {
   let actions: AnyObj[] = []
 
@@ -18,22 +43,16 @@ export default (data: AnyObj) => {
     const files = fs.readdirSync(templateDir)
     files.forEach(file => {
       if ((file.includes('.') || file.endsWith('file')) && !file.includes('.storybook')) {
-        const action = {
+        let action: any = {
           type: 'add',
           path: `${path}/${file}`.replace('.prompt', ''),
           templateFile: `${templateDir}/${file}`,
-          skipIfExists: true,
+          skipIfExists: !file.includes('.modify') && !file.includes('.append'),
           abortOnFail: false,
-          skip: () => false as any
+          skip: () => false,
         }
-        const isPrompt = file.includes('.prompt')
-        const dirExists = data[''][tmpDir]
-        const isBoolean = typeof data[''][tmpDir] === 'boolean'
-        const isMultiplePrompt = isPrompt && dirExists && !isBoolean && !data[''][tmpDir].find((f: string) => f === file)
-        const isSinglePrompt = isPrompt && !data[''][tmpDir]
-        if (isMultiplePrompt || isSinglePrompt) {
-          action.skip = () => `Skipped ${action.path}`
-        }
+        action = getAppendAction(file, templateDir, action)
+        action = getPromptAction(file, tmpDir, data, action)
         actions.push(action)
       } else if (!file.includes('.prompt')) {
         return recursiveFiles(`${path}/${file}`, `${templateDir}/${file}`)
@@ -64,8 +83,8 @@ export default (data: AnyObj) => {
 
   /* Install Dependencies */
   console.info('Install Dependencies', actions)
-  const directoriesToInsall = [`${cwd}/${data.name}`, cwd]
-  directoriesToInsall.forEach(dir => {
+  const directoriesToInstall = [`${cwd}/${data.name}`, cwd]
+  directoriesToInstall.forEach(dir => {
     actions.push({
       type: 'npmInstall',
       path: dir,

@@ -107,7 +107,7 @@ export const actionsHandler = ({
   accessToken = CONTENTFUL_ACCESS_TOKEN || argv.accessToken || accessToken;
 
   console.log("Writing config file...");
-  const configFiles = [`.env.development`, `.env.production`].map(file =>
+  const configFiles = [`.env.local`, `.env.development`, `.env.production`].map(file =>
     path.join(startingPath, file)
   );
 
@@ -119,9 +119,10 @@ export const actionsHandler = ({
       `# All environment variables will be sourced`,
       `# and made available to gatsby-config.js, gatsby-node.js, etc.`,
       `# Do NOT commit this file to source control`,
-      `CONTENTFUL_SPACE_ID='${spaceId}'`,
-      `CONTENTFUL_ACCESS_TOKEN='${file.includes('development') ? previewAccessToken : accessToken}'`,
-      `ENABLE_GATSBY_REFRESH_ENDPOINT=${file.includes('development')}`
+      `# -- APPEND ITEMS HERE --`,
+      `CONTENTFUL_SPACE_ID="${spaceId}"`,
+      `CONTENTFUL_ACCESS_TOKEN="${file.includes('development') ? previewAccessToken : accessToken}"`,
+      `ENABLE_GATSBY_REFRESH_ENDPOINT=${file.includes('development') || file.includes('local')}`,
     ].join("\n") + "\n";
 
     writeFileSync(file, fileContents, "utf8");
