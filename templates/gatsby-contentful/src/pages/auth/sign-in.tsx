@@ -8,9 +8,11 @@ import Layout from "../../components/layout/Layout"
 import SEO from "../../components/seo/SEO"
 import SignInSide from "../../components/sign-in-side/SignInSide"
 
-const SignInPage = (props: { location: { origin: string, pathname: string }}) => {
+const LandingPage = (props: {
+  location: { origin: string; pathname: string }
+}): JSX.Element => {
   const { t } = useTranslation()
-  const childProps = {...props, redirectUrl: '/dashboard'  }
+  const childProps = { ...props, redirectUrl: "/dashboard" }
   const gridStyle = {
     display: "flex",
     marginTop: "-1.7em",
@@ -18,27 +20,24 @@ const SignInPage = (props: { location: { origin: string, pathname: string }}) =>
     alignItems: "center",
     flexDirection: "column",
     marginBottom: "-2em",
-    // overflow: 'hidden',
-    width: '100%'
+    width: "100%",
   }
 
   return (
-    <Layout title={'App Login'}>
+    <Layout title={"App Login"}>
       <SEO title={t("landing.title")} />
-      <Grid
-        container
-        direction="row"
-        style={gridStyle}
-      >
+      <Grid container={true} direction="row" style={gridStyle}>
         <SignInSide {...childProps} />
-        {(isIE) ?
-          <Alerts title={t('landing.warning')} severity={'warning'} isOpen={true}/>
-          :
-          null
-        }
+        {isIE ? (
+          <Alerts
+            title={t("landing.warning")}
+            severity={"warning"}
+            isOpen={true}
+          />
+        ) : null}
       </Grid>
     </Layout>
   )
 }
 
-export default SignInPage
+export default LandingPage
