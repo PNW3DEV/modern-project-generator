@@ -121,8 +121,8 @@ export const actionsHandler = ({
       `# Do NOT commit this file to source control`,
       `# -- APPEND ITEMS HERE --`,
       `CONTENTFUL_SPACE_ID="${spaceId}"`,
-      `CONTENTFUL_ACCESS_TOKEN="${file.includes('development') ? previewAccessToken : accessToken}"`,
-      `ENABLE_GATSBY_REFRESH_ENDPOINT=${file.includes('development') || file.includes('local')}`,
+      `CONTENTFUL_ACCESS_TOKEN="${(file.includes('.development') || file.includes('.local')) ? previewAccessToken : accessToken}"`,
+      `ENABLE_GATSBY_REFRESH_ENDPOINT=${file.includes('.development') || file.includes('.local')}`,
     ].join("\n") + "\n";
 
     writeFileSync(file, fileContents, "utf8");
