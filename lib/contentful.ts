@@ -107,7 +107,7 @@ export const actionsHandler = ({
   accessToken = CONTENTFUL_ACCESS_TOKEN || argv.accessToken || accessToken;
 
   console.log("Writing config file...");
-  const configFiles = [`.env.local`, `.env.development`, `.env.production`].map(file =>
+  const configFiles = [`.env.local`, `.env.development`, `.env.test`, `.env.production`].map(file =>
     path.join(startingPath, file)
   );
 

@@ -14,10 +14,12 @@ const NewsPostTemplate = (props: any) => {
   const page = props.pageContext
   const markdown = { __html: post.body.childMarkdownRemark.html }
   const badInlineStyle = { margin: '20px 0', padding: 30, backgroundColor: 'white', borderRadius: 5 }
+  const badStyle = { margin: '8px 3em' }
+  const badStyle2 = { display: 'block' }
 
   return (
     <Layout title={`${siteTitle} - ${post.title}`}>
-      <div style={{ margin: '8px 3em' }}>
+      <div style={badStyle}>
         <Helmet title={`${post.title} | ${siteTitle}`} />
         <div className="hero">
           <Img
@@ -28,7 +30,7 @@ const NewsPostTemplate = (props: any) => {
         </div>
         <div className="wrapper">
           <h1 className="section-headline">{post.title}</h1>
-          <p style={{ display: 'block' }}>
+          <p style={badStyle2}>
             {post.publishDate}
           </p>
           <div dangerouslySetInnerHTML={markdown} />

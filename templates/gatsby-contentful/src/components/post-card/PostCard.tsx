@@ -36,6 +36,9 @@ const useStyles = makeStyles({
 
 export default ({ post }: PostCardProps) => {
   const classes = useStyles();
+  const markdown = {
+    __html: post.description.childMarkdownRemark.html,
+  }
 
   return (
     <Card className={classes.root}>
@@ -45,9 +48,7 @@ export default ({ post }: PostCardProps) => {
           <Typography gutterBottom variant="h5" component="h2">
             {post.title}
           </Typography>
-          <Typography variant="body2" color="textSecondary" component="p" dangerouslySetInnerHTML={{
-            __html: post.description.childMarkdownRemark.html,
-          }} />
+          <Typography variant="body2" color="textSecondary" component="p" dangerouslySetInnerHTML={markdown} />
           <small>{post.publishDate}</small>
         </CardContent>
       </CardActionArea>

@@ -19,6 +19,7 @@ const useStyles = makeStyles((theme: Theme) =>
       marginRight: theme.spacing(2),
       maxWidth: '20px'
     },
+    text: { fontSize: 1 }
   }),
 );
 
@@ -73,6 +74,10 @@ export default (props: MenuProps) => {
     prevOpen.current = open;
   }, [open]);
 
+  const getStyle = (placement: any) => ({ transformOrigin: placement === 'bottom' ? 'center top' : 'center bottom' })
+  const menuColor = {color: 'white'}
+  const paperStyle = {maxWidth: '100%'}
+
   return (
     <div className={classes.root}>
       <div>
@@ -81,7 +86,7 @@ export default (props: MenuProps) => {
           aria-controls={open ? 'menu-list-grow' : undefined}
           aria-haspopup="true"
           onClick={handleToggle}
-          style={{color: 'white'}}
+          style={menuColor}
         >
           {props.label}
         </Button>
@@ -89,13 +94,13 @@ export default (props: MenuProps) => {
           {({ TransitionProps, placement }: any) => (
             <Grow
               {...TransitionProps}
-              style={{ transformOrigin: placement === 'bottom' ? 'center top' : 'center bottom' }}
+              style={getStyle(placement)}
             >
-              <Paper style={{maxWidth: '100%'}}>
+              <Paper style={paperStyle}>
                 <ClickAwayListener onClickAway={handleClose}>
                   <MenuList autoFocusItem={open} id="menu-list-grow" onKeyDown={handleListKeyDown}>
                     {props.menuItems?.map((menuItem, idx) => (
-                      <MenuItem key={`${menuItem.label}-${idx}`} style={{fontSize: 1}} onClick={handleClose}>
+                      <MenuItem key={`${menuItem.label}-${idx}`} className={classes.text} onClick={handleClose}>
                         <Typography variant="caption">{menuItem.label}</Typography>
                       </MenuItem>
                     ))}

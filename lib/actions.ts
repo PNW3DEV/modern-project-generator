@@ -48,7 +48,7 @@ export default (data: AnyObj) => {
           path: `${path}/${file}`.replace('.prompt', ''),
           templateFile: `${templateDir}/${file}`,
           skipIfExists: !file.includes('.modify') && !file.includes('.append'),
-          abortOnFail: false,
+          abortOnFail: true,
           skip: () => false,
         }
         action = getAppendAction(file, templateDir, action)
