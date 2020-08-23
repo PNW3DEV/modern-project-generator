@@ -22,7 +22,11 @@ const useStyles = makeStyles(() =>
       fontSize: '2em',
       overflow: 'hidden'
     },
-    heading: {display: 'flex', margin: '2em' }
+    heading: {
+      display: 'flex',
+      margin: '2em',
+      justifyContent: 'center'
+    }
   })
 )
 

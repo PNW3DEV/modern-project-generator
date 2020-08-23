@@ -17,7 +17,7 @@ const NewPage = () => {
       <div className={classes.wrapper}>
         <Helmet title={siteTitle || 'Contentful Demo'} />
         <div className={classes.blogHeader}>Blog</div>
-        <Grid item justify="center" className={classes.heading} xs={12}>
+        <Grid item className={classes.heading} xs={12}>
           <Typography variant="h5">Recent Posts</Typography>
         </Grid>
         <Grid container className={classes.container}>
