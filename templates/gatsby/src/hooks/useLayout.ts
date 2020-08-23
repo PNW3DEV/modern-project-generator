@@ -1,11 +1,9 @@
-import { graphql, useStaticQuery } from 'gatsby'
-import { useTranslation } from 'react-i18next'
+import { graphql, useStaticQuery } from "gatsby"
 
 import useVersion from "./useVersion"
 
 export default () => {
   useVersion()
-  const { t } = useTranslation()
   const data = useStaticQuery(graphql`
     query NavQuery {
       file(relativePath: { eq: "icon.png" }) {
@@ -17,13 +15,48 @@ export default () => {
           }
         }
       }
+      allContentfulNavigationListSortOrder {
+        edges {
+          node {
+            id
+            title
+            signInButtonLabel
+            signOutButtonLabel
+            sortOrder {
+              label
+              slug
+              url
+              isExternalLink
+              menuItems: subMenuLinks {
+                ... on ContentfulBlogPost {
+                  slug
+                  label: title
+                  url
+                }
+                ... on ContentfulLink {
+                  slug
+                  url
+                  label
+                  isExternalLink
+                }
+              }
+            }
+          }
+        }
+      }
     }
   `)
 
+  const {
+    sortOrder: menus,
+    signInButtonLabel,
+    signOutButtonLabel
+  } = data.allContentfulNavigationListSortOrder?.edges?.[0]?.node
+
   return {
-    menus: [],
+    menus,
     file: data.file,
-    signInButtonLabel: t('auth.signInButtonLabel'),
-    signOutButtonLabel: t('auth.signOutButtonLabel'),
+    signInButtonLabel,
+    signOutButtonLabel,
   }
 }

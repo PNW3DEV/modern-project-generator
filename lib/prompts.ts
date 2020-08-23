@@ -1,10 +1,11 @@
 import fs from 'fs'
 
 import { prompts as contentfulPrompts } from './contentful'
+import { prompts as e2ePrompts } from './e2e-prompts'
 
 export default () => {
   let prompts = []
-  prompts.push(...contentfulPrompts)
+  prompts.push(...contentfulPrompts, ...e2ePrompts)
 
   /* GENERATE PROMPTS RECURSIVELY */
   const recursivePrompts = (templateDir) => {

@@ -6,7 +6,7 @@ import { Helmet } from 'react-helmet'
 import Layout from '../components/layout/Layout'
 import PostCard from '../components/post-card/PostCard'
 import useNewsPage from '../hooks/useNewsPage'
-import useStyles from './news.styles'
+import useStyles from '../styles/news.styles'
 
 const NewPage = () => {
   const { siteTitle, posts } = useNewsPage()
@@ -14,10 +14,10 @@ const NewPage = () => {
 
   return (
     <Layout>
-      <div style={classes.wrapper}>
+      <div className={classes.wrapper}>
         <Helmet title={siteTitle || 'Contentful Demo'} />
         <div className={classes.blogHeader}>Blog</div>
-        <Grid item justify="center" style={classes.heading} xs={12}>
+        <Grid item justify="center" className={classes.heading} xs={12}>
           <Typography variant="h5">Recent Posts</Typography>
         </Grid>
         <Grid container className={classes.container}>

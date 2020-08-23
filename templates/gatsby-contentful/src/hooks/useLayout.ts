@@ -26,15 +26,18 @@ export default () => {
               label
               slug
               url
+              isExternalLink
               menuItems: subMenuLinks {
                 ... on ContentfulBlogPost {
                   slug
                   label: title
+                  url
                 }
                 ... on ContentfulLink {
                   slug
                   url
                   label
+                  isExternalLink
                 }
               }
             }

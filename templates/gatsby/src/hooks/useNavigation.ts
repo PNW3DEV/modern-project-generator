@@ -1,6 +1,13 @@
-import { useState } from 'react'
+import { SetStateAction, useState } from 'react'
 
-export default () => {
+export interface UseNavigationDrawer {
+  handleDrawerOpen: () => void
+  handleDrawerClose: () => void
+  open: boolean
+  setOpen: SetStateAction<boolean>
+}
+
+export default (): UseNavigationDrawer => {
   const [open, setOpen] = useState(false)
 
   const handleDrawerOpen = () => {

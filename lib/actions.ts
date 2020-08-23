@@ -5,7 +5,7 @@ import { generateWorkspaceConfig } from './workspaces'
 
 type AnyObj = { [k: string]: any }
 
-const getAppendAction = (file: string, templateDir: string, action: any) => {
+const getAppendAction = (file: string, templateDir: string, action: AnyObj) => {
   if (file.includes('append')) {
     const appendAction = { ...action }
     appendAction.type = 'modify'
@@ -17,7 +17,7 @@ const getAppendAction = (file: string, templateDir: string, action: any) => {
   return action
 }
 
-const getPromptAction = (file: string, tmpDir: string, data: any, action: any) => {
+const getPromptAction = (file: string, tmpDir: string, data: any, action: AnyObj) => {
   const promptAction = { ...action }
   const isPrompt = file.includes('.prompt')
   const dirExists = data[''][tmpDir]
@@ -65,7 +65,7 @@ export default (data: AnyObj) => {
   actions = recursiveFiles(startingPath, startingTemplatePath)
 
   /* CYPRESS/E2E FILES */
-  if (['gatsby', 'gatsby-contentful', 'create-react-app', 'next'].includes(data.workspace)) {
+  if (data.includeE2E || data.workspace === 'cypress-e2e') {
     // add cypress e2e workspace && install cypress deps
     actions = recursiveFiles(`${startingPath}-e2e/`, './templates/cypress-e2e')
     actions.push({

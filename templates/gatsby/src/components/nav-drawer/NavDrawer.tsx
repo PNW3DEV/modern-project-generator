@@ -1,31 +1,33 @@
 import Divider from '@material-ui/core/Divider'
 import Drawer from '@material-ui/core/Drawer'
 import IconButton from '@material-ui/core/IconButton'
-import List from '@material-ui/core/List'
-import ListItem from '@material-ui/core/ListItem'
-import ListItemIcon from '@material-ui/core/ListItemIcon'
-import ListItemText from '@material-ui/core/ListItemText'
 import { useTheme } from '@material-ui/core/styles'
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft'
 import ChevronRightIcon from '@material-ui/icons/ChevronRight'
-import MailIcon from '@material-ui/icons/Mail'
-import InboxIcon from '@material-ui/icons/MoveToInbox'
 import { navigate } from 'gatsby'
 import React, { FunctionComponent } from 'react'
 
+import DrawerMenu from '../drawer-menu';
 import useStyles from '../layout/Layout.styles'
 
-interface MenuItem {
+export interface MenuItem {
   label: string
   slug?: string
   url?: string
+  icon?: any
+  isExternal?: boolean
   menuItems: this
 }
 
-interface NavDrawerProps {
+export interface NavDrawerProps {
   open: boolean
   handleDrawerClose: () => void
   menus: MenuItem[]
+}
+
+export const handleMenuClick = async (menu: MenuItem) => {
+  if (!menu?.isExternal && menu?.url) return navigate(menu.url)
+  if (menu?.isExternal && menu?.url) window.open(menu.url)
 }
 
 const NavDrawer: FunctionComponent<NavDrawerProps> = (props) => {
@@ -36,10 +38,6 @@ const NavDrawer: FunctionComponent<NavDrawerProps> = (props) => {
     drawerClasses: {
       paper: classes.drawerPaper,
     },
-  }
-  const handleMenuClick = async (menu: MenuItem) => {
-    if (menu.slug) return navigate(menu.slug)
-    if (menu.url) window.open(menu.url)
   }
 
   return (
@@ -56,14 +54,7 @@ const NavDrawer: FunctionComponent<NavDrawerProps> = (props) => {
         </IconButton>
       </div>
       <Divider />
-      <List>
-        {props.menus.map((menu, index) => (
-          <ListItem button key={`${menu.label}-${index}`} onClick={() => handleMenuClick(menu)}>
-            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-            <ListItemText primary={menu.label} />
-          </ListItem>
-        ))}
-      </List>
+      <DrawerMenu menus={props.menus} onClick={handleMenuClick} />
     </Drawer>
   )
 }
