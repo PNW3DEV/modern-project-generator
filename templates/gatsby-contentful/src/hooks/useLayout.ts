@@ -1,10 +1,11 @@
 import { graphql, useStaticQuery } from "gatsby"
 
+import { NavQueryQuery } from '../../graphql-types'
 import useVersion from "./useVersion"
 
 export default () => {
   useVersion()
-  const data = useStaticQuery(graphql`
+  const data: NavQueryQuery = useStaticQuery(graphql`
     query NavQuery {
       file(relativePath: { eq: "icon.png" }) {
         childImageSharp {

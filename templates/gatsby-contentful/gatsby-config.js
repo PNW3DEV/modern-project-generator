@@ -57,6 +57,7 @@ module.exports = {
     "gatsby-plugin-react-helmet",
     `gatsby-plugin-typescript`,
     "gatsby-transformer-remark",
+    `gatsby-plugin-graphql-codegen`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
