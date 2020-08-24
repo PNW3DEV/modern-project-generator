@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Plop Generator to scaffold js/ts projects",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "echo Error: no test specified",
     "start": "plop",
@@ -10,6 +11,11 @@
     "build": "tsc --build ./tsconfig.build.json",
     "tsc": "npm run build",
     "postbuild": "cp -R ./templates/ ./dist/templates"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run build"
+    }
   },
   "author": "Desmond G. Jones <desmondpnw3dev>",
   "license": "UNLICENSED",
