@@ -6,7 +6,7 @@ import { Helmet } from 'react-helmet'
 import Layout from '../components/layout/Layout'
 import PostCard from '../components/post-card/PostCard'
 import useNewsPage from '../hooks/useNewsPage'
-import useStyles from './news.styles'
+import useStyles from '../styles/news.styles'
 
 const NewPage = () => {
   const { siteTitle, posts, appBarTitle, headerLabel, contentBodylabel } = useNewsPage()
