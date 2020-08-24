@@ -14,7 +14,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run build"
+      "pre-commit": "npm run build && git add dist/"
     }
   },
   "author": "Desmond G. Jones <desmondpnw3dev>",
