@@ -1,0 +1,5 @@
+{
+  "fixturesFolder": "cypress/fixtures",
+  "chromeWebSecurity": false,
+  "video": false
+}

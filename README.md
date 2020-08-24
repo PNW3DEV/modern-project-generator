@@ -16,7 +16,7 @@ npm install --save-dev modern-project-generator
 // package.json
 {
   "scripts": {
-      "plop": "plop --plopfile ./node_modules/project-generator/plopfile.ts"
+      "plop": "./node_modules/project-generator/bin/cli.js"
   },
   ...
 }

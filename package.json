@@ -3,13 +3,13 @@
   "version": "1.0.0",
   "description": "Plop Generator to scaffold js/ts projects",
   "main": "index.js",
-  "type": "module",
   "scripts": {
     "test": "echo Error: no test specified",
     "start": "plop",
     "plop": "plop",
-    "build": "tsc",
-    "tsc": "npm run build"
+    "build": "tsc --build ./tsconfig.build.json",
+    "tsc": "npm run build",
+    "postbuild": "cp -R ./templates/ ./dist/templates"
   },
   "author": "Desmond G. Jones <desmondpnw3dev>",
   "license": "UNLICENSED",
@@ -22,7 +22,7 @@
     "plop-pack-npm-install": "^0.3.0"
   },
   "bin": {
-    "plop:project": "./index.js"
+    "plop-project": "./bin/cli.js"
   },
   "devDependencies": {
     "@babel/types": "^7.11.0",
@@ -47,5 +47,30 @@
     "ts-node-dev": "^1.0.0-pre.56",
     "ts-to-json": "^0.65.4",
     "typescript": "^3.9.7"
-  }
+  },
+  "workspaces": [
+    "sdfsadfsdf",
+    "sdfsdfsdfdsf",
+    "aasdfsdfsdfasdfsd",
+    "weewwe",
+    "aa",
+    "sdfsadf",
+    "sdfsdf",
+    "aasdsdfasdfasdfsadfsdafsdfsdafsadfdf",
+    "test",
+    "sdfsfd",
+    "aaaasffdf",
+    "fgfdgfdg",
+    "sdfsdfsdfsdf",
+    "sdfsdf",
+    "gfggffgfggf",
+    "asdfsdffhg",
+    "demo",
+    "demo2",
+    "sdsf",
+    "demo2",
+    "demo",
+    "sdfsdf",
+    "sdfsadfasdfsdf"
+  ]
 }
