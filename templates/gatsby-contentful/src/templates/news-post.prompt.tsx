@@ -17,7 +17,7 @@ const NewsPostTemplate = (props: any) => {
   const markdown = { __html: post.body.childMarkdownRemark.html }
 
   return (
-    <Layout title={`${siteTitle} - ${post.title}`}>
+    <Layout title={`News - ${post.title}`}>
       <div className={classes.container}>
         <Helmet title={`${post.title} | ${siteTitle}`} />
         <div className="hero">
