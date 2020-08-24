@@ -10,6 +10,7 @@ export default () => {
           node {
             title
             slug
+            appBarTitle
             additionalProperties {
               headerLabel
               headerLine2Label

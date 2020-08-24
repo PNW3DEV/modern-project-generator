@@ -157,7 +157,7 @@ export type ContentfulAssetEdge = {
   previous?: Maybe<ContentfulAsset>;
 };
 
-export type ContentfulAssetFieldsEnum = 
+export type ContentfulAssetFieldsEnum =
   | 'id'
   | 'parent___id'
   | 'parent___parent___id'
@@ -472,7 +472,7 @@ export type ContentfulBannerAlertsContentRichTextNodeEdge = {
   previous?: Maybe<ContentfulBannerAlertsContentRichTextNode>;
 };
 
-export type ContentfulBannerAlertsContentRichTextNodeFieldsEnum = 
+export type ContentfulBannerAlertsContentRichTextNodeFieldsEnum =
   | 'id'
   | 'parent___id'
   | 'parent___parent___id'
@@ -593,7 +593,7 @@ export type ContentfulBannerAlertsEdge = {
   previous?: Maybe<ContentfulBannerAlerts>;
 };
 
-export type ContentfulBannerAlertsFieldsEnum = 
+export type ContentfulBannerAlertsFieldsEnum =
   | 'id'
   | 'parent___id'
   | 'parent___parent___id'
@@ -924,7 +924,7 @@ export type ContentfulBlogPostBodyTextNodeEdge = {
   previous?: Maybe<ContentfulBlogPostBodyTextNode>;
 };
 
-export type ContentfulBlogPostBodyTextNodeFieldsEnum = 
+export type ContentfulBlogPostBodyTextNodeFieldsEnum =
   | 'id'
   | 'parent___id'
   | 'parent___parent___id'
@@ -1148,7 +1148,7 @@ export type ContentfulBlogPostDescriptionTextNodeEdge = {
   previous?: Maybe<ContentfulBlogPostDescriptionTextNode>;
 };
 
-export type ContentfulBlogPostDescriptionTextNodeFieldsEnum = 
+export type ContentfulBlogPostDescriptionTextNodeFieldsEnum =
   | 'id'
   | 'parent___id'
   | 'parent___parent___id'
@@ -1319,7 +1319,7 @@ export type ContentfulBlogPostEdge = {
   previous?: Maybe<ContentfulBlogPost>;
 };
 
-export type ContentfulBlogPostFieldsEnum = 
+export type ContentfulBlogPostFieldsEnum =
   | 'id'
   | 'parent___id'
   | 'parent___parent___id'
@@ -2228,7 +2228,7 @@ export type ContentfulContentTypeEdge = {
   previous?: Maybe<ContentfulContentType>;
 };
 
-export type ContentfulContentTypeFieldsEnum = 
+export type ContentfulContentTypeFieldsEnum =
   | 'id'
   | 'parent___id'
   | 'parent___parent___id'
@@ -2389,7 +2389,7 @@ export type ContentfulFluidFilterInput = {
   sizes?: Maybe<StringQueryOperatorInput>;
 };
 
-export type ContentfulImageCropFocus = 
+export type ContentfulImageCropFocus =
   | 'TOP'
   | 'TOP_LEFT'
   | 'TOP_RIGHT'
@@ -2402,7 +2402,7 @@ export type ContentfulImageCropFocus =
   | 'FACES'
   | 'CENTER';
 
-export type ContentfulImageFormat = 
+export type ContentfulImageFormat =
   | 'NO_CHANGE'
   | 'JPG'
   | 'PNG'
@@ -2470,7 +2470,7 @@ export type ContentfulLinkEdge = {
   previous?: Maybe<ContentfulLink>;
 };
 
-export type ContentfulLinkFieldsEnum = 
+export type ContentfulLinkFieldsEnum =
   | 'id'
   | 'parent___id'
   | 'parent___parent___id'
@@ -2794,7 +2794,9 @@ export type ContentfulLinkFieldsEnum =
   | 'page___subPages___page___createdAt'
   | 'page___subPages___page___updatedAt'
   | 'page___subPages___page___node_locale'
+  | 'page___subPages___page___appBarTitle'
   | 'page___subPages___page___slug'
+  | 'page___subPages___page___url'
   | 'page___subPages___page___headerCtAs'
   | 'page___subPages___spaceId'
   | 'page___subPages___contentful_id'
@@ -2809,7 +2811,29 @@ export type ContentfulLinkFieldsEnum =
   | 'page___updatedAt'
   | 'page___sys___revision'
   | 'page___node_locale'
+  | 'page___appBarTitle'
   | 'page___slug'
+  | 'page___url'
+  | 'page___additionalProperties___id'
+  | 'page___additionalProperties___parent___id'
+  | 'page___additionalProperties___parent___children'
+  | 'page___additionalProperties___children'
+  | 'page___additionalProperties___children___id'
+  | 'page___additionalProperties___children___children'
+  | 'page___additionalProperties___internal___content'
+  | 'page___additionalProperties___internal___contentDigest'
+  | 'page___additionalProperties___internal___description'
+  | 'page___additionalProperties___internal___fieldOwners'
+  | 'page___additionalProperties___internal___ignoreType'
+  | 'page___additionalProperties___internal___mediaType'
+  | 'page___additionalProperties___internal___owner'
+  | 'page___additionalProperties___internal___type'
+  | 'page___additionalProperties___headerLabel'
+  | 'page___additionalProperties___contentBodyLabel'
+  | 'page___additionalProperties___heroCopy'
+  | 'page___additionalProperties___subHeaderLabel'
+  | 'page___additionalProperties___headerLine2Label'
+  | 'page___additionalProperties___backgroundImageUrl'
   | 'page___headerCtAs'
   | 'page___headerCtAs___id'
   | 'page___headerCtAs___parent___id'
@@ -2852,7 +2876,9 @@ export type ContentfulLinkFieldsEnum =
   | 'page___headerCtAs___page___createdAt'
   | 'page___headerCtAs___page___updatedAt'
   | 'page___headerCtAs___page___node_locale'
+  | 'page___headerCtAs___page___appBarTitle'
   | 'page___headerCtAs___page___slug'
+  | 'page___headerCtAs___page___url'
   | 'page___headerCtAs___page___headerCtAs'
   | 'page___headerCtAs___spaceId'
   | 'page___headerCtAs___contentful_id'
@@ -2886,24 +2912,26 @@ export type ContentfulLinkFieldsEnum =
   | 'page___content___childMarkdownRemark___timeToRead'
   | 'page___content___childMarkdownRemark___tableOfContents'
   | 'page___content___childMarkdownRemark___children'
-  | 'page___additionalProperties___id'
-  | 'page___additionalProperties___parent___id'
-  | 'page___additionalProperties___parent___children'
-  | 'page___additionalProperties___children'
-  | 'page___additionalProperties___children___id'
-  | 'page___additionalProperties___children___children'
-  | 'page___additionalProperties___internal___content'
-  | 'page___additionalProperties___internal___contentDigest'
-  | 'page___additionalProperties___internal___description'
-  | 'page___additionalProperties___internal___fieldOwners'
-  | 'page___additionalProperties___internal___ignoreType'
-  | 'page___additionalProperties___internal___mediaType'
-  | 'page___additionalProperties___internal___owner'
-  | 'page___additionalProperties___internal___type'
-  | 'page___additionalProperties___heroCopy'
-  | 'page___additionalProperties___headerLabel'
-  | 'page___additionalProperties___subHeaderLabel'
-  | 'page___additionalProperties___headerLine2Label'
+  | 'page___childContentfulPageAdditionalPropertiesJsonNode___id'
+  | 'page___childContentfulPageAdditionalPropertiesJsonNode___parent___id'
+  | 'page___childContentfulPageAdditionalPropertiesJsonNode___parent___children'
+  | 'page___childContentfulPageAdditionalPropertiesJsonNode___children'
+  | 'page___childContentfulPageAdditionalPropertiesJsonNode___children___id'
+  | 'page___childContentfulPageAdditionalPropertiesJsonNode___children___children'
+  | 'page___childContentfulPageAdditionalPropertiesJsonNode___internal___content'
+  | 'page___childContentfulPageAdditionalPropertiesJsonNode___internal___contentDigest'
+  | 'page___childContentfulPageAdditionalPropertiesJsonNode___internal___description'
+  | 'page___childContentfulPageAdditionalPropertiesJsonNode___internal___fieldOwners'
+  | 'page___childContentfulPageAdditionalPropertiesJsonNode___internal___ignoreType'
+  | 'page___childContentfulPageAdditionalPropertiesJsonNode___internal___mediaType'
+  | 'page___childContentfulPageAdditionalPropertiesJsonNode___internal___owner'
+  | 'page___childContentfulPageAdditionalPropertiesJsonNode___internal___type'
+  | 'page___childContentfulPageAdditionalPropertiesJsonNode___headerLabel'
+  | 'page___childContentfulPageAdditionalPropertiesJsonNode___contentBodyLabel'
+  | 'page___childContentfulPageAdditionalPropertiesJsonNode___heroCopy'
+  | 'page___childContentfulPageAdditionalPropertiesJsonNode___subHeaderLabel'
+  | 'page___childContentfulPageAdditionalPropertiesJsonNode___headerLine2Label'
+  | 'page___childContentfulPageAdditionalPropertiesJsonNode___backgroundImageUrl'
   | 'page___childContentfulPageContentTextNode___id'
   | 'page___childContentfulPageContentTextNode___parent___id'
   | 'page___childContentfulPageContentTextNode___parent___children'
@@ -2929,24 +2957,6 @@ export type ContentfulLinkFieldsEnum =
   | 'page___childContentfulPageContentTextNode___childMarkdownRemark___timeToRead'
   | 'page___childContentfulPageContentTextNode___childMarkdownRemark___tableOfContents'
   | 'page___childContentfulPageContentTextNode___childMarkdownRemark___children'
-  | 'page___childContentfulPageAdditionalPropertiesJsonNode___id'
-  | 'page___childContentfulPageAdditionalPropertiesJsonNode___parent___id'
-  | 'page___childContentfulPageAdditionalPropertiesJsonNode___parent___children'
-  | 'page___childContentfulPageAdditionalPropertiesJsonNode___children'
-  | 'page___childContentfulPageAdditionalPropertiesJsonNode___children___id'
-  | 'page___childContentfulPageAdditionalPropertiesJsonNode___children___children'
-  | 'page___childContentfulPageAdditionalPropertiesJsonNode___internal___content'
-  | 'page___childContentfulPageAdditionalPropertiesJsonNode___internal___contentDigest'
-  | 'page___childContentfulPageAdditionalPropertiesJsonNode___internal___description'
-  | 'page___childContentfulPageAdditionalPropertiesJsonNode___internal___fieldOwners'
-  | 'page___childContentfulPageAdditionalPropertiesJsonNode___internal___ignoreType'
-  | 'page___childContentfulPageAdditionalPropertiesJsonNode___internal___mediaType'
-  | 'page___childContentfulPageAdditionalPropertiesJsonNode___internal___owner'
-  | 'page___childContentfulPageAdditionalPropertiesJsonNode___internal___type'
-  | 'page___childContentfulPageAdditionalPropertiesJsonNode___heroCopy'
-  | 'page___childContentfulPageAdditionalPropertiesJsonNode___headerLabel'
-  | 'page___childContentfulPageAdditionalPropertiesJsonNode___subHeaderLabel'
-  | 'page___childContentfulPageAdditionalPropertiesJsonNode___headerLine2Label'
   | 'spaceId'
   | 'contentful_id'
   | 'createdAt'
@@ -3088,7 +3098,7 @@ export type ContentfulNavigationListSortOrderEdge = {
   previous?: Maybe<ContentfulNavigationListSortOrder>;
 };
 
-export type ContentfulNavigationListSortOrderFieldsEnum = 
+export type ContentfulNavigationListSortOrderFieldsEnum =
   | 'id'
   | 'parent___id'
   | 'parent___parent___id'
@@ -3404,7 +3414,7 @@ export type ContentfulNavigationMenuEdge = {
   previous?: Maybe<ContentfulNavigationMenu>;
 };
 
-export type ContentfulNavigationMenuFieldsEnum = 
+export type ContentfulNavigationMenuFieldsEnum =
   | 'id'
   | 'parent___id'
   | 'parent___parent___id'
@@ -3673,12 +3683,14 @@ export type ContentfulPage = Node & {
   updatedAt?: Maybe<Scalars['Date']>;
   sys?: Maybe<ContentfulPageSys>;
   node_locale?: Maybe<Scalars['String']>;
+  appBarTitle?: Maybe<Scalars['String']>;
   slug?: Maybe<Scalars['String']>;
+  url?: Maybe<Scalars['String']>;
+  additionalProperties?: Maybe<ContentfulPageAdditionalPropertiesJsonNode>;
   headerCtAs?: Maybe<Array<Maybe<ContentfulLink>>>;
   content?: Maybe<ContentfulPageContentTextNode>;
-  additionalProperties?: Maybe<ContentfulPageAdditionalPropertiesJsonNode>;
-  childContentfulPageContentTextNode?: Maybe<ContentfulPageContentTextNode>;
   childContentfulPageAdditionalPropertiesJsonNode?: Maybe<ContentfulPageAdditionalPropertiesJsonNode>;
+  childContentfulPageContentTextNode?: Maybe<ContentfulPageContentTextNode>;
 };
 
 
@@ -3702,10 +3714,12 @@ export type ContentfulPageAdditionalPropertiesJsonNode = Node & {
   parent?: Maybe<Node>;
   children: Array<Node>;
   internal: Internal;
-  heroCopy?: Maybe<Scalars['String']>;
   headerLabel?: Maybe<Scalars['String']>;
+  contentBodyLabel?: Maybe<Scalars['String']>;
+  heroCopy?: Maybe<Scalars['String']>;
   subHeaderLabel?: Maybe<Scalars['String']>;
   headerLine2Label?: Maybe<Scalars['String']>;
+  backgroundImageUrl?: Maybe<Scalars['String']>;
 };
 
 export type ContentfulPageAdditionalPropertiesJsonNodeConnection = {
@@ -3735,7 +3749,7 @@ export type ContentfulPageAdditionalPropertiesJsonNodeEdge = {
   previous?: Maybe<ContentfulPageAdditionalPropertiesJsonNode>;
 };
 
-export type ContentfulPageAdditionalPropertiesJsonNodeFieldsEnum = 
+export type ContentfulPageAdditionalPropertiesJsonNodeFieldsEnum =
   | 'id'
   | 'parent___id'
   | 'parent___parent___id'
@@ -3822,20 +3836,24 @@ export type ContentfulPageAdditionalPropertiesJsonNodeFieldsEnum =
   | 'internal___mediaType'
   | 'internal___owner'
   | 'internal___type'
-  | 'heroCopy'
   | 'headerLabel'
+  | 'contentBodyLabel'
+  | 'heroCopy'
   | 'subHeaderLabel'
-  | 'headerLine2Label';
+  | 'headerLine2Label'
+  | 'backgroundImageUrl';
 
 export type ContentfulPageAdditionalPropertiesJsonNodeFilterInput = {
   id?: Maybe<StringQueryOperatorInput>;
   parent?: Maybe<NodeFilterInput>;
   children?: Maybe<NodeFilterListInput>;
   internal?: Maybe<InternalFilterInput>;
-  heroCopy?: Maybe<StringQueryOperatorInput>;
   headerLabel?: Maybe<StringQueryOperatorInput>;
+  contentBodyLabel?: Maybe<StringQueryOperatorInput>;
+  heroCopy?: Maybe<StringQueryOperatorInput>;
   subHeaderLabel?: Maybe<StringQueryOperatorInput>;
   headerLine2Label?: Maybe<StringQueryOperatorInput>;
+  backgroundImageUrl?: Maybe<StringQueryOperatorInput>;
 };
 
 export type ContentfulPageAdditionalPropertiesJsonNodeGroupConnection = {
@@ -3909,7 +3927,7 @@ export type ContentfulPageContentTextNodeEdge = {
   previous?: Maybe<ContentfulPageContentTextNode>;
 };
 
-export type ContentfulPageContentTextNodeFieldsEnum = 
+export type ContentfulPageContentTextNodeFieldsEnum =
   | 'id'
   | 'parent___id'
   | 'parent___parent___id'
@@ -4080,7 +4098,7 @@ export type ContentfulPageEdge = {
   previous?: Maybe<ContentfulPage>;
 };
 
-export type ContentfulPageFieldsEnum = 
+export type ContentfulPageFieldsEnum =
   | 'id'
   | 'parent___id'
   | 'parent___parent___id'
@@ -4384,7 +4402,17 @@ export type ContentfulPageFieldsEnum =
   | 'subPages___page___updatedAt'
   | 'subPages___page___sys___revision'
   | 'subPages___page___node_locale'
+  | 'subPages___page___appBarTitle'
   | 'subPages___page___slug'
+  | 'subPages___page___url'
+  | 'subPages___page___additionalProperties___id'
+  | 'subPages___page___additionalProperties___children'
+  | 'subPages___page___additionalProperties___headerLabel'
+  | 'subPages___page___additionalProperties___contentBodyLabel'
+  | 'subPages___page___additionalProperties___heroCopy'
+  | 'subPages___page___additionalProperties___subHeaderLabel'
+  | 'subPages___page___additionalProperties___headerLine2Label'
+  | 'subPages___page___additionalProperties___backgroundImageUrl'
   | 'subPages___page___headerCtAs'
   | 'subPages___page___headerCtAs___id'
   | 'subPages___page___headerCtAs___children'
@@ -4402,21 +4430,17 @@ export type ContentfulPageFieldsEnum =
   | 'subPages___page___content___id'
   | 'subPages___page___content___children'
   | 'subPages___page___content___content'
-  | 'subPages___page___additionalProperties___id'
-  | 'subPages___page___additionalProperties___children'
-  | 'subPages___page___additionalProperties___heroCopy'
-  | 'subPages___page___additionalProperties___headerLabel'
-  | 'subPages___page___additionalProperties___subHeaderLabel'
-  | 'subPages___page___additionalProperties___headerLine2Label'
+  | 'subPages___page___childContentfulPageAdditionalPropertiesJsonNode___id'
+  | 'subPages___page___childContentfulPageAdditionalPropertiesJsonNode___children'
+  | 'subPages___page___childContentfulPageAdditionalPropertiesJsonNode___headerLabel'
+  | 'subPages___page___childContentfulPageAdditionalPropertiesJsonNode___contentBodyLabel'
+  | 'subPages___page___childContentfulPageAdditionalPropertiesJsonNode___heroCopy'
+  | 'subPages___page___childContentfulPageAdditionalPropertiesJsonNode___subHeaderLabel'
+  | 'subPages___page___childContentfulPageAdditionalPropertiesJsonNode___headerLine2Label'
+  | 'subPages___page___childContentfulPageAdditionalPropertiesJsonNode___backgroundImageUrl'
   | 'subPages___page___childContentfulPageContentTextNode___id'
   | 'subPages___page___childContentfulPageContentTextNode___children'
   | 'subPages___page___childContentfulPageContentTextNode___content'
-  | 'subPages___page___childContentfulPageAdditionalPropertiesJsonNode___id'
-  | 'subPages___page___childContentfulPageAdditionalPropertiesJsonNode___children'
-  | 'subPages___page___childContentfulPageAdditionalPropertiesJsonNode___heroCopy'
-  | 'subPages___page___childContentfulPageAdditionalPropertiesJsonNode___headerLabel'
-  | 'subPages___page___childContentfulPageAdditionalPropertiesJsonNode___subHeaderLabel'
-  | 'subPages___page___childContentfulPageAdditionalPropertiesJsonNode___headerLine2Label'
   | 'subPages___spaceId'
   | 'subPages___contentful_id'
   | 'subPages___createdAt'
@@ -4434,7 +4458,53 @@ export type ContentfulPageFieldsEnum =
   | 'sys___contentType___sys___id'
   | 'sys___contentType___sys___contentful_id'
   | 'node_locale'
+  | 'appBarTitle'
   | 'slug'
+  | 'url'
+  | 'additionalProperties___id'
+  | 'additionalProperties___parent___id'
+  | 'additionalProperties___parent___parent___id'
+  | 'additionalProperties___parent___parent___children'
+  | 'additionalProperties___parent___children'
+  | 'additionalProperties___parent___children___id'
+  | 'additionalProperties___parent___children___children'
+  | 'additionalProperties___parent___internal___content'
+  | 'additionalProperties___parent___internal___contentDigest'
+  | 'additionalProperties___parent___internal___description'
+  | 'additionalProperties___parent___internal___fieldOwners'
+  | 'additionalProperties___parent___internal___ignoreType'
+  | 'additionalProperties___parent___internal___mediaType'
+  | 'additionalProperties___parent___internal___owner'
+  | 'additionalProperties___parent___internal___type'
+  | 'additionalProperties___children'
+  | 'additionalProperties___children___id'
+  | 'additionalProperties___children___parent___id'
+  | 'additionalProperties___children___parent___children'
+  | 'additionalProperties___children___children'
+  | 'additionalProperties___children___children___id'
+  | 'additionalProperties___children___children___children'
+  | 'additionalProperties___children___internal___content'
+  | 'additionalProperties___children___internal___contentDigest'
+  | 'additionalProperties___children___internal___description'
+  | 'additionalProperties___children___internal___fieldOwners'
+  | 'additionalProperties___children___internal___ignoreType'
+  | 'additionalProperties___children___internal___mediaType'
+  | 'additionalProperties___children___internal___owner'
+  | 'additionalProperties___children___internal___type'
+  | 'additionalProperties___internal___content'
+  | 'additionalProperties___internal___contentDigest'
+  | 'additionalProperties___internal___description'
+  | 'additionalProperties___internal___fieldOwners'
+  | 'additionalProperties___internal___ignoreType'
+  | 'additionalProperties___internal___mediaType'
+  | 'additionalProperties___internal___owner'
+  | 'additionalProperties___internal___type'
+  | 'additionalProperties___headerLabel'
+  | 'additionalProperties___contentBodyLabel'
+  | 'additionalProperties___heroCopy'
+  | 'additionalProperties___subHeaderLabel'
+  | 'additionalProperties___headerLine2Label'
+  | 'additionalProperties___backgroundImageUrl'
   | 'headerCtAs'
   | 'headerCtAs___id'
   | 'headerCtAs___parent___id'
@@ -4560,7 +4630,17 @@ export type ContentfulPageFieldsEnum =
   | 'headerCtAs___page___updatedAt'
   | 'headerCtAs___page___sys___revision'
   | 'headerCtAs___page___node_locale'
+  | 'headerCtAs___page___appBarTitle'
   | 'headerCtAs___page___slug'
+  | 'headerCtAs___page___url'
+  | 'headerCtAs___page___additionalProperties___id'
+  | 'headerCtAs___page___additionalProperties___children'
+  | 'headerCtAs___page___additionalProperties___headerLabel'
+  | 'headerCtAs___page___additionalProperties___contentBodyLabel'
+  | 'headerCtAs___page___additionalProperties___heroCopy'
+  | 'headerCtAs___page___additionalProperties___subHeaderLabel'
+  | 'headerCtAs___page___additionalProperties___headerLine2Label'
+  | 'headerCtAs___page___additionalProperties___backgroundImageUrl'
   | 'headerCtAs___page___headerCtAs'
   | 'headerCtAs___page___headerCtAs___id'
   | 'headerCtAs___page___headerCtAs___children'
@@ -4578,21 +4658,17 @@ export type ContentfulPageFieldsEnum =
   | 'headerCtAs___page___content___id'
   | 'headerCtAs___page___content___children'
   | 'headerCtAs___page___content___content'
-  | 'headerCtAs___page___additionalProperties___id'
-  | 'headerCtAs___page___additionalProperties___children'
-  | 'headerCtAs___page___additionalProperties___heroCopy'
-  | 'headerCtAs___page___additionalProperties___headerLabel'
-  | 'headerCtAs___page___additionalProperties___subHeaderLabel'
-  | 'headerCtAs___page___additionalProperties___headerLine2Label'
+  | 'headerCtAs___page___childContentfulPageAdditionalPropertiesJsonNode___id'
+  | 'headerCtAs___page___childContentfulPageAdditionalPropertiesJsonNode___children'
+  | 'headerCtAs___page___childContentfulPageAdditionalPropertiesJsonNode___headerLabel'
+  | 'headerCtAs___page___childContentfulPageAdditionalPropertiesJsonNode___contentBodyLabel'
+  | 'headerCtAs___page___childContentfulPageAdditionalPropertiesJsonNode___heroCopy'
+  | 'headerCtAs___page___childContentfulPageAdditionalPropertiesJsonNode___subHeaderLabel'
+  | 'headerCtAs___page___childContentfulPageAdditionalPropertiesJsonNode___headerLine2Label'
+  | 'headerCtAs___page___childContentfulPageAdditionalPropertiesJsonNode___backgroundImageUrl'
   | 'headerCtAs___page___childContentfulPageContentTextNode___id'
   | 'headerCtAs___page___childContentfulPageContentTextNode___children'
   | 'headerCtAs___page___childContentfulPageContentTextNode___content'
-  | 'headerCtAs___page___childContentfulPageAdditionalPropertiesJsonNode___id'
-  | 'headerCtAs___page___childContentfulPageAdditionalPropertiesJsonNode___children'
-  | 'headerCtAs___page___childContentfulPageAdditionalPropertiesJsonNode___heroCopy'
-  | 'headerCtAs___page___childContentfulPageAdditionalPropertiesJsonNode___headerLabel'
-  | 'headerCtAs___page___childContentfulPageAdditionalPropertiesJsonNode___subHeaderLabel'
-  | 'headerCtAs___page___childContentfulPageAdditionalPropertiesJsonNode___headerLine2Label'
   | 'headerCtAs___spaceId'
   | 'headerCtAs___contentful_id'
   | 'headerCtAs___createdAt'
@@ -4668,48 +4744,50 @@ export type ContentfulPageFieldsEnum =
   | 'content___childMarkdownRemark___internal___mediaType'
   | 'content___childMarkdownRemark___internal___owner'
   | 'content___childMarkdownRemark___internal___type'
-  | 'additionalProperties___id'
-  | 'additionalProperties___parent___id'
-  | 'additionalProperties___parent___parent___id'
-  | 'additionalProperties___parent___parent___children'
-  | 'additionalProperties___parent___children'
-  | 'additionalProperties___parent___children___id'
-  | 'additionalProperties___parent___children___children'
-  | 'additionalProperties___parent___internal___content'
-  | 'additionalProperties___parent___internal___contentDigest'
-  | 'additionalProperties___parent___internal___description'
-  | 'additionalProperties___parent___internal___fieldOwners'
-  | 'additionalProperties___parent___internal___ignoreType'
-  | 'additionalProperties___parent___internal___mediaType'
-  | 'additionalProperties___parent___internal___owner'
-  | 'additionalProperties___parent___internal___type'
-  | 'additionalProperties___children'
-  | 'additionalProperties___children___id'
-  | 'additionalProperties___children___parent___id'
-  | 'additionalProperties___children___parent___children'
-  | 'additionalProperties___children___children'
-  | 'additionalProperties___children___children___id'
-  | 'additionalProperties___children___children___children'
-  | 'additionalProperties___children___internal___content'
-  | 'additionalProperties___children___internal___contentDigest'
-  | 'additionalProperties___children___internal___description'
-  | 'additionalProperties___children___internal___fieldOwners'
-  | 'additionalProperties___children___internal___ignoreType'
-  | 'additionalProperties___children___internal___mediaType'
-  | 'additionalProperties___children___internal___owner'
-  | 'additionalProperties___children___internal___type'
-  | 'additionalProperties___internal___content'
-  | 'additionalProperties___internal___contentDigest'
-  | 'additionalProperties___internal___description'
-  | 'additionalProperties___internal___fieldOwners'
-  | 'additionalProperties___internal___ignoreType'
-  | 'additionalProperties___internal___mediaType'
-  | 'additionalProperties___internal___owner'
-  | 'additionalProperties___internal___type'
-  | 'additionalProperties___heroCopy'
-  | 'additionalProperties___headerLabel'
-  | 'additionalProperties___subHeaderLabel'
-  | 'additionalProperties___headerLine2Label'
+  | 'childContentfulPageAdditionalPropertiesJsonNode___id'
+  | 'childContentfulPageAdditionalPropertiesJsonNode___parent___id'
+  | 'childContentfulPageAdditionalPropertiesJsonNode___parent___parent___id'
+  | 'childContentfulPageAdditionalPropertiesJsonNode___parent___parent___children'
+  | 'childContentfulPageAdditionalPropertiesJsonNode___parent___children'
+  | 'childContentfulPageAdditionalPropertiesJsonNode___parent___children___id'
+  | 'childContentfulPageAdditionalPropertiesJsonNode___parent___children___children'
+  | 'childContentfulPageAdditionalPropertiesJsonNode___parent___internal___content'
+  | 'childContentfulPageAdditionalPropertiesJsonNode___parent___internal___contentDigest'
+  | 'childContentfulPageAdditionalPropertiesJsonNode___parent___internal___description'
+  | 'childContentfulPageAdditionalPropertiesJsonNode___parent___internal___fieldOwners'
+  | 'childContentfulPageAdditionalPropertiesJsonNode___parent___internal___ignoreType'
+  | 'childContentfulPageAdditionalPropertiesJsonNode___parent___internal___mediaType'
+  | 'childContentfulPageAdditionalPropertiesJsonNode___parent___internal___owner'
+  | 'childContentfulPageAdditionalPropertiesJsonNode___parent___internal___type'
+  | 'childContentfulPageAdditionalPropertiesJsonNode___children'
+  | 'childContentfulPageAdditionalPropertiesJsonNode___children___id'
+  | 'childContentfulPageAdditionalPropertiesJsonNode___children___parent___id'
+  | 'childContentfulPageAdditionalPropertiesJsonNode___children___parent___children'
+  | 'childContentfulPageAdditionalPropertiesJsonNode___children___children'
+  | 'childContentfulPageAdditionalPropertiesJsonNode___children___children___id'
+  | 'childContentfulPageAdditionalPropertiesJsonNode___children___children___children'
+  | 'childContentfulPageAdditionalPropertiesJsonNode___children___internal___content'
+  | 'childContentfulPageAdditionalPropertiesJsonNode___children___internal___contentDigest'
+  | 'childContentfulPageAdditionalPropertiesJsonNode___children___internal___description'
+  | 'childContentfulPageAdditionalPropertiesJsonNode___children___internal___fieldOwners'
+  | 'childContentfulPageAdditionalPropertiesJsonNode___children___internal___ignoreType'
+  | 'childContentfulPageAdditionalPropertiesJsonNode___children___internal___mediaType'
+  | 'childContentfulPageAdditionalPropertiesJsonNode___children___internal___owner'
+  | 'childContentfulPageAdditionalPropertiesJsonNode___children___internal___type'
+  | 'childContentfulPageAdditionalPropertiesJsonNode___internal___content'
+  | 'childContentfulPageAdditionalPropertiesJsonNode___internal___contentDigest'
+  | 'childContentfulPageAdditionalPropertiesJsonNode___internal___description'
+  | 'childContentfulPageAdditionalPropertiesJsonNode___internal___fieldOwners'
+  | 'childContentfulPageAdditionalPropertiesJsonNode___internal___ignoreType'
+  | 'childContentfulPageAdditionalPropertiesJsonNode___internal___mediaType'
+  | 'childContentfulPageAdditionalPropertiesJsonNode___internal___owner'
+  | 'childContentfulPageAdditionalPropertiesJsonNode___internal___type'
+  | 'childContentfulPageAdditionalPropertiesJsonNode___headerLabel'
+  | 'childContentfulPageAdditionalPropertiesJsonNode___contentBodyLabel'
+  | 'childContentfulPageAdditionalPropertiesJsonNode___heroCopy'
+  | 'childContentfulPageAdditionalPropertiesJsonNode___subHeaderLabel'
+  | 'childContentfulPageAdditionalPropertiesJsonNode___headerLine2Label'
+  | 'childContentfulPageAdditionalPropertiesJsonNode___backgroundImageUrl'
   | 'childContentfulPageContentTextNode___id'
   | 'childContentfulPageContentTextNode___parent___id'
   | 'childContentfulPageContentTextNode___parent___parent___id'
@@ -4777,49 +4855,7 @@ export type ContentfulPageFieldsEnum =
   | 'childContentfulPageContentTextNode___childMarkdownRemark___internal___ignoreType'
   | 'childContentfulPageContentTextNode___childMarkdownRemark___internal___mediaType'
   | 'childContentfulPageContentTextNode___childMarkdownRemark___internal___owner'
-  | 'childContentfulPageContentTextNode___childMarkdownRemark___internal___type'
-  | 'childContentfulPageAdditionalPropertiesJsonNode___id'
-  | 'childContentfulPageAdditionalPropertiesJsonNode___parent___id'
-  | 'childContentfulPageAdditionalPropertiesJsonNode___parent___parent___id'
-  | 'childContentfulPageAdditionalPropertiesJsonNode___parent___parent___children'
-  | 'childContentfulPageAdditionalPropertiesJsonNode___parent___children'
-  | 'childContentfulPageAdditionalPropertiesJsonNode___parent___children___id'
-  | 'childContentfulPageAdditionalPropertiesJsonNode___parent___children___children'
-  | 'childContentfulPageAdditionalPropertiesJsonNode___parent___internal___content'
-  | 'childContentfulPageAdditionalPropertiesJsonNode___parent___internal___contentDigest'
-  | 'childContentfulPageAdditionalPropertiesJsonNode___parent___internal___description'
-  | 'childContentfulPageAdditionalPropertiesJsonNode___parent___internal___fieldOwners'
-  | 'childContentfulPageAdditionalPropertiesJsonNode___parent___internal___ignoreType'
-  | 'childContentfulPageAdditionalPropertiesJsonNode___parent___internal___mediaType'
-  | 'childContentfulPageAdditionalPropertiesJsonNode___parent___internal___owner'
-  | 'childContentfulPageAdditionalPropertiesJsonNode___parent___internal___type'
-  | 'childContentfulPageAdditionalPropertiesJsonNode___children'
-  | 'childContentfulPageAdditionalPropertiesJsonNode___children___id'
-  | 'childContentfulPageAdditionalPropertiesJsonNode___children___parent___id'
-  | 'childContentfulPageAdditionalPropertiesJsonNode___children___parent___children'
-  | 'childContentfulPageAdditionalPropertiesJsonNode___children___children'
-  | 'childContentfulPageAdditionalPropertiesJsonNode___children___children___id'
-  | 'childContentfulPageAdditionalPropertiesJsonNode___children___children___children'
-  | 'childContentfulPageAdditionalPropertiesJsonNode___children___internal___content'
-  | 'childContentfulPageAdditionalPropertiesJsonNode___children___internal___contentDigest'
-  | 'childContentfulPageAdditionalPropertiesJsonNode___children___internal___description'
-  | 'childContentfulPageAdditionalPropertiesJsonNode___children___internal___fieldOwners'
-  | 'childContentfulPageAdditionalPropertiesJsonNode___children___internal___ignoreType'
-  | 'childContentfulPageAdditionalPropertiesJsonNode___children___internal___mediaType'
-  | 'childContentfulPageAdditionalPropertiesJsonNode___children___internal___owner'
-  | 'childContentfulPageAdditionalPropertiesJsonNode___children___internal___type'
-  | 'childContentfulPageAdditionalPropertiesJsonNode___internal___content'
-  | 'childContentfulPageAdditionalPropertiesJsonNode___internal___contentDigest'
-  | 'childContentfulPageAdditionalPropertiesJsonNode___internal___description'
-  | 'childContentfulPageAdditionalPropertiesJsonNode___internal___fieldOwners'
-  | 'childContentfulPageAdditionalPropertiesJsonNode___internal___ignoreType'
-  | 'childContentfulPageAdditionalPropertiesJsonNode___internal___mediaType'
-  | 'childContentfulPageAdditionalPropertiesJsonNode___internal___owner'
-  | 'childContentfulPageAdditionalPropertiesJsonNode___internal___type'
-  | 'childContentfulPageAdditionalPropertiesJsonNode___heroCopy'
-  | 'childContentfulPageAdditionalPropertiesJsonNode___headerLabel'
-  | 'childContentfulPageAdditionalPropertiesJsonNode___subHeaderLabel'
-  | 'childContentfulPageAdditionalPropertiesJsonNode___headerLine2Label';
+  | 'childContentfulPageContentTextNode___childMarkdownRemark___internal___type';
 
 export type ContentfulPageFilterInput = {
   id?: Maybe<StringQueryOperatorInput>;
@@ -4835,12 +4871,14 @@ export type ContentfulPageFilterInput = {
   updatedAt?: Maybe<DateQueryOperatorInput>;
   sys?: Maybe<ContentfulPageSysFilterInput>;
   node_locale?: Maybe<StringQueryOperatorInput>;
+  appBarTitle?: Maybe<StringQueryOperatorInput>;
   slug?: Maybe<StringQueryOperatorInput>;
+  url?: Maybe<StringQueryOperatorInput>;
+  additionalProperties?: Maybe<ContentfulPageAdditionalPropertiesJsonNodeFilterInput>;
   headerCtAs?: Maybe<ContentfulLinkFilterListInput>;
   content?: Maybe<ContentfulPageContentTextNodeFilterInput>;
-  additionalProperties?: Maybe<ContentfulPageAdditionalPropertiesJsonNodeFilterInput>;
-  childContentfulPageContentTextNode?: Maybe<ContentfulPageContentTextNodeFilterInput>;
   childContentfulPageAdditionalPropertiesJsonNode?: Maybe<ContentfulPageAdditionalPropertiesJsonNodeFilterInput>;
+  childContentfulPageContentTextNode?: Maybe<ContentfulPageContentTextNodeFilterInput>;
 };
 
 export type ContentfulPageFilterListInput = {
@@ -4961,7 +4999,7 @@ export type ContentfulPersonEdge = {
   previous?: Maybe<ContentfulPerson>;
 };
 
-export type ContentfulPersonFieldsEnum = 
+export type ContentfulPersonFieldsEnum =
   | 'id'
   | 'parent___id'
   | 'parent___parent___id'
@@ -5674,7 +5712,7 @@ export type ContentfulPersonShortBioTextNodeEdge = {
   previous?: Maybe<ContentfulPersonShortBioTextNode>;
 };
 
-export type ContentfulPersonShortBioTextNodeFieldsEnum = 
+export type ContentfulPersonShortBioTextNodeFieldsEnum =
   | 'id'
   | 'parent___id'
   | 'parent___parent___id'
@@ -6077,7 +6115,7 @@ export type DirectoryEdge = {
   previous?: Maybe<Directory>;
 };
 
-export type DirectoryFieldsEnum = 
+export type DirectoryFieldsEnum =
   | 'sourceInstanceName'
   | 'absolutePath'
   | 'relativePath'
@@ -6386,7 +6424,7 @@ export type FileEdge = {
   previous?: Maybe<File>;
 };
 
-export type FileFieldsEnum = 
+export type FileFieldsEnum =
   | 'sourceInstanceName'
   | 'absolutePath'
   | 'relativePath'
@@ -6666,7 +6704,7 @@ export type FloatQueryOperatorInput = {
   nin?: Maybe<Array<Maybe<Scalars['Float']>>>;
 };
 
-export type ImageCropFocus = 
+export type ImageCropFocus =
   | 'CENTER'
   | 'NORTH'
   | 'NORTHEAST'
@@ -6679,20 +6717,20 @@ export type ImageCropFocus =
   | 'ENTROPY'
   | 'ATTENTION';
 
-export type ImageFit = 
+export type ImageFit =
   | 'COVER'
   | 'CONTAIN'
   | 'FILL'
   | 'INSIDE'
   | 'OUTSIDE';
 
-export type ImageFormat = 
+export type ImageFormat =
   | 'NO_CHANGE'
   | 'JPG'
   | 'PNG'
   | 'WEBP';
 
-export type ImageResizingBehavior = 
+export type ImageResizingBehavior =
   | 'NO_CHANGE'
   /** Same as the default resizing, but adds padding so that the generated image has the specified dimensions. */
   | 'PAD'
@@ -6869,7 +6907,7 @@ export type ImageSharpEdge = {
   previous?: Maybe<ImageSharp>;
 };
 
-export type ImageSharpFieldsEnum = 
+export type ImageSharpFieldsEnum =
   | 'fixed___base64'
   | 'fixed___tracedSVG'
   | 'fixed___aspectRatio'
@@ -7222,7 +7260,7 @@ export type JsonQueryOperatorInput = {
   glob?: Maybe<Scalars['JSON']>;
 };
 
-export type MarkdownExcerptFormats = 
+export type MarkdownExcerptFormats =
   | 'PLAIN'
   | 'HTML'
   | 'MARKDOWN';
@@ -7243,7 +7281,7 @@ export type MarkdownHeadingFilterListInput = {
   elemMatch?: Maybe<MarkdownHeadingFilterInput>;
 };
 
-export type MarkdownHeadingLevels = 
+export type MarkdownHeadingLevels =
   | 'h1'
   | 'h2'
   | 'h3'
@@ -7321,7 +7359,7 @@ export type MarkdownRemarkEdge = {
   previous?: Maybe<MarkdownRemark>;
 };
 
-export type MarkdownRemarkFieldsEnum = 
+export type MarkdownRemarkFieldsEnum =
   | 'id'
   | 'frontmatter___title'
   | 'excerpt'
@@ -7516,7 +7554,7 @@ export type Potrace = {
   background?: Maybe<Scalars['String']>;
 };
 
-export type PotraceTurnPolicy = 
+export type PotraceTurnPolicy =
   | 'TURNPOLICY_BLACK'
   | 'TURNPOLICY_WHITE'
   | 'TURNPOLICY_LEFT'
@@ -7537,6 +7575,10 @@ export type Query = {
   allImageSharp: ImageSharpConnection;
   markdownRemark?: Maybe<MarkdownRemark>;
   allMarkdownRemark: MarkdownRemarkConnection;
+  contentfulPageContentTextNode?: Maybe<ContentfulPageContentTextNode>;
+  allContentfulPageContentTextNode: ContentfulPageContentTextNodeConnection;
+  contentfulPageAdditionalPropertiesJsonNode?: Maybe<ContentfulPageAdditionalPropertiesJsonNode>;
+  allContentfulPageAdditionalPropertiesJsonNode: ContentfulPageAdditionalPropertiesJsonNodeConnection;
   contentfulAsset?: Maybe<ContentfulAsset>;
   allContentfulAsset: ContentfulAssetConnection;
   contentfulNavigationListSortOrder?: Maybe<ContentfulNavigationListSortOrder>;
@@ -7545,10 +7587,6 @@ export type Query = {
   allContentfulBannerAlertsContentRichTextNode: ContentfulBannerAlertsContentRichTextNodeConnection;
   contentfulBannerAlerts?: Maybe<ContentfulBannerAlerts>;
   allContentfulBannerAlerts: ContentfulBannerAlertsConnection;
-  contentfulPageAdditionalPropertiesJsonNode?: Maybe<ContentfulPageAdditionalPropertiesJsonNode>;
-  allContentfulPageAdditionalPropertiesJsonNode: ContentfulPageAdditionalPropertiesJsonNodeConnection;
-  contentfulPageContentTextNode?: Maybe<ContentfulPageContentTextNode>;
-  allContentfulPageContentTextNode: ContentfulPageContentTextNodeConnection;
   contentfulPage?: Maybe<ContentfulPage>;
   allContentfulPage: ContentfulPageConnection;
   contentfulLink?: Maybe<ContentfulLink>;
@@ -7770,6 +7808,46 @@ export type QueryAllMarkdownRemarkArgs = {
 };
 
 
+export type QueryContentfulPageContentTextNodeArgs = {
+  id?: Maybe<StringQueryOperatorInput>;
+  parent?: Maybe<NodeFilterInput>;
+  children?: Maybe<NodeFilterListInput>;
+  internal?: Maybe<InternalFilterInput>;
+  content?: Maybe<StringQueryOperatorInput>;
+  childMarkdownRemark?: Maybe<MarkdownRemarkFilterInput>;
+};
+
+
+export type QueryAllContentfulPageContentTextNodeArgs = {
+  filter?: Maybe<ContentfulPageContentTextNodeFilterInput>;
+  sort?: Maybe<ContentfulPageContentTextNodeSortInput>;
+  skip?: Maybe<Scalars['Int']>;
+  limit?: Maybe<Scalars['Int']>;
+};
+
+
+export type QueryContentfulPageAdditionalPropertiesJsonNodeArgs = {
+  id?: Maybe<StringQueryOperatorInput>;
+  parent?: Maybe<NodeFilterInput>;
+  children?: Maybe<NodeFilterListInput>;
+  internal?: Maybe<InternalFilterInput>;
+  headerLabel?: Maybe<StringQueryOperatorInput>;
+  contentBodyLabel?: Maybe<StringQueryOperatorInput>;
+  heroCopy?: Maybe<StringQueryOperatorInput>;
+  subHeaderLabel?: Maybe<StringQueryOperatorInput>;
+  headerLine2Label?: Maybe<StringQueryOperatorInput>;
+  backgroundImageUrl?: Maybe<StringQueryOperatorInput>;
+};
+
+
+export type QueryAllContentfulPageAdditionalPropertiesJsonNodeArgs = {
+  filter?: Maybe<ContentfulPageAdditionalPropertiesJsonNodeFilterInput>;
+  sort?: Maybe<ContentfulPageAdditionalPropertiesJsonNodeSortInput>;
+  skip?: Maybe<Scalars['Int']>;
+  limit?: Maybe<Scalars['Int']>;
+};
+
+
 export type QueryContentfulAssetArgs = {
   id?: Maybe<StringQueryOperatorInput>;
   parent?: Maybe<NodeFilterInput>;
@@ -7871,44 +7949,6 @@ export type QueryAllContentfulBannerAlertsArgs = {
 };
 
 
-export type QueryContentfulPageAdditionalPropertiesJsonNodeArgs = {
-  id?: Maybe<StringQueryOperatorInput>;
-  parent?: Maybe<NodeFilterInput>;
-  children?: Maybe<NodeFilterListInput>;
-  internal?: Maybe<InternalFilterInput>;
-  heroCopy?: Maybe<StringQueryOperatorInput>;
-  headerLabel?: Maybe<StringQueryOperatorInput>;
-  subHeaderLabel?: Maybe<StringQueryOperatorInput>;
-  headerLine2Label?: Maybe<StringQueryOperatorInput>;
-};
-
-
-export type QueryAllContentfulPageAdditionalPropertiesJsonNodeArgs = {
-  filter?: Maybe<ContentfulPageAdditionalPropertiesJsonNodeFilterInput>;
-  sort?: Maybe<ContentfulPageAdditionalPropertiesJsonNodeSortInput>;
-  skip?: Maybe<Scalars['Int']>;
-  limit?: Maybe<Scalars['Int']>;
-};
-
-
-export type QueryContentfulPageContentTextNodeArgs = {
-  id?: Maybe<StringQueryOperatorInput>;
-  parent?: Maybe<NodeFilterInput>;
-  children?: Maybe<NodeFilterListInput>;
-  internal?: Maybe<InternalFilterInput>;
-  content?: Maybe<StringQueryOperatorInput>;
-  childMarkdownRemark?: Maybe<MarkdownRemarkFilterInput>;
-};
-
-
-export type QueryAllContentfulPageContentTextNodeArgs = {
-  filter?: Maybe<ContentfulPageContentTextNodeFilterInput>;
-  sort?: Maybe<ContentfulPageContentTextNodeSortInput>;
-  skip?: Maybe<Scalars['Int']>;
-  limit?: Maybe<Scalars['Int']>;
-};
-
-
 export type QueryContentfulPageArgs = {
   id?: Maybe<StringQueryOperatorInput>;
   parent?: Maybe<NodeFilterInput>;
@@ -7923,12 +7963,14 @@ export type QueryContentfulPageArgs = {
   updatedAt?: Maybe<DateQueryOperatorInput>;
   sys?: Maybe<ContentfulPageSysFilterInput>;
   node_locale?: Maybe<StringQueryOperatorInput>;
+  appBarTitle?: Maybe<StringQueryOperatorInput>;
   slug?: Maybe<StringQueryOperatorInput>;
+  url?: Maybe<StringQueryOperatorInput>;
+  additionalProperties?: Maybe<ContentfulPageAdditionalPropertiesJsonNodeFilterInput>;
   headerCtAs?: Maybe<ContentfulLinkFilterListInput>;
   content?: Maybe<ContentfulPageContentTextNodeFilterInput>;
-  additionalProperties?: Maybe<ContentfulPageAdditionalPropertiesJsonNodeFilterInput>;
-  childContentfulPageContentTextNode?: Maybe<ContentfulPageContentTextNodeFilterInput>;
   childContentfulPageAdditionalPropertiesJsonNode?: Maybe<ContentfulPageAdditionalPropertiesJsonNodeFilterInput>;
+  childContentfulPageContentTextNode?: Maybe<ContentfulPageContentTextNodeFilterInput>;
 };
 
 
@@ -8242,7 +8284,7 @@ export type SiteBuildMetadataEdge = {
   previous?: Maybe<SiteBuildMetadata>;
 };
 
-export type SiteBuildMetadataFieldsEnum = 
+export type SiteBuildMetadataFieldsEnum =
   | 'id'
   | 'parent___id'
   | 'parent___parent___id'
@@ -8380,7 +8422,7 @@ export type SiteEdge = {
   previous?: Maybe<Site>;
 };
 
-export type SiteFieldsEnum = 
+export type SiteFieldsEnum =
   | 'buildTime'
   | 'siteMetadata___title'
   | 'siteMetadata___description'
@@ -8557,7 +8599,7 @@ export type SitePageEdge = {
   previous?: Maybe<SitePage>;
 };
 
-export type SitePageFieldsEnum = 
+export type SitePageFieldsEnum =
   | 'path'
   | 'component'
   | 'internalComponentName'
@@ -8824,7 +8866,7 @@ export type SitePluginEdge = {
   previous?: Maybe<SitePlugin>;
 };
 
-export type SitePluginFieldsEnum = 
+export type SitePluginFieldsEnum =
   | 'id'
   | 'parent___id'
   | 'parent___parent___id'
@@ -9204,7 +9246,7 @@ export type SiteSortInput = {
   order?: Maybe<Array<Maybe<SortOrderEnum>>>;
 };
 
-export type SortOrderEnum = 
+export type SortOrderEnum =
   | 'ASC'
   | 'DESC';
 
@@ -9222,13 +9264,13 @@ export type Unnamed_1_QueryVariables = Exact<{ [key: string]: never; }>;
 
 export type Unnamed_1_Query = { site?: Maybe<{ siteMetadata?: Maybe<Pick<SiteSiteMetadata, 'title' | 'description' | 'author' | 'url' | 'keywords' | 'image'>> }> };
 
-export type PageQueryQueryVariables = Exact<{ [key: string]: never; }>;
+export type LandingPageQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type PageQueryQuery = { allContentfulPage: { edges: Array<{ node: (
-        Pick<ContentfulPage, 'id'>
-        & { heroImages?: Maybe<Array<Maybe<{ fluid?: Maybe<GatsbyContentfulFluid_TracedSvgFragment> }>>>, content?: Maybe<(
-          Pick<ContentfulPageContentTextNode, 'id' | 'content'>
+export type LandingPageQueryQuery = { allContentfulPage: { edges: Array<{ node: (
+        Pick<ContentfulPage, 'title' | 'slug' | 'appBarTitle'>
+        & { additionalProperties?: Maybe<Pick<ContentfulPageAdditionalPropertiesJsonNode, 'headerLabel' | 'headerLine2Label' | 'heroCopy' | 'subHeaderLabel'>>, headerCtAs?: Maybe<Array<Maybe<Pick<ContentfulLink, 'isExternalLink' | 'label' | 'url'>>>>, heroImages?: Maybe<Array<Maybe<{ fluid?: Maybe<GatsbyContentfulFluid_TracedSvgFragment> }>>>, content?: Maybe<(
+          Pick<ContentfulPageContentTextNode, 'content'>
           & { childMarkdownRemark?: Maybe<Pick<MarkdownRemark, 'html'>> }
         )> }
       ) }> } };
@@ -9250,9 +9292,20 @@ export type NavQueryQuery = { file?: Maybe<{ childImageSharp?: Maybe<{ fixed?: M
 export type NewsIndexQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type NewsIndexQueryQuery = { allContentfulBlogPost: { edges: Array<{ node: (
+export type NewsIndexQueryQuery = { allContentfulPage: { edges: Array<{ node: (
+        Pick<ContentfulPage, 'title' | 'slug' | 'appBarTitle'>
+        & { additionalProperties?: Maybe<Pick<ContentfulPageAdditionalPropertiesJsonNode, 'headerLabel' | 'contentBodyLabel'>> }
+      ) }> }, allContentfulBlogPost: { edges: Array<{ node: (
         Pick<ContentfulBlogPost, 'title' | 'slug' | 'publishDate' | 'tags'>
         & { heroImage?: Maybe<{ fluid?: Maybe<GatsbyContentfulFluid_TracedSvgFragment> }>, description?: Maybe<{ childMarkdownRemark?: Maybe<Pick<MarkdownRemark, 'html'>> }> }
+      ) }> } };
+
+export type SignInPageQueryQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type SignInPageQueryQuery = { allContentfulPage: { edges: Array<{ node: (
+        Pick<ContentfulPage, 'appBarTitle' | 'title'>
+        & { additionalProperties?: Maybe<Pick<ContentfulPageAdditionalPropertiesJsonNode, 'backgroundImageUrl'>>, heroImages?: Maybe<Array<Maybe<Pick<ContentfulAsset, 'title'>>>> }
       ) }> } };
 
 export type SiteMetaDataQueryVariables = Exact<{ [key: string]: never; }>;

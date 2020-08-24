@@ -8,33 +8,25 @@ import Hero from "../components/hero/Hero"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import useLandingPage from '../hooks/useLandingPage'
+import useStyles from '../styles/landing.styles'
 
 const LandingPage = () => {
-  const {  pageText, heroData, data } = useLandingPage()
-
+  const classes = useStyles()
+  const { pageText, heroData, data } = useLandingPage()
   const { t } = useTranslation()
-  const gridStyle: any = {
-    display: "flex",
-    marginTop: "2em",
-    justifyContent: "center",
-    alignItems: "center",
-    flexDirection: "column",
-    marginBottom: 100,
-  }
-  const contentStyle = { margin: '0 2em' }
 
   return (
-    <Layout title={data.title || t("landing.title")}>
+    <Layout title={data.appBarTitle || t("landing.title")}>
       <SEO title={data.title || t("landing.title")} />
       <Hero data={heroData} />
       <Grid
-        container={true}
+        container
         direction="row"
         spacing={3}
-        style={gridStyle}
+        className={classes.container}
       >
         {(isIE) ? <Alerts title={t('landing.warning')} severity={'warning'} isOpen={true}/> : null }
-        <Grid item style={contentStyle}>
+        <Grid item className={classes.content}>
           <Typography color={"primary"}>{pageText}</Typography>
         </Grid>
       </Grid>
