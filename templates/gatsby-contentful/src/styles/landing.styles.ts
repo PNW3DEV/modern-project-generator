@@ -9,8 +9,17 @@ const useStyles = makeStyles(() =>
       alignItems: "center",
       flexDirection: "column",
       marginBottom: 100,
+      width: '100%',
+      padding: '2em'
     },
-    content: { margin: '0 2em', width: '100%' }
+    content: {
+      margin: '1em 2em',
+      width: '100%',
+      // justifyContent: 'center',
+      // alignItems: 'center',
+      // display: 'flex',
+      // flexDirection: 'row'
+    }
   })
 )
 
