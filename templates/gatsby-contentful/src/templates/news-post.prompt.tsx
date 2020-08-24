@@ -7,39 +7,36 @@ import { Helmet } from 'react-helmet'
 
 import Layout from '../components/layout'
 import { useSiteMetadata } from '../hooks/useSiteMetadata'
+import useStyles from './news-post.styles'
 
 const NewsPostTemplate = (props: any) => {
+  const classes = useStyles()
   const { title: siteTitle } = useSiteMetadata()
   const post = props.data.contentfulBlogPost
   const page = props.pageContext
   const markdown = { __html: post.body.childMarkdownRemark.html }
-  const badInlineStyle = { margin: '20px 0', padding: 30, backgroundColor: 'white', borderRadius: 5 }
-  const badStyle = { margin: '8px 3em' }
-  const badStyle2 = { display: 'block' }
-  const heroStyle = { maxHeight: '30em' }
 
   return (
     <Layout title={`${siteTitle} - ${post.title}`}>
-      <div style={badStyle}>
+      <div className={classes.container}>
         <Helmet title={`${post.title} | ${siteTitle}`} />
         <div className="hero">
           <Img
-            style={heroStyle}
-            className="heroImage"
+            className={classes.heroStyle}
             alt={post.title}
             fluid={post.heroImage.fluid}
           />
         </div>
         <div className="wrapper">
           <h1 className="section-headline">{post.title}</h1>
-          <p style={badStyle2}>
+          <p className={classes.date}>
             {post.publishDate}
           </p>
           <div dangerouslySetInnerHTML={markdown} />
           <div className="content-container">
             {!post && <h4>No Contentful entries have been created for this dynamic page yet.</h4>}
             {
-              process.env.GATSBY_ACTIVE_ENV !== 'production' && <div style={badInlineStyle}>
+              process.env.GATSBY_ACTIVE_ENV !== 'production' && <div className={classes.editBox}>
               <p>You can <a href={`https://app.contentful.com/spaces/${process.env.CONTENTFUL_SPACE_ID}/entries/${page.contentful_id}`}>
                 edit this page in Contentful
                 </a>

@@ -10,7 +10,8 @@ import SEO from "../components/seo"
 import useLandingPage from '../hooks/useLandingPage'
 
 const LandingPage = () => {
-  const {  pageText, heroData } = useLandingPage()
+  const {  pageText, heroData, data } = useLandingPage()
+
   const { t } = useTranslation()
   const gridStyle: any = {
     display: "flex",
@@ -23,8 +24,8 @@ const LandingPage = () => {
   const contentStyle = { margin: '0 2em' }
 
   return (
-    <Layout title={t("landing.title")}>
-      <SEO title={t("landing.title")} />
+    <Layout title={data.title || t("landing.title")}>
+      <SEO title={data.title || t("landing.title")} />
       <Hero data={heroData} />
       <Grid
         container={true}

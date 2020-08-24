@@ -121,7 +121,7 @@ export const SEO: React.FC<SEOProps> = (props) => {
       href: "icons/apple-touch-icon.png",
     },
   ]
-  const hmtlAttributes = { lang: i18n.lang || 'en' }
+  const hmtlAttributes = { lang: i18n.language || 'en' }
   return (
     <Helmet
       htmlAttributes={hmtlAttributes}

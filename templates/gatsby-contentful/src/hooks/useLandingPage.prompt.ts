@@ -1,12 +1,26 @@
 import { graphql, useStaticQuery } from 'gatsby'
 
+import { LandingPageQueryQuery } from '../../graphql-types'
+
 export default () => {
-  const data = useStaticQuery(graphql`
-    query PageQuery {
+  const data: LandingPageQueryQuery = useStaticQuery(graphql`
+    query LandingPageQuery {
       allContentfulPage(filter: {slug: {eq: "/"}}) {
         edges {
           node {
-            id
+            title
+            slug
+            additionalProperties {
+              headerLabel
+              headerLine2Label
+              heroCopy
+              subHeaderLabel
+            }
+            headerCtAs {
+              isExternalLink
+              label
+              url
+            }
             heroImages {
               fluid(
                 maxWidth: 1180
@@ -18,7 +32,6 @@ export default () => {
               }
             }
             content {
-              id
               content
               childMarkdownRemark {
                 html
@@ -31,10 +44,12 @@ export default () => {
   `)
 
   const pageText = data.allContentfulPage?.edges?.[0]?.node?.content?.content
-  const heroData = { name: '', heroImage: data.allContentfulPage?.edges[0]?.node?.heroImages?.[1] }
+  const node = data.allContentfulPage?.edges[0]?.node
+  const heroData = { name: '', ...node, heroImage: data.allContentfulPage?.edges[0]?.node?.heroImages?.[1] }
 
   return {
     pageText,
-    heroData
+    heroData,
+    data: node,
   }
 }

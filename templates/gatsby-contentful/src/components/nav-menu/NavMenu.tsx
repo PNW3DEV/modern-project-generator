@@ -27,9 +27,11 @@ interface MenuProps {
   label: string
   slug?: string
   url?: string
+  isExternal?: boolean
   menuItems: {
     label: string
     url: string
+    isExternal?: boolean
   }[]
 }
 
@@ -39,20 +41,20 @@ export default (props: MenuProps) => {
   const anchorRef = React.useRef<HTMLButtonElement>(null);
 
   const handleToggle = async () => {
-    if (props.slug) return navigate(props.slug)
-    if (props.url) window.open(props.url)
-
     setOpen((prevOpen) => !prevOpen);
+    if (!props?.isExternal && props?.url) return navigate(props.url)
+    if (props?.isExternal && props.url) window.open(props.url)
   };
 
   const handleClose = async(event: React.MouseEvent<EventTarget>) => {
     if (anchorRef.current && anchorRef.current.contains(event.target as HTMLElement)) {
       return;
     }
-    if (props.slug) return navigate(props.slug)
-    if (props.url) window.open(props.url)
 
     setOpen(false);
+
+    if (!props?.isExternal && props?.url) return navigate(props.url)
+    if (props?.isExternal && props.url) window.open(props.url)
   };
 
   async function handleListKeyDown(event: React.KeyboardEvent) {
