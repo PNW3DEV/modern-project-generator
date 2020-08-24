@@ -11,13 +11,14 @@ import React from 'react'
 
 export interface LandingCardProps {
   post: {
-    heroImage: {
+    url?: string
+    cardImage: {
       fluid: string|any
     }
-    publishDate: string|Date
-    slug: string
+    publishDate?: string|Date
+    slug?: string
     title: string
-    description: {
+    contentBody: {
       childMarkdownRemark: {
         html: string
       }
@@ -37,13 +38,13 @@ const useStyles = makeStyles({
 export default ({ post }: LandingCardProps) => {
   const classes = useStyles();
   const markdown = {
-    __html: post.description.childMarkdownRemark.html,
+    __html: post.contentBody.childMarkdownRemark.html,
   }
 
   return (
     <Card className={classes.root}>
       <CardActionArea>
-        <Img alt="" fluid={post.heroImage.fluid} />
+        <Img alt="" fluid={post.cardImage.fluid} />
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
             {post.title}
@@ -56,7 +57,7 @@ export default ({ post }: LandingCardProps) => {
         <Button
           size="small"
           color="primary"
-          onClick={() => navigate(`/news/${post.slug}`)}
+          onClick={() => navigate(post?.url??'')}
           >
           Learn More
         </Button>

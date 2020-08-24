@@ -10,7 +10,7 @@ const useStyles = makeStyles(() =>
       flexDirection: "column",
       marginBottom: 100,
     },
-    content: { margin: '0 2em' }
+    content: { margin: '0 2em', width: '100%' }
   })
 )
 

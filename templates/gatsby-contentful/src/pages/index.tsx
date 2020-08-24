@@ -5,6 +5,7 @@ import { useTranslation } from "react-i18next"
 
 import Alerts from "../components/alerts/Alerts"
 import Hero from "../components/hero/Hero"
+import LandingCard from '../components/landing-card/LandingCard'
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import useLandingPage from '../hooks/useLandingPage'
@@ -12,7 +13,7 @@ import useStyles from '../styles/landing.styles'
 
 const LandingPage = () => {
   const classes = useStyles()
-  const { pageText, heroData, data } = useLandingPage()
+  const { pageText, heroData, data, cards = [] } = useLandingPage()
   const { t } = useTranslation()
 
   return (
@@ -26,6 +27,11 @@ const LandingPage = () => {
         className={classes.container}
       >
         {(isIE) ? <Alerts title={t('landing.warning')} severity={'warning'} isOpen={true}/> : null }
+        <Grid item className={classes.content}>
+          {cards?.map((card: any) => (
+            <LandingCard post={card} />
+          ))}
+        </Grid>
         <Grid item className={classes.content}>
           <Typography color={"primary"}>{pageText}</Typography>
         </Grid>
