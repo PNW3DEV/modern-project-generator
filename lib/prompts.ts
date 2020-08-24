@@ -1,14 +1,16 @@
 import fs from 'fs'
 
+import { NodePlopAPI } from 'plop'
+
 import { prompts as contentfulPrompts } from './contentful'
 import { prompts as e2ePrompts } from './e2e-prompts'
 
-export default () => {
+export default (plop: NodePlopAPI) => {
   let prompts = []
   prompts.push(...contentfulPrompts, ...e2ePrompts)
 
   /* GENERATE PROMPTS RECURSIVELY */
-  const recursivePrompts = (templateDir) => {
+  const recursivePrompts = (templateDir: string) => {
     const dir = fs.readdirSync(templateDir)
     dir.forEach((file, idx) => {
       const path = `${templateDir}/${file}`
@@ -36,5 +38,5 @@ export default () => {
     })
     return prompts
   }
-  return recursivePrompts(`./templates`)
+  return recursivePrompts(`${plop.getPlopfilePath()}/templates`)
 }

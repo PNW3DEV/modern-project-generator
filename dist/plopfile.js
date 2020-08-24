@@ -31,9 +31,9 @@ exports.default = (plop) => {
                 message: 'workspace name',
                 validate: validations_1.validatePackageName,
             },
-            ...prompts_1.default(),
+            ...prompts_1.default(plop),
         ],
-        actions: actions_1.default
+        actions: actions_1.default.bind(null, plop)
     });
 };
 //# sourceMappingURL=plopfile.js.map

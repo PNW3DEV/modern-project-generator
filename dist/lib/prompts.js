@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const fs_1 = __importDefault(require("fs"));
 const contentful_1 = require("./contentful");
 const e2e_prompts_1 = require("./e2e-prompts");
-exports.default = () => {
+exports.default = (plop) => {
     let prompts = [];
     prompts.push(...contentful_1.prompts, ...e2e_prompts_1.prompts);
     const recursivePrompts = (templateDir) => {
@@ -37,6 +37,6 @@ exports.default = () => {
         });
         return prompts;
     };
-    return recursivePrompts(`./templates`);
+    return recursivePrompts(`${plop.getPlopfilePath()}/templates`);
 };
 //# sourceMappingURL=prompts.js.map

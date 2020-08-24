@@ -33,8 +33,8 @@ export default (plop: NodePlopAPI) => {
         validate: validatePackageName,
       },
       /* RECURSIVE/DYNAMIC PROMPTS */
-      ...prompts(),
+      ...prompts(plop),
     ],
-    actions: actions as Actions
+    actions: actions.bind(null, plop) as Actions
   })
 }
