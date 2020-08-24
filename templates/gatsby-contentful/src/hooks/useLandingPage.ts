@@ -38,6 +38,22 @@ export default () => {
                 html
               }
             }
+            cards {
+              title
+              # url
+              contentBody {
+                contentBody
+                childMarkdownRemark {
+                  html
+                }
+              }
+              cardImage {
+                fluid(maxWidth: 350, maxHeight: 196, resizingBehavior: SCALE) {
+                ...GatsbyContentfulFluid_tracedSVG
+              }
+                title
+              }
+            }
           }
         }
       }
@@ -52,5 +68,6 @@ export default () => {
     pageText,
     heroData,
     data: node,
+    cards: node.cards
   }
 }
