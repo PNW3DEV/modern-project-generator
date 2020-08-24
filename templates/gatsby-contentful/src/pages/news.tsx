@@ -6,19 +6,19 @@ import { Helmet } from 'react-helmet'
 import Layout from '../components/layout/Layout'
 import PostCard from '../components/post-card/PostCard'
 import useNewsPage from '../hooks/useNewsPage'
-import useStyles from '../styles/news.styles'
+import useStyles from './news.styles'
 
 const NewPage = () => {
-  const { siteTitle, posts } = useNewsPage()
+  const { siteTitle, posts, appBarTitle, headerLabel, contentBodylabel } = useNewsPage()
   const classes = useStyles()
 
   return (
-    <Layout>
+    <Layout title={appBarTitle || siteTitle}>
       <div className={classes.wrapper}>
         <Helmet title={siteTitle || 'Contentful Demo'} />
-        <div className={classes.blogHeader}>Blog</div>
-        <Grid item className={classes.heading} xs={12}>
-          <Typography variant="h5">Recent Posts</Typography>
+        <div className={classes.blogHeader}>{headerLabel}</div>
+        <Grid item justify="center" className={classes.heading} xs={12}>
+          <Typography variant="h5">{contentBodylabel}</Typography>
         </Grid>
         <Grid container className={classes.container}>
           {posts.map(({ node }: any) => (
