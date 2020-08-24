@@ -7,26 +7,19 @@ import Alerts from "../../components/alerts/Alerts"
 import Layout from "../../components/layout/Layout"
 import SEO from "../../components/seo/SEO"
 import SignUp from "../../components/sign-up/SignUp"
+import useStyles from '../../styles/sign-up.styles'
 
 const SignUpPage = (props: {
   location: { origin: string; pathname: string }
 }): JSX.Element => {
+  const classes = useStyles()
   const { t } = useTranslation()
   const childProps = { ...props, redirectUrl: "/dashboard" }
-  const gridStyle = {
-    display: "flex",
-    marginTop: "-1.7em",
-    justifyContent: "center",
-    alignItems: "center",
-    flexDirection: "column",
-    // overflow: 'hidden',
-    width: "100%",
-  }
 
   return (
-    <Layout title={"App Registration"}>
-      <SEO title={t("landing.title")} />
-      <Grid container={true} direction="row" style={gridStyle}>
+    <Layout title={"Contentful CMS Demo - Registration"}>
+      <SEO title={'Contentful CMS Demo'} />
+      <Grid container={true} direction="row" className={classes.container}>
         <SignUp {...childProps} />
         {isIE ? (
           <Alerts
