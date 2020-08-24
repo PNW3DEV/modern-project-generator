@@ -1,5 +1,7 @@
 import fs  from 'fs'
 
+import { NodePlopAPI } from 'plop'
+
 import { actionsHandler as contentfulActionsHandler } from './contentful'
 import { generateWorkspaceConfig } from './workspaces'
 
@@ -30,12 +32,12 @@ const getPromptAction = (file: string, tmpDir: string, data: any, action: AnyObj
   return promptAction
 }
 
-export default (data: AnyObj) => {
+export default (plop: NodePlopAPI, data: AnyObj) => {
   let actions: AnyObj[] = []
 
   const cwd = process.cwd()
   const startingPath = `${cwd}/${data.name}`
-  const startingTemplatePath = `./templates/${data.workspace}`
+  const startingTemplatePath = `${plop.getPlopfilePath()}/templates/${data.workspace}`
 
   /* RECURSIVE FILE MERGER BY WORKSPACE */
   const recursiveFiles = (path: string, templateDir: string) => {
