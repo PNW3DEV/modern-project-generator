@@ -9,14 +9,16 @@ import Alerts from "../../components/alerts/Alerts"
 import Layout from "../../components/layout/Layout"
 import SEO from "../../components/seo/SEO"
 import SignInSide from "../../components/sign-in-side/SignInSide"
+import useSignInPage from "../../hooks/useSignInPage"
 import theme from "../../themes/theme-light"
 
 const LandingPage = (props: {
   location: { origin: string; pathname: string }
 }): JSX.Element => {
+  const { appBarTitle, siteTitle, data } = useSignInPage()
   const { t } = useTranslation()
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"))
-  const childProps = { ...props, redirectUrl: "/dashboard" }
+  const childProps = { ...props, data, redirectUrl: "/dashboard" }
   const gridStyle: any = {
     display: "flex",
     marginTop: "-1.7em",
@@ -33,11 +35,11 @@ const LandingPage = (props: {
   return (
     <>
       <Helmet>
-        <body style="overflow:hidden" />
+        <body style={"overflow:hidden" as any} />
       </Helmet>
-      <Layout title={"App Login"}>
-        <SEO title={t("landing.title")} />
-        <Grid container={true} direction="row" style={gridStyle}>
+      <Layout title={appBarTitle || siteTitle}>
+        <SEO title={siteTitle} />
+        <Grid container direction="row" style={gridStyle}>
           <SignInSide {...childProps} />
           {isIE ? (
             <Alerts

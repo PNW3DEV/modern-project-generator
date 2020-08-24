@@ -47,7 +47,7 @@ export default () => {
     siteTitle: siteData?.site?.siteMetadata?.title,
     posts: data.allContentfulBlogPost.edges,
     appBarTitle: data.allContentfulPage?.edges?.[0]?.node?.appBarTitle,
-    headerLabel: data.allContentfulPage?.edges?.[0]?.node?.additionalProperties.headerLabel,
-    contentBodylabel: data.allContentfulPage?.edges?.[0]?.node?.additionalProperties.contentBodyLabel
+    headerLabel: data.allContentfulPage?.edges?.[0]?.node?.additionalProperties?.headerLabel,
+    contentBodylabel: data.allContentfulPage?.edges?.[0]?.node?.additionalProperties?.contentBodyLabel
   }
 }
