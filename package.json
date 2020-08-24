@@ -47,30 +47,5 @@
     "ts-node-dev": "^1.0.0-pre.56",
     "ts-to-json": "^0.65.4",
     "typescript": "^3.9.7"
-  },
-  "workspaces": [
-    "sdfsadfsdf",
-    "sdfsdfsdfdsf",
-    "aasdfsdfsdfasdfsd",
-    "weewwe",
-    "aa",
-    "sdfsadf",
-    "sdfsdf",
-    "aasdsdfasdfasdfsadfsdafsdfsdafsadfdf",
-    "test",
-    "sdfsfd",
-    "aaaasffdf",
-    "fgfdgfdg",
-    "sdfsdfsdfsdf",
-    "sdfsdf",
-    "gfggffgfggf",
-    "asdfsdffhg",
-    "demo",
-    "demo2",
-    "sdsf",
-    "demo2",
-    "demo",
-    "sdfsdf",
-    "sdfsadfasdfsdf"
-  ]
+  }
 }
