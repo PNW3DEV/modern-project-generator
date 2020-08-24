@@ -29,11 +29,11 @@ const getPromptAction = (file, tmpDir, data, action) => {
     }
     return promptAction;
 };
-exports.default = (data) => {
+exports.default = (plop, data) => {
     let actions = [];
     const cwd = process.cwd();
     const startingPath = `${cwd}/${data.name}`;
-    const startingTemplatePath = `./templates/${data.workspace}`;
+    const startingTemplatePath = `${plop.getPlopfilePath()}/templates/${data.workspace}`;
     const recursiveFiles = (path, templateDir) => {
         const tmpDir = templateDir.replace('.', '');
         const files = fs_1.default.readdirSync(templateDir);
