@@ -4,6 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const fs_1 = __importDefault(require("fs"));
+const path_1 = __importDefault(require("path"));
 const contentful_1 = require("./contentful");
 const workspaces_1 = require("./workspaces");
 const getAppendAction = (file, templateDir, action) => {
@@ -18,13 +19,16 @@ const getAppendAction = (file, templateDir, action) => {
     return action;
 };
 const getPromptAction = (file, tmpDir, data, action) => {
-    const promptAction = { ...action };
+    var _a, _b, _c, _d, _e;
     const isPrompt = file.includes('.prompt');
-    const dirExists = data[''][tmpDir];
-    const isBoolean = typeof data[''][tmpDir] === 'boolean';
-    const isMultiplePrompt = isPrompt && dirExists && !isBoolean && !data[''][tmpDir].find((f) => f === file);
-    const isSinglePrompt = isPrompt && !data[''][tmpDir];
-    if (isMultiplePrompt || isSinglePrompt) {
+    const isBoolean = typeof ((_a = data['']) === null || _a === void 0 ? void 0 : _a[tmpDir]) === 'boolean';
+    if (!isPrompt || isBoolean)
+        return action;
+    const promptAction = { ...action };
+    const dirExists = (_b = data['']) === null || _b === void 0 ? void 0 : _b[tmpDir];
+    const isMultiplePrompt = dirExists && !((_d = (_c = data['']) === null || _c === void 0 ? void 0 : _c[tmpDir]) === null || _d === void 0 ? void 0 : _d.some((f) => f === file));
+    const notFound = !((_e = data['']) === null || _e === void 0 ? void 0 : _e[tmpDir]);
+    if (isMultiplePrompt || notFound) {
         promptAction.skip = () => `Skipped ${action.path}`;
     }
     return promptAction;
@@ -33,7 +37,7 @@ exports.default = (plop, data) => {
     let actions = [];
     const cwd = process.cwd();
     const startingPath = `${cwd}/${data.name}`;
-    const startingTemplatePath = `${plop.getPlopfilePath()}/templates/${data.workspace}`;
+    const startingTemplatePath = path_1.default.resolve(`${plop.getPlopfilePath()}/templates/${data.workspace}/`);
     const recursiveFiles = (path, templateDir) => {
         const tmpDir = templateDir.replace('.', '');
         const files = fs_1.default.readdirSync(templateDir);
@@ -59,7 +63,7 @@ exports.default = (plop, data) => {
     };
     actions = recursiveFiles(startingPath, startingTemplatePath);
     if (data.includeE2E || data.workspace === 'cypress-e2e') {
-        actions = recursiveFiles(`${startingPath}-e2e/`, './templates/cypress-e2e');
+        actions = recursiveFiles(`${startingPath}-e2e/`, `${plop.getPlopfilePath()}/templates/cypress-e2e`);
         actions.push({
             type: 'npmInstall',
             path: `${startingPath}-e2e/`,

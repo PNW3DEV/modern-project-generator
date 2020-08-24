@@ -29,7 +29,7 @@ exports.default = (plop) => {
                             `Do you want to include ${choices[0].description.replace('.prompt', '')}?`,
                         choices,
                         when: (answers) => answers.workspace === templateDir
-                            .replace('./templates/', '')
+                            .replace(`${plop.getPlopfilePath()}/templates/`, '')
                             .split('/')[0]
                     });
                 }

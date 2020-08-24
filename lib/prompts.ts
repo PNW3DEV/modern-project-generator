@@ -30,7 +30,7 @@ export default (plop: NodePlopAPI) => {
               `Do you want to include ${choices[0].description.replace('.prompt', '')}?`,
             choices,
             when: (answers: {[k:string]: any}) => answers.workspace === templateDir
-              .replace('./templates/', '')
+              .replace(`${plop.getPlopfilePath()}/templates/`, '')
               .split('/')[0]
           })
         }

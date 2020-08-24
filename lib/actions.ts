@@ -1,4 +1,5 @@
 import fs  from 'fs'
+import path from 'path'
 
 import { NodePlopAPI } from 'plop'
 
@@ -20,13 +21,15 @@ const getAppendAction = (file: string, templateDir: string, action: AnyObj) => {
 }
 
 const getPromptAction = (file: string, tmpDir: string, data: any, action: AnyObj) => {
-  const promptAction = { ...action }
   const isPrompt = file.includes('.prompt')
-  const dirExists = data[''][tmpDir]
-  const isBoolean = typeof data[''][tmpDir] === 'boolean'
-  const isMultiplePrompt = isPrompt && dirExists && !isBoolean && !data[''][tmpDir].find((f: string) => f === file)
-  const isSinglePrompt = isPrompt && !data[''][tmpDir]
-  if (isMultiplePrompt || isSinglePrompt) {
+  const isBoolean = typeof data['']?.[tmpDir] === 'boolean'
+  if (!isPrompt || isBoolean) return action
+
+  const promptAction = { ...action }
+  const dirExists = data['']?.[tmpDir]
+  const isMultiplePrompt = dirExists && !data['']?.[tmpDir]?.some((f: string) => f === file)
+  const notFound = !data['']?.[tmpDir]
+  if (isMultiplePrompt || notFound) {
     promptAction.skip = () => `Skipped ${action.path}`
   }
   return promptAction
@@ -34,10 +37,9 @@ const getPromptAction = (file: string, tmpDir: string, data: any, action: AnyObj
 
 export default (plop: NodePlopAPI, data: AnyObj) => {
   let actions: AnyObj[] = []
-
   const cwd = process.cwd()
   const startingPath = `${cwd}/${data.name}`
-  const startingTemplatePath = `${plop.getPlopfilePath()}/templates/${data.workspace}`
+  const startingTemplatePath = path.resolve(`${plop.getPlopfilePath()}/templates/${data.workspace}/`)
 
   /* RECURSIVE FILE MERGER BY WORKSPACE */
   const recursiveFiles = (path: string, templateDir: string) => {
@@ -69,7 +71,7 @@ export default (plop: NodePlopAPI, data: AnyObj) => {
   /* CYPRESS/E2E FILES */
   if (data.includeE2E || data.workspace === 'cypress-e2e') {
     // add cypress e2e workspace && install cypress deps
-    actions = recursiveFiles(`${startingPath}-e2e/`, './templates/cypress-e2e')
+    actions = recursiveFiles(`${startingPath}-e2e/`, `${plop.getPlopfilePath()}/templates/cypress-e2e`)
     actions.push({
       type: 'npmInstall',
       path: `${startingPath}-e2e/`,
