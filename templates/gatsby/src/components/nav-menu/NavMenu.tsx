@@ -10,6 +10,8 @@ import Typography from '@material-ui/core/Typography';
 import { navigate } from 'gatsby';
 import React from 'react';
 
+import { MenuItem as IMenuItem } from '../nav-drawer'
+
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
@@ -40,19 +42,15 @@ export default (props: MenuProps) => {
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef<HTMLButtonElement>(null);
 
-  const handleToggle = async () => {
+  const handleToggle = async (menu: IMenuItem) => {
     setOpen((prevOpen) => !prevOpen);
-    if (!props?.isExternal && props?.url) return navigate(props.url)
-    if (props?.isExternal && props.url) window.open(props.url)
+    if (!menu?.isExternal && menu?.url) return navigate(menu.url)
+    if (menu?.isExternal && menu.url) window.open(menu.url)
   };
 
   const handleClose = async(event: React.MouseEvent<EventTarget>) => {
-    if (anchorRef.current && anchorRef.current.contains(event.target as HTMLElement)) {
-      return;
-    }
-
+    if (anchorRef.current && anchorRef.current.contains(event.target as HTMLElement)) return;
     setOpen(false);
-
     if (!props?.isExternal && props?.url) return navigate(props.url)
     if (props?.isExternal && props.url) window.open(props.url)
   };
@@ -62,8 +60,8 @@ export default (props: MenuProps) => {
       event.preventDefault();
       setOpen(false);
     }
-    if (props.slug) return navigate(props.slug)
-    if (props.url) window.open(props.url)
+    if (!props?.isExternal && props?.url) return navigate(props.url)
+    if (props?.isExternal && props.url) window.open(props.url)
   }
 
   // return focus to the button when we transitioned from !open -> open
@@ -87,7 +85,7 @@ export default (props: MenuProps) => {
           ref={anchorRef}
           aria-controls={open ? 'menu-list-grow' : undefined}
           aria-haspopup="true"
-          onClick={handleToggle}
+          onClick={() => handleToggle(props)}
           style={menuColor}
         >
           {props.label}
@@ -102,7 +100,7 @@ export default (props: MenuProps) => {
                 <ClickAwayListener onClickAway={handleClose}>
                   <MenuList autoFocusItem={open} id="menu-list-grow" onKeyDown={handleListKeyDown}>
                     {props.menuItems?.map((menuItem, idx) => (
-                      <MenuItem key={`${menuItem.label}-${idx}`} className={classes.text} onClick={handleClose}>
+                      <MenuItem key={`${menuItem.label}-${idx}`} className={classes.text} onClick={() => handleToggle(menuItem)}>
                         <Typography variant="caption">{menuItem.label}</Typography>
                       </MenuItem>
                     ))}
