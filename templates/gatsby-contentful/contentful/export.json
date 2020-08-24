@@ -12,7 +12,7 @@
         "id": "blogPost",
         "type": "ContentType",
         "createdAt": "2020-08-16T01:41:31.430Z",
-        "updatedAt": "2020-08-16T02:42:09.734Z",
+        "updatedAt": "2020-08-23T22:38:02.639Z",
         "environment": {
           "sys": {
             "id": "master",
@@ -20,8 +20,8 @@
             "linkType": "Environment"
           }
         },
-        "publishedVersion": 3,
-        "publishedAt": "2020-08-16T02:42:09.734Z",
+        "publishedVersion": 13,
+        "publishedAt": "2020-08-23T22:38:02.639Z",
         "firstPublishedAt": "2020-08-16T01:41:35.564Z",
         "createdBy": {
           "sys": {
@@ -37,8 +37,8 @@
             "id": "0yQ1AjjIHBYFQWfEklj7PH"
           }
         },
-        "publishedCounter": 2,
-        "version": 4,
+        "publishedCounter": 7,
+        "version": 14,
         "publishedBy": {
           "sys": {
             "type": "Link",
@@ -48,7 +48,7 @@
         }
       },
       "displayField": "title",
-      "name": "Blog Post",
+      "name": "Post",
       "description": "Demo",
       "fields": [
         {
@@ -69,6 +69,20 @@
           "localized": false,
           "required": true,
           "validations": [
+          ],
+          "disabled": false,
+          "omitted": false
+        },
+        {
+          "id": "url",
+          "name": "URL",
+          "type": "Symbol",
+          "localized": false,
+          "required": true,
+          "validations": [
+            {
+              "unique": true
+            }
           ],
           "disabled": false,
           "omitted": false
@@ -157,6 +171,17 @@
               }
             ]
           }
+        },
+        {
+          "id": "isExternalLink",
+          "name": "External Link",
+          "type": "Boolean",
+          "localized": false,
+          "required": false,
+          "validations": [
+          ],
+          "disabled": false,
+          "omitted": false
         }
       ]
     },
@@ -336,7 +361,7 @@
         "id": "navigationMenu",
         "type": "ContentType",
         "createdAt": "2020-08-16T02:36:06.318Z",
-        "updatedAt": "2020-08-20T15:59:21.666Z",
+        "updatedAt": "2020-08-23T22:41:02.831Z",
         "environment": {
           "sys": {
             "id": "master",
@@ -344,8 +369,8 @@
             "linkType": "Environment"
           }
         },
-        "publishedVersion": 25,
-        "publishedAt": "2020-08-20T15:59:21.666Z",
+        "publishedVersion": 35,
+        "publishedAt": "2020-08-23T22:41:02.831Z",
         "firstPublishedAt": "2020-08-16T02:36:06.896Z",
         "createdBy": {
           "sys": {
@@ -361,8 +386,8 @@
             "id": "0yQ1AjjIHBYFQWfEklj7PH"
           }
         },
-        "publishedCounter": 13,
-        "version": 26,
+        "publishedCounter": 18,
+        "version": 36,
         "publishedBy": {
           "sys": {
             "type": "Link",
@@ -431,6 +456,17 @@
             ],
             "linkType": "Entry"
           }
+        },
+        {
+          "id": "isExternalLink",
+          "name": "External Link",
+          "type": "Boolean",
+          "localized": false,
+          "required": false,
+          "validations": [
+          ],
+          "disabled": false,
+          "omitted": false
         }
       ]
     },
@@ -548,7 +584,7 @@
         "id": "link",
         "type": "ContentType",
         "createdAt": "2020-08-16T05:17:51.967Z",
-        "updatedAt": "2020-08-16T05:17:52.579Z",
+        "updatedAt": "2020-08-23T22:11:46.752Z",
         "environment": {
           "sys": {
             "id": "master",
@@ -556,8 +592,8 @@
             "linkType": "Environment"
           }
         },
-        "publishedVersion": 1,
-        "publishedAt": "2020-08-16T05:17:52.579Z",
+        "publishedVersion": 3,
+        "publishedAt": "2020-08-23T22:11:46.752Z",
         "firstPublishedAt": "2020-08-16T05:17:52.579Z",
         "createdBy": {
           "sys": {
@@ -573,8 +609,8 @@
             "id": "0yQ1AjjIHBYFQWfEklj7PH"
           }
         },
-        "publishedCounter": 1,
-        "version": 2,
+        "publishedCounter": 2,
+        "version": 4,
         "publishedBy": {
           "sys": {
             "type": "Link",
@@ -631,6 +667,17 @@
           ],
           "disabled": false,
           "omitted": false
+        },
+        {
+          "id": "isExternalLink",
+          "name": "External Link",
+          "type": "Boolean",
+          "localized": false,
+          "required": false,
+          "validations": [
+          ],
+          "disabled": false,
+          "omitted": false
         }
       ]
     },
@@ -646,7 +693,7 @@
         "id": "page",
         "type": "ContentType",
         "createdAt": "2020-08-16T05:20:53.241Z",
-        "updatedAt": "2020-08-19T16:49:12.093Z",
+        "updatedAt": "2020-08-23T22:40:38.863Z",
         "environment": {
           "sys": {
             "id": "master",
@@ -654,8 +701,8 @@
             "linkType": "Environment"
           }
         },
-        "publishedVersion": 7,
-        "publishedAt": "2020-08-19T16:49:12.093Z",
+        "publishedVersion": 23,
+        "publishedAt": "2020-08-23T22:40:38.863Z",
         "firstPublishedAt": "2020-08-16T05:20:53.687Z",
         "createdBy": {
           "sys": {
@@ -671,8 +718,8 @@
             "id": "0yQ1AjjIHBYFQWfEklj7PH"
           }
         },
-        "publishedCounter": 4,
-        "version": 8,
+        "publishedCounter": 12,
+        "version": 24,
         "publishedBy": {
           "sys": {
             "type": "Link",
@@ -703,6 +750,20 @@
           "localized": true,
           "required": false,
           "validations": [
+          ],
+          "disabled": false,
+          "omitted": false
+        },
+        {
+          "id": "url",
+          "name": "URL",
+          "type": "Symbol",
+          "localized": false,
+          "required": false,
+          "validations": [
+            {
+              "unique": true
+            }
           ],
           "disabled": false,
           "omitted": false
@@ -794,6 +855,17 @@
             ],
             "linkType": "Entry"
           }
+        },
+        {
+          "id": "additionalProperties",
+          "name": "AdditionalProperties",
+          "type": "Object",
+          "localized": true,
+          "required": false,
+          "validations": [
+          ],
+          "disabled": false,
+          "omitted": false
         }
       ]
     },
@@ -926,7 +998,7 @@
         "id": "navigationListSortOrder",
         "type": "ContentType",
         "createdAt": "2020-08-20T14:58:59.683Z",
-        "updatedAt": "2020-08-20T16:01:46.831Z",
+        "updatedAt": "2020-08-23T22:23:12.482Z",
         "environment": {
           "sys": {
             "id": "master",
@@ -934,8 +1006,8 @@
             "linkType": "Environment"
           }
         },
-        "publishedVersion": 9,
-        "publishedAt": "2020-08-20T16:01:46.831Z",
+        "publishedVersion": 13,
+        "publishedAt": "2020-08-23T22:23:12.482Z",
         "firstPublishedAt": "2020-08-20T14:59:02.068Z",
         "createdBy": {
           "sys": {
@@ -951,8 +1023,8 @@
             "id": "0yQ1AjjIHBYFQWfEklj7PH"
           }
         },
-        "publishedCounter": 5,
-        "version": 10,
+        "publishedCounter": 7,
+        "version": 14,
         "publishedBy": {
           "sys": {
             "type": "Link",
@@ -1037,6 +1109,26 @@
           ],
           "disabled": false,
           "omitted": false
+        },
+        {
+          "id": "path",
+          "name": "Path",
+          "type": "Symbol",
+          "localized": false,
+          "required": true,
+          "validations": [
+            {
+              "unique": true
+            },
+            {
+              "size": {
+                "min": 0,
+                "max": 255
+              }
+            }
+          ],
+          "disabled": false,
+          "omitted": false
         }
       ]
     }
@@ -1055,7 +1147,7 @@
             "linkType": "Space"
           }
         },
-        "version": 4,
+        "version": 14,
         "createdAt": "2020-08-16T01:41:35.671Z",
         "createdBy": {
           "sys": {
@@ -1064,7 +1156,7 @@
             "linkType": "User"
           }
         },
-        "updatedAt": "2020-08-16T02:42:10.400Z",
+        "updatedAt": "2020-08-23T22:38:03.211Z",
         "updatedBy": {
           "sys": {
             "id": "0yQ1AjjIHBYFQWfEklj7PH",
@@ -1099,6 +1191,14 @@
           "widgetNamespace": "builtin"
         },
         {
+          "fieldId": "url",
+          "settings": {
+            "helpText": "Page Path with Slug"
+          },
+          "widgetId": "singleLine",
+          "widgetNamespace": "builtin"
+        },
+        {
           "fieldId": "heroImage",
           "widgetId": "assetLinkEditor",
           "widgetNamespace": "builtin"
@@ -1130,6 +1230,11 @@
         {
           "fieldId": "tags",
           "widgetId": "tagEditor",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "isExternalLink",
+          "widgetId": "boolean",
           "widgetNamespace": "builtin"
         }
       ]
@@ -1241,7 +1346,7 @@
             "linkType": "Space"
           }
         },
-        "version": 26,
+        "version": 36,
         "createdAt": "2020-08-16T02:36:07.011Z",
         "createdBy": {
           "sys": {
@@ -1250,7 +1355,7 @@
             "linkType": "User"
           }
         },
-        "updatedAt": "2020-08-20T15:59:22.405Z",
+        "updatedAt": "2020-08-23T22:41:03.315Z",
         "updatedBy": {
           "sys": {
             "id": "0yQ1AjjIHBYFQWfEklj7PH",
@@ -1297,6 +1402,11 @@
             "showCreateEntityAction": true
           },
           "widgetId": "entryLinksEditor",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "isExternalLink",
+          "widgetId": "boolean",
           "widgetNamespace": "builtin"
         }
       ]
@@ -1378,7 +1488,7 @@
             "linkType": "Space"
           }
         },
-        "version": 2,
+        "version": 4,
         "createdAt": "2020-08-16T05:17:52.720Z",
         "createdBy": {
           "sys": {
@@ -1387,7 +1497,7 @@
             "linkType": "User"
           }
         },
-        "updatedAt": "2020-08-16T05:17:53.383Z",
+        "updatedAt": "2020-08-23T22:11:48.361Z",
         "updatedBy": {
           "sys": {
             "id": "0yQ1AjjIHBYFQWfEklj7PH",
@@ -1425,6 +1535,11 @@
           "fieldId": "slug",
           "widgetId": "slugEditor",
           "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "isExternalLink",
+          "widgetId": "boolean",
+          "widgetNamespace": "builtin"
         }
       ]
     },
@@ -1439,7 +1554,7 @@
             "linkType": "Space"
           }
         },
-        "version": 8,
+        "version": 24,
         "createdAt": "2020-08-16T05:20:53.875Z",
         "createdBy": {
           "sys": {
@@ -1448,7 +1563,7 @@
             "linkType": "User"
           }
         },
-        "updatedAt": "2020-08-19T16:49:12.866Z",
+        "updatedAt": "2020-08-23T22:40:39.594Z",
         "updatedBy": {
           "sys": {
             "id": "0yQ1AjjIHBYFQWfEklj7PH",
@@ -1483,6 +1598,14 @@
           "widgetNamespace": "builtin"
         },
         {
+          "fieldId": "url",
+          "settings": {
+            "helpText": "Page Path with Slug"
+          },
+          "widgetId": "singleLine",
+          "widgetNamespace": "builtin"
+        },
+        {
           "fieldId": "heroImages",
           "widgetId": "assetGalleryEditor",
           "widgetNamespace": "builtin"
@@ -1510,6 +1633,11 @@
             "showCreateEntityAction": true
           },
           "widgetId": "entryLinksEditor",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "additionalProperties",
+          "widgetId": "objectEditor",
           "widgetNamespace": "builtin"
         }
       ]
@@ -1595,7 +1723,7 @@
             "linkType": "Space"
           }
         },
-        "version": 10,
+        "version": 14,
         "createdAt": "2020-08-20T14:59:02.206Z",
         "createdBy": {
           "sys": {
@@ -1604,7 +1732,7 @@
             "linkType": "User"
           }
         },
-        "updatedAt": "2020-08-20T16:01:47.516Z",
+        "updatedAt": "2020-08-23T22:23:13.146Z",
         "updatedBy": {
           "sys": {
             "id": "0yQ1AjjIHBYFQWfEklj7PH",
@@ -1650,6 +1778,14 @@
         },
         {
           "fieldId": "signOutButtonLabel",
+          "widgetId": "singleLine",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "path",
+          "settings": {
+            "helpText": "Page Path Including Slug"
+          },
           "widgetId": "singleLine",
           "widgetNamespace": "builtin"
         }
@@ -1762,7 +1898,7 @@
         "id": "31TNnjHlfaGUoMOwU0M2og",
         "type": "Entry",
         "createdAt": "2020-08-16T01:41:45.801Z",
-        "updatedAt": "2020-08-16T01:41:50.763Z",
+        "updatedAt": "2020-08-23T22:39:45.081Z",
         "environment": {
           "sys": {
             "id": "master",
@@ -1770,8 +1906,8 @@
             "linkType": "Environment"
           }
         },
-        "publishedVersion": 1,
-        "publishedAt": "2020-08-16T01:41:50.763Z",
+        "publishedVersion": 18,
+        "publishedAt": "2020-08-23T22:39:45.081Z",
         "firstPublishedAt": "2020-08-16T01:41:50.763Z",
         "createdBy": {
           "sys": {
@@ -1787,8 +1923,8 @@
             "id": "0yQ1AjjIHBYFQWfEklj7PH"
           }
         },
-        "publishedCounter": 1,
-        "version": 2,
+        "publishedCounter": 7,
+        "version": 19,
         "publishedBy": {
           "sys": {
             "type": "Link",
@@ -1810,6 +1946,9 @@
         },
         "slug": {
           "en-US": "automate-with-webhooks"
+        },
+        "url": {
+          "en-US": "/news/automate-with-webhooks"
         },
         "heroImage": {
           "en-US": {
@@ -1842,6 +1981,9 @@
           "en-US": [
             "javascript"
           ]
+        },
+        "isExternalLink": {
+          "en-US": false
         }
       }
     },
@@ -1857,7 +1999,7 @@
         "id": "2PtC9h1YqIA6kaUaIsWEQ0",
         "type": "Entry",
         "createdAt": "2020-08-16T01:41:45.809Z",
-        "updatedAt": "2020-08-16T01:41:49.837Z",
+        "updatedAt": "2020-08-23T22:39:24.532Z",
         "environment": {
           "sys": {
             "id": "master",
@@ -1865,8 +2007,8 @@
             "linkType": "Environment"
           }
         },
-        "publishedVersion": 1,
-        "publishedAt": "2020-08-16T01:41:49.837Z",
+        "publishedVersion": 17,
+        "publishedAt": "2020-08-23T22:39:24.532Z",
         "firstPublishedAt": "2020-08-16T01:41:49.837Z",
         "createdBy": {
           "sys": {
@@ -1882,8 +2024,8 @@
             "id": "0yQ1AjjIHBYFQWfEklj7PH"
           }
         },
-        "publishedCounter": 1,
-        "version": 2,
+        "publishedCounter": 8,
+        "version": 18,
         "publishedBy": {
           "sys": {
             "type": "Link",
@@ -1905,6 +2047,9 @@
         },
         "slug": {
           "en-US": "static-sites-are-great"
+        },
+        "url": {
+          "en-US": "/news/static-sites-are-great"
         },
         "heroImage": {
           "en-US": {
@@ -1938,6 +2083,9 @@
             "javascript",
             "static-sites"
           ]
+        },
+        "isExternalLink": {
+          "en-US": false
         }
       }
     },
@@ -1953,7 +2101,7 @@
         "id": "3K9b0esdy0q0yGqgW2g6Ke",
         "type": "Entry",
         "createdAt": "2020-08-16T01:41:45.810Z",
-        "updatedAt": "2020-08-17T18:05:36.863Z",
+        "updatedAt": "2020-08-23T23:46:41.247Z",
         "environment": {
           "sys": {
             "id": "master",
@@ -1961,8 +2109,8 @@
             "linkType": "Environment"
           }
         },
-        "publishedVersion": 1,
-        "publishedAt": "2020-08-16T01:41:50.193Z",
+        "publishedVersion": 23,
+        "publishedAt": "2020-08-23T23:46:41.247Z",
         "firstPublishedAt": "2020-08-16T01:41:50.193Z",
         "createdBy": {
           "sys": {
@@ -1978,8 +2126,8 @@
             "id": "0yQ1AjjIHBYFQWfEklj7PH"
           }
         },
-        "publishedCounter": 1,
-        "version": 7,
+        "publishedCounter": 7,
+        "version": 24,
         "publishedBy": {
           "sys": {
             "type": "Link",
@@ -1997,10 +2145,13 @@
       },
       "fields": {
         "title": {
-          "en-US": "Hello Dad"
+          "en-US": "Hello World"
         },
         "slug": {
           "en-US": "hello-world"
+        },
+        "url": {
+          "en-US": "/news/hello-world"
         },
         "heroImage": {
           "en-US": {
@@ -2033,6 +2184,9 @@
           "en-US": [
             "general"
           ]
+        },
+        "isExternalLink": {
+          "en-US": false
         }
       }
     },
@@ -2048,7 +2202,7 @@
         "id": "0VByvfh5sgXCgqAEQ00cQ",
         "type": "Entry",
         "createdAt": "2020-08-16T05:24:37.217Z",
-        "updatedAt": "2020-08-16T05:25:16.312Z",
+        "updatedAt": "2020-08-21T21:36:45.830Z",
         "environment": {
           "sys": {
             "id": "master",
@@ -2074,7 +2228,7 @@
           }
         },
         "publishedCounter": 1,
-        "version": 6,
+        "version": 10,
         "publishedBy": {
           "sys": {
             "type": "Link",
@@ -2092,13 +2246,10 @@
       },
       "fields": {
         "label": {
-          "en-US": "Home"
-        },
-        "url": {
-          "en-US": "https://test.com"
+          "en-US": "Getting Started"
         },
         "slug": {
-          "en-US": "/"
+          "en-US": "/auth/sign-in"
         }
       }
     },
@@ -2114,7 +2265,7 @@
         "id": "1bIqFYHmSvAEOSFjVERgml",
         "type": "Entry",
         "createdAt": "2020-08-16T05:28:47.230Z",
-        "updatedAt": "2020-08-19T15:58:10.080Z",
+        "updatedAt": "2020-08-24T00:10:36.497Z",
         "environment": {
           "sys": {
             "id": "master",
@@ -2122,8 +2273,8 @@
             "linkType": "Environment"
           }
         },
-        "publishedVersion": 11,
-        "publishedAt": "2020-08-19T15:39:05.652Z",
+        "publishedVersion": 30,
+        "publishedAt": "2020-08-23T22:25:40.647Z",
         "firstPublishedAt": "2020-08-16T05:30:22.294Z",
         "createdBy": {
           "sys": {
@@ -2139,8 +2290,8 @@
             "id": "0yQ1AjjIHBYFQWfEklj7PH"
           }
         },
-        "publishedCounter": 3,
-        "version": 13,
+        "publishedCounter": 5,
+        "version": 32,
         "publishedBy": {
           "sys": {
             "type": "Link",
@@ -2161,6 +2312,9 @@
           "en-US": "Home"
         },
         "slug": {
+          "en-US": "/"
+        },
+        "url": {
           "en-US": "/"
         },
         "heroImages": {
@@ -2194,6 +2348,14 @@
         },
         "content": {
           "en-US": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Rhoncus dolor purus non enim praesent elementum facilisis leo vel. Risus at ultrices mi tempus imperdiet. Semper risus in hendrerit gravida rutrum quisque non tellus. Convallis convallis tellus id interdum velit laoreet id donec ultrices. Odio morbi quis commodo odio aenean sed adipiscing. Amet nisl suscipit adipiscing bibendum est ultricies integer quis. Cursus euismod quis viverra nibh cras. Metus vulputate eu scelerisque felis imperdiet proin fermentum leo. Mauris commodo quis imperdiet massa tincidunt. Cras tincidunt lobortis feugiat vivamus at augue. At augue eget arcu dictum varius duis at consectetur lorem. Velit sed ullamcorper morbi tincidunt. Lorem donec massa sapien faucibus et molestie ac."
+        },
+        "additionalProperties": {
+          "en-US": {
+            "heroCopy": "Get rid of assets and copy today",
+            "headerLabel": "Next Level CMS",
+            "subHeaderLabel": "Static Copy is so 2008",
+            "headerLine2Label": ""
+          }
         }
       }
     },
@@ -2209,7 +2371,7 @@
         "id": "493fgsXD3t619mdfjsqs7C",
         "type": "Entry",
         "createdAt": "2020-08-16T05:36:03.965Z",
-        "updatedAt": "2020-08-20T15:49:55.759Z",
+        "updatedAt": "2020-08-23T22:42:11.486Z",
         "environment": {
           "sys": {
             "id": "master",
@@ -2217,8 +2379,8 @@
             "linkType": "Environment"
           }
         },
-        "publishedVersion": 25,
-        "publishedAt": "2020-08-20T15:49:55.759Z",
+        "publishedVersion": 27,
+        "publishedAt": "2020-08-23T22:42:11.486Z",
         "firstPublishedAt": "2020-08-19T16:59:15.963Z",
         "createdBy": {
           "sys": {
@@ -2234,8 +2396,8 @@
             "id": "0yQ1AjjIHBYFQWfEklj7PH"
           }
         },
-        "publishedCounter": 7,
-        "version": 26,
+        "publishedCounter": 8,
+        "version": 28,
         "publishedBy": {
           "sys": {
             "type": "Link",
@@ -2286,6 +2448,9 @@
               }
             }
           ]
+        },
+        "isExternalLink": {
+          "en-US": false
         }
       }
     },
@@ -2301,7 +2466,7 @@
         "id": "2DyvET8WwypkhZMe6KPkG3",
         "type": "Entry",
         "createdAt": "2020-08-19T16:46:14.207Z",
-        "updatedAt": "2020-08-19T16:52:16.903Z",
+        "updatedAt": "2020-08-23T22:40:08.311Z",
         "environment": {
           "sys": {
             "id": "master",
@@ -2309,8 +2474,8 @@
             "linkType": "Environment"
           }
         },
-        "publishedVersion": 5,
-        "publishedAt": "2020-08-19T16:47:33.015Z",
+        "publishedVersion": 9,
+        "publishedAt": "2020-08-23T22:40:08.311Z",
         "firstPublishedAt": "2020-08-19T16:47:33.015Z",
         "createdBy": {
           "sys": {
@@ -2326,8 +2491,8 @@
             "id": "0yQ1AjjIHBYFQWfEklj7PH"
           }
         },
-        "publishedCounter": 1,
-        "version": 8,
+        "publishedCounter": 2,
+        "version": 10,
         "publishedBy": {
           "sys": {
             "type": "Link",
@@ -2346,9 +2511,6 @@
       "fields": {
         "title": {
           "en-US": "Features"
-        },
-        "slug": {
-          "en-US": "features"
         },
         "heroImages": {
           "en-US": [
@@ -2393,7 +2555,7 @@
         "id": "4g6Zj1ElTiLPReUKhzSBjP",
         "type": "Entry",
         "createdAt": "2020-08-19T16:49:36.940Z",
-        "updatedAt": "2020-08-19T16:52:01.319Z",
+        "updatedAt": "2020-08-23T22:13:17.754Z",
         "environment": {
           "sys": {
             "id": "master",
@@ -2401,8 +2563,8 @@
             "linkType": "Environment"
           }
         },
-        "publishedVersion": 7,
-        "publishedAt": "2020-08-19T16:52:01.319Z",
+        "publishedVersion": 11,
+        "publishedAt": "2020-08-23T22:13:17.754Z",
         "firstPublishedAt": "2020-08-19T16:52:01.319Z",
         "createdBy": {
           "sys": {
@@ -2418,8 +2580,8 @@
             "id": "0yQ1AjjIHBYFQWfEklj7PH"
           }
         },
-        "publishedCounter": 1,
-        "version": 8,
+        "publishedCounter": 3,
+        "version": 12,
         "publishedBy": {
           "sys": {
             "type": "Link",
@@ -2442,8 +2604,8 @@
         "url": {
           "en-US": "https://www.gatsbyjs.com/docs/sourcing-from-contentful/"
         },
-        "slug": {
-          "en-US": "gatsbycontentful-cms"
+        "isExternalLink": {
+          "en-US": true
         }
       }
     },
@@ -2459,7 +2621,7 @@
         "id": "2WpeaPOfBwQ8Qi2VCKPyYB",
         "type": "Entry",
         "createdAt": "2020-08-19T16:52:10.995Z",
-        "updatedAt": "2020-08-19T16:53:10.612Z",
+        "updatedAt": "2020-08-23T22:14:12.443Z",
         "environment": {
           "sys": {
             "id": "master",
@@ -2467,8 +2629,8 @@
             "linkType": "Environment"
           }
         },
-        "publishedVersion": 4,
-        "publishedAt": "2020-08-19T16:53:10.612Z",
+        "publishedVersion": 8,
+        "publishedAt": "2020-08-23T22:14:12.443Z",
         "firstPublishedAt": "2020-08-19T16:53:10.612Z",
         "createdBy": {
           "sys": {
@@ -2484,8 +2646,8 @@
             "id": "0yQ1AjjIHBYFQWfEklj7PH"
           }
         },
-        "publishedCounter": 1,
-        "version": 5,
+        "publishedCounter": 3,
+        "version": 9,
         "publishedBy": {
           "sys": {
             "type": "Link",
@@ -2508,8 +2670,8 @@
         "url": {
           "en-US": "https://www.gatsbyjs.com/docs/graphql/"
         },
-        "slug": {
-          "en-US": "graphql"
+        "isExternalLink": {
+          "en-US": true
         }
       }
     },
@@ -2525,7 +2687,7 @@
         "id": "7kMzEUSjcFqCPiA2Ug9Uv3",
         "type": "Entry",
         "createdAt": "2020-08-19T17:00:15.521Z",
-        "updatedAt": "2020-08-19T17:00:29.952Z",
+        "updatedAt": "2020-08-23T22:41:48.343Z",
         "environment": {
           "sys": {
             "id": "master",
@@ -2533,8 +2695,8 @@
             "linkType": "Environment"
           }
         },
-        "publishedVersion": 3,
-        "publishedAt": "2020-08-19T17:00:29.952Z",
+        "publishedVersion": 10,
+        "publishedAt": "2020-08-23T22:41:48.343Z",
         "firstPublishedAt": "2020-08-19T17:00:29.952Z",
         "createdBy": {
           "sys": {
@@ -2550,8 +2712,8 @@
             "id": "0yQ1AjjIHBYFQWfEklj7PH"
           }
         },
-        "publishedCounter": 1,
-        "version": 4,
+        "publishedCounter": 4,
+        "version": 11,
         "publishedBy": {
           "sys": {
             "type": "Link",
@@ -2568,14 +2730,17 @@
         }
       },
       "fields": {
-        "url": {
-          "en-US": "Home"
-        },
         "label": {
           "en-US": "Home"
         },
+        "url": {
+          "en-US": "/"
+        },
         "slug": {
           "en-US": "/"
+        },
+        "isExternalLink": {
+          "en-US": false
         }
       }
     },
@@ -2591,7 +2756,7 @@
         "id": "6TCuQuJKkvmn5eL310WjEh",
         "type": "Entry",
         "createdAt": "2020-08-20T00:29:00.449Z",
-        "updatedAt": "2020-08-20T00:31:10.231Z",
+        "updatedAt": "2020-08-23T22:25:59.838Z",
         "environment": {
           "sys": {
             "id": "master",
@@ -2599,8 +2764,8 @@
             "linkType": "Environment"
           }
         },
-        "publishedVersion": 5,
-        "publishedAt": "2020-08-20T00:31:10.231Z",
+        "publishedVersion": 8,
+        "publishedAt": "2020-08-23T22:25:59.838Z",
         "firstPublishedAt": "2020-08-20T00:31:10.231Z",
         "createdBy": {
           "sys": {
@@ -2616,8 +2781,8 @@
             "id": "0yQ1AjjIHBYFQWfEklj7PH"
           }
         },
-        "publishedCounter": 1,
-        "version": 6,
+        "publishedCounter": 2,
+        "version": 9,
         "publishedBy": {
           "sys": {
             "type": "Link",
@@ -2638,7 +2803,7 @@
           "en-US": "Sign In "
         },
         "slug": {
-          "en-US": "/auth/sign-in"
+          "en-US": "sign-in"
         },
         "heroImages": {
           "en-US": [
@@ -2752,7 +2917,7 @@
         "id": "71NCQgTzopPdSEiSTqNElL",
         "type": "Entry",
         "createdAt": "2020-08-20T14:49:37.358Z",
-        "updatedAt": "2020-08-20T14:52:00.537Z",
+        "updatedAt": "2020-08-23T22:41:30.431Z",
         "environment": {
           "sys": {
             "id": "master",
@@ -2760,8 +2925,8 @@
             "linkType": "Environment"
           }
         },
-        "publishedVersion": 4,
-        "publishedAt": "2020-08-20T14:51:36.495Z",
+        "publishedVersion": 10,
+        "publishedAt": "2020-08-23T22:41:30.431Z",
         "firstPublishedAt": "2020-08-20T14:51:36.495Z",
         "createdBy": {
           "sys": {
@@ -2777,8 +2942,8 @@
             "id": "0yQ1AjjIHBYFQWfEklj7PH"
           }
         },
-        "publishedCounter": 1,
-        "version": 6,
+        "publishedCounter": 3,
+        "version": 11,
         "publishedBy": {
           "sys": {
             "type": "Link",
@@ -2795,14 +2960,17 @@
         }
       },
       "fields": {
-        "url": {
-          "en-US": "News"
-        },
         "label": {
           "en-US": "News"
         },
-        "slug": {
+        "url": {
           "en-US": "/news"
+        },
+        "slug": {
+          "en-US": "news"
+        },
+        "isExternalLink": {
+          "en-US": false
         }
       }
     },
