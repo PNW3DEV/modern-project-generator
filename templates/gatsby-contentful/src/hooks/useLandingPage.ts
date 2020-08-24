@@ -40,7 +40,7 @@ export default () => {
             }
             cards {
               title
-              # url
+              url
               contentBody {
                 contentBody
                 childMarkdownRemark {
