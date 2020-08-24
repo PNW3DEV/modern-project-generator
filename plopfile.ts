@@ -17,7 +17,7 @@ export default (plop: NodePlopAPI) => {
         type: 'list',
         name: 'workspace',
         default: 'create-react-app',
-        choices: fs.readdirSync('./templates')
+        choices: fs.readdirSync(plop.getPlopfilePath() + '/templates')
           .map(dir => ({ name: dir, value: dir }))
       },
       {

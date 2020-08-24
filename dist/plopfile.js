@@ -16,7 +16,7 @@ exports.default = (plop) => {
                 type: 'list',
                 name: 'workspace',
                 default: 'create-react-app',
-                choices: fs_1.default.readdirSync('./templates')
+                choices: fs_1.default.readdirSync(plop.getPlopfilePath() + '/templates')
                     .map(dir => ({ name: dir, value: dir }))
             },
             {
