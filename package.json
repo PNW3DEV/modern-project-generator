@@ -1,5 +1,5 @@
 {
-  "name": "project-generator",
+  "name": "modern-project-generator",
   "version": "1.0.0",
   "description": "Plop Generator to scaffold js/ts projects",
   "main": "index.js",
@@ -27,7 +27,7 @@
     "plop-pack-npm-install": "^0.3.0"
   },
   "bin": {
-    "plop-project": "./bin/cli.js"
+    "plop-project": "bin/cli.js"
   },
   "devDependencies": {
     "@babel/types": "^7.11.0",
@@ -53,5 +53,16 @@
     "ts-node-dev": "^1.0.0-pre.56",
     "ts-to-json": "^0.65.4",
     "typescript": "^3.9.7"
-  }
+  },
+  "directories": {
+    "lib": "lib"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PNW3DEV/project-generator.git"
+  },
+  "bugs": {
+    "url": "https://github.com/PNW3DEV/project-generator/issues"
+  },
+  "homepage": "https://github.com/PNW3DEV/project-generator#readme"
 }
