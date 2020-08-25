@@ -59,10 +59,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/PNW3DEV/project-generator.git"
+    "url": "git+https://github.com/PNW3DEV/modern-project-generator.git"
   },
   "bugs": {
-    "url": "https://github.com/PNW3DEV/project-generator/issues"
+    "url": "https://github.com/PNW3DEV/modern-project-generator/issues"
   },
-  "homepage": "https://github.com/PNW3DEV/project-generator#readme"
+  "homepage": "https://github.com/PNW3DEV/modern-project-generator#readme"
 }

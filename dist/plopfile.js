@@ -7,7 +7,7 @@ const fs_1 = __importDefault(require("fs"));
 const actions_1 = __importDefault(require("./lib/actions"));
 const prompts_1 = __importDefault(require("./lib/prompts"));
 const validations_1 = require("./lib/validations");
-module.exports = (plop) => {
+exports.default = (plop) => {
     plop.load('plop-pack-npm-install', null, null);
     plop.setGenerator('project', {
         description: 'Web Project Files',

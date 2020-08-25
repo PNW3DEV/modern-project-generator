@@ -21,7 +21,7 @@ npm install --save-dev modern-project-generator
   ...
 }
 ```
-CLI Example: `npm run plop`
+CLI Example: `npm run plop` OR after running `npm link` you can run the cli `plop-project`
 
 This command will scaffold/bootstrap the selected project using the template files in the plop generator repo.
 
