@@ -19,18 +19,16 @@ const getAppendAction = (file, templateDir, action) => {
     return action;
 };
 const getPromptAction = (file, tmpDir, data, action) => {
-    var _a, _b, _c, _d;
+    var _a;
     const isPrompt = file.includes('.prompt');
-    const isBoolean = typeof ((_a = data['']) === null || _a === void 0 ? void 0 : _a[tmpDir]) === 'boolean';
+    const isBoolean = typeof (data === null || data === void 0 ? void 0 : data[tmpDir]) === 'boolean';
     if (!isPrompt || isBoolean)
         return action;
     const promptAction = { ...action };
-    const dirExists = (_b = data['']) === null || _b === void 0 ? void 0 : _b[tmpDir];
-    const isMultiplePrompt = dirExists && !((_d = (_c = data['']) === null || _c === void 0 ? void 0 : _c[tmpDir]) === null || _d === void 0 ? void 0 : _d.some((f) => f === file));
-    console.log('====================================');
-    console.log(data);
-    console.log('====================================');
-    if (isMultiplePrompt) {
+    const dirExists = data[tmpDir];
+    const isMultiplePrompt = dirExists && !((_a = data === null || data === void 0 ? void 0 : data[tmpDir]) === null || _a === void 0 ? void 0 : _a.find((f) => f === file));
+    const notFound = !(data === null || data === void 0 ? void 0 : data[tmpDir]);
+    if (isMultiplePrompt || notFound) {
         promptAction.skip = () => `Skipped ${action.path}`;
     }
     return promptAction;

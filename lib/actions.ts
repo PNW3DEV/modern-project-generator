@@ -22,17 +22,14 @@ const getAppendAction = (file: string, templateDir: string, action: AnyObj) => {
 
 const getPromptAction = (file: string, tmpDir: string, data: any, action: AnyObj) => {
   const isPrompt = file.includes('.prompt')
-  const isBoolean = typeof data['']?.[tmpDir] === 'boolean'
+  const isBoolean = typeof data?.[tmpDir]=== 'boolean'
   if (!isPrompt || isBoolean) return action
 
   const promptAction = { ...action }
-  const dirExists = data['']?.[tmpDir]
-  const isMultiplePrompt = dirExists && !data['']?.[tmpDir]?.some((f: string) => f === file)
-  // const notFound = !data['']?.[tmpDir]
-  console.log('====================================')
-  console.log(data)
-  console.log('====================================')
-  if (isMultiplePrompt) {
+  const dirExists = data[tmpDir]
+  const isMultiplePrompt = dirExists && !data?.[tmpDir]?.find((f: string) => f === file)
+  const notFound = !data?.[tmpDir]
+  if (isMultiplePrompt || notFound) {
     promptAction.skip = () => `Skipped ${action.path}`
   }
   return promptAction
