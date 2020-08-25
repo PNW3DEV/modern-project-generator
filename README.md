@@ -8,7 +8,7 @@ Project Generator - Micro-generator framework that makes it easy for an entire t
 ### Getting Started
 **Add modern-project-generator to your project**
 ```
-npm install --save-dev modern-project-generator
+npm i modern-project-generator -D
 ```
 
 ## Usage
