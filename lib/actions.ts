@@ -28,8 +28,11 @@ const getPromptAction = (file: string, tmpDir: string, data: any, action: AnyObj
   const promptAction = { ...action }
   const dirExists = data['']?.[tmpDir]
   const isMultiplePrompt = dirExists && !data['']?.[tmpDir]?.some((f: string) => f === file)
-  const notFound = !data['']?.[tmpDir]
-  if (isMultiplePrompt || notFound) {
+  // const notFound = !data['']?.[tmpDir]
+  console.log('====================================')
+  console.log(data)
+  console.log('====================================')
+  if (isMultiplePrompt) {
     promptAction.skip = () => `Skipped ${action.path}`
   }
   return promptAction
@@ -86,7 +89,7 @@ export default (plop: NodePlopAPI, data: AnyObj) => {
   generateWorkspaceConfig(data)
 
   /* Install Dependencies */
-  console.info('Install Dependencies', actions)
+  console.info('Install Dependencies')
   const directoriesToInstall = [`${cwd}/${data.name}`, cwd]
   directoriesToInstall.forEach(dir => {
     actions.push({
