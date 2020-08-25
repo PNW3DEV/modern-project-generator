@@ -27,8 +27,7 @@ const getPromptAction = (file, tmpDir, data, action) => {
     const promptAction = { ...action };
     const dirExists = data[tmpDir];
     const isMultiplePrompt = dirExists && !((_a = data === null || data === void 0 ? void 0 : data[tmpDir]) === null || _a === void 0 ? void 0 : _a.find((f) => f === file));
-    const notFound = !(data === null || data === void 0 ? void 0 : data[tmpDir]);
-    if (isMultiplePrompt || notFound) {
+    if (isMultiplePrompt) {
         promptAction.skip = () => `Skipped ${action.path}`;
     }
     return promptAction;
