@@ -9,7 +9,8 @@
     "plop": "plop",
     "build": "tsc --build ./tsconfig.build.json",
     "tsc": "npm run build",
-    "postbuild": "cp -R ./templates/ ./dist/templates"
+    "postbuild": "cp -R ./templates/ ./dist/templates",
+    "postinstall": "npm link"
   },
   "husky": {
     "hooks": {
