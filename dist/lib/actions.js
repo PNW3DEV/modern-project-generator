@@ -43,7 +43,9 @@ exports.default = (plop, data) => {
         const tmpDir = templateDir.replace('.', '');
         const files = fs_1.default.readdirSync(templateDir);
         files.forEach(file => {
-            if ((file.includes('.') || file.endsWith('file')) && !file.includes('.storybook') && !file.includes('.custom')) {
+            const isFile = file.includes('.') || file.endsWith('file');
+            const doSkip = !file.includes('.storybook') && !file.includes('.custom');
+            if (isFile && doSkip) {
                 let action = {
                     type: 'add',
                     path: `${path}/${file}`.replace('.prompt', ''),

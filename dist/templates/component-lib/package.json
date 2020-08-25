@@ -12,7 +12,7 @@
     "test:watch": "jest --watch",
     "storybook": "start-storybook -p 6006",
     "clean": "gatsby clean",
-    "build": "GATSBY_ACTIVE_ENV=${GATSBY_ACTIVE_ENV} gatsby build && npm run copy:assets",
+    "build": "echo 'build'",
     "build:storybook": "build-storybook",
     "alias": "export NODE_ENV=${NODE_ENV} && firebase use ${REACT_APP_PROJECT_ID}",
     "predeploy": "npm run alias",
@@ -21,7 +21,6 @@
     "deploy:hosting": "firebase deploy --only hosting --project=${REACT_APP_PROJECT_ID}",
     "update": "ncu -u",
     "start": "NODE_ENV=local GATSBY_ACTIVE_ENV=local npm run storybook",
-    "copy:assets": "cp -R ./src/images/ ./public/images/",
     "plop:component": "plop --plopfile ./node_modules/ignw-component-generator/plopfile.ts",
     "cy:open": "NODE_ENV=development CYPRESS_BASE_URL=http://localhost:6006 cypress open",
     "test:ci": "npm start & wait-on http://localhost:6006 && NODE_ENV=local cypress run --headless"

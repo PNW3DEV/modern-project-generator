@@ -10,6 +10,7 @@ import { prompts as cicdPrompts } from './pipelines'
 export default (plop: NodePlopAPI) => {
   const prompts: Prompts&any[] = [
     /* APPEND CUSTOM PROMPTS HERE */
+    /**********👇👇👇*********** */
     ...contentfulPrompts,
     ...e2ePrompts,
     ...cicdPrompts,

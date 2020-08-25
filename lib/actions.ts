@@ -48,7 +48,9 @@ export default (plop: NodePlopAPI, data: AnyObj) => {
     const tmpDir = templateDir.replace('.', '')
     const files = fs.readdirSync(templateDir)
     files.forEach(file => {
-      if ((file.includes('.') || file.endsWith('file')) && !file.includes('.storybook') && !file.includes('.custom')) {
+      const isFile = file.includes('.') || file.endsWith('file')
+      const doSkip = !file.includes('.storybook') && !file.includes('.custom')
+      if (isFile && doSkip) {
         let action: any = {
           type: 'add',
           path: `${path}/${file}`.replace('.prompt', ''),
@@ -69,6 +71,9 @@ export default (plop: NodePlopAPI, data: AnyObj) => {
 
   /* GENERATE SELECTED WORKSPACE FILES */
   actions = recursiveFiles(startingPath, startingTemplatePath)
+
+  /* APPEND CUSTOM ACTION HANDLERS BELOW */
+  /***************👇👇👇*************** */
 
   /* CYPRESS/E2E FILES */
   if (data.includeE2E || data.workspace === 'cypress-e2e') {
