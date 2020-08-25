@@ -6,6 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const fs_1 = __importDefault(require("fs"));
 const path_1 = __importDefault(require("path"));
 const contentful_1 = require("./contentful");
+const pipelines_1 = require("./pipelines");
 const workspaces_1 = require("./workspaces");
 const getAppendAction = (file, templateDir, action) => {
     if (file.includes('append')) {
@@ -42,7 +43,7 @@ exports.default = (plop, data) => {
         const tmpDir = templateDir.replace('.', '');
         const files = fs_1.default.readdirSync(templateDir);
         files.forEach(file => {
-            if ((file.includes('.') || file.endsWith('file')) && !file.includes('.storybook')) {
+            if ((file.includes('.') || file.endsWith('file')) && !file.includes('.storybook') && !file.includes('.custom')) {
                 let action = {
                     type: 'add',
                     path: `${path}/${file}`.replace('.prompt', ''),
@@ -55,7 +56,7 @@ exports.default = (plop, data) => {
                 action = getPromptAction(file, tmpDir, data, action);
                 actions.push(action);
             }
-            else if (!file.includes('.prompt')) {
+            else if (!file.includes('.prompt') && !file.includes('.custom')) {
                 return recursiveFiles(`${path}/${file}`, `${templateDir}/${file}`);
             }
         });
@@ -70,6 +71,7 @@ exports.default = (plop, data) => {
             verbose: true
         });
     }
+    pipelines_1.pipelinesActionHandler(data.CICD, actions, startingPath, startingTemplatePath);
     contentful_1.actionsHandler(data);
     workspaces_1.generateWorkspaceConfig(data);
     console.info('Install Dependencies');

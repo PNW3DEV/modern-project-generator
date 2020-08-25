@@ -4,6 +4,7 @@ import path from 'path'
 import { NodePlopAPI } from 'plop'
 
 import { actionsHandler as contentfulActionsHandler } from './contentful'
+import { pipelinesActionHandler } from './pipelines';
 import { generateWorkspaceConfig } from './workspaces'
 
 type AnyObj = { [k: string]: any }
@@ -47,7 +48,7 @@ export default (plop: NodePlopAPI, data: AnyObj) => {
     const tmpDir = templateDir.replace('.', '')
     const files = fs.readdirSync(templateDir)
     files.forEach(file => {
-      if ((file.includes('.') || file.endsWith('file')) && !file.includes('.storybook')) {
+      if ((file.includes('.') || file.endsWith('file')) && !file.includes('.storybook') && !file.includes('.custom')) {
         let action: any = {
           type: 'add',
           path: `${path}/${file}`.replace('.prompt', ''),
@@ -59,7 +60,7 @@ export default (plop: NodePlopAPI, data: AnyObj) => {
         action = getAppendAction(file, templateDir, action)
         action = getPromptAction(file, tmpDir, data, action)
         actions.push(action)
-      } else if (!file.includes('.prompt')) {
+      } else if (!file.includes('.prompt') && !file.includes('.custom')) {
         return recursiveFiles(`${path}/${file}`, `${templateDir}/${file}`)
       }
     })
@@ -71,7 +72,6 @@ export default (plop: NodePlopAPI, data: AnyObj) => {
 
   /* CYPRESS/E2E FILES */
   if (data.includeE2E || data.workspace === 'cypress-e2e') {
-    // add cypress e2e workspace && install cypress deps
     actions = recursiveFiles(`${startingPath}-e2e/`, `${plop.getPlopfilePath()}/templates/cypress-e2e`)
     actions.push({
       type: 'npmInstall',
@@ -80,13 +80,16 @@ export default (plop: NodePlopAPI, data: AnyObj) => {
     })
   }
 
+  /* CICD SUPPORT */
+  pipelinesActionHandler(data.CICD, actions, startingPath, startingTemplatePath)
+
   /* CONTENTFUL SUPPORT */
   contentfulActionsHandler(data)
 
-  /* Add to Lerna/Workspaces */
+  /* ADD TO LERNA/YARN WORKSPACES */
   generateWorkspaceConfig(data)
 
-  /* Install Dependencies */
+  /* INSTALL DEPENDENCIES */
   console.info('Install Dependencies')
   const directoriesToInstall = [`${cwd}/${data.name}`, cwd]
   directoriesToInstall.forEach(dir => {

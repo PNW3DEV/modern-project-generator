@@ -6,9 +6,13 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const fs_1 = __importDefault(require("fs"));
 const contentful_1 = require("./contentful");
 const e2e_prompts_1 = require("./e2e-prompts");
+const pipelines_1 = require("./pipelines");
 exports.default = (plop) => {
-    let prompts = [];
-    prompts.push(...contentful_1.prompts, ...e2e_prompts_1.prompts);
+    const prompts = [
+        ...contentful_1.prompts,
+        ...e2e_prompts_1.prompts,
+        ...pipelines_1.prompts,
+    ];
     const recursivePrompts = (templateDir) => {
         const dir = fs_1.default.readdirSync(templateDir);
         dir.forEach((file, idx) => {

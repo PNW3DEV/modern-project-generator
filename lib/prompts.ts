@@ -1,13 +1,19 @@
 import fs from 'fs'
 
+import { Prompts } from 'node-plop'
 import { NodePlopAPI } from 'plop'
 
 import { prompts as contentfulPrompts } from './contentful'
 import { prompts as e2ePrompts } from './e2e-prompts'
+import { prompts as cicdPrompts } from './pipelines'
 
 export default (plop: NodePlopAPI) => {
-  let prompts = []
-  prompts.push(...contentfulPrompts, ...e2ePrompts)
+  const prompts: Prompts&any[] = [
+    /* APPEND CUSTOM PROMPTS HERE */
+    ...contentfulPrompts,
+    ...e2ePrompts,
+    ...cicdPrompts,
+  ]
 
   /* GENERATE PROMPTS RECURSIVELY */
   const recursivePrompts = (templateDir: string) => {
