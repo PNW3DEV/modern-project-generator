@@ -12,10 +12,12 @@ import Typography from '@material-ui/core/Typography';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import { Link } from 'gatsby';
 import React, { FunctionComponent } from 'react'
+import { hooks } from "@{{organization}}/shared-lib"
 
-import useFirebaseAuthUI from '../../hooks/useFirebaseAuthUI'
 import ROUTES from '../../routes'
 import { SignInProps } from '../sign-in/SignIn'
+
+const useFirebaseAuthUI = hooks.useFirebaseAuthUI
 
 function Copyright({ classes }: any) {
   return (

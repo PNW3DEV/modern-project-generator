@@ -15,7 +15,7 @@
     "serve": "NODE_ENV=development gatsby serve -p 5000",
     "storybook": "start-storybook -p 6006",
     "clean": "gatsby clean",
-    "build": "GATSBY_ACTIVE_ENV=${GATSBY_ACTIVE_ENV} gatsby build && npm run copy:assets",
+    "build": "GATSBY_ACTIVE_ENV=${GATSBY_ACTIVE_ENV} gatsby build",
     "build:storybook": "build-storybook",
     "alias": "export NODE_ENV=${NODE_ENV} && firebase use ${REACT_APP_PROJECT_ID}",
     "predeploy:infrastructure": "npm run bootstrap:storage && npm run alias",

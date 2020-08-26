@@ -1,5 +1,6 @@
 import { User } from "firebase"
 import { navigate } from "gatsby"
+import firebase from "gatsby-plugin-firebase"
 import React, {
   Context,
   FunctionComponent as FC,
@@ -9,7 +10,6 @@ import React, {
 } from "react"
 import { useAuthState } from "react-firebase-hooks/auth"
 
-import firebase from "../lib/firebase"
 import ROUTES, { PUBLIC_ROUTES } from "../routes"
 
 export interface AuthContext {

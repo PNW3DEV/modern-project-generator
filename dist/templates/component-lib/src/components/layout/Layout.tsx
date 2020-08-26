@@ -11,12 +11,10 @@ import clsx from 'clsx'
 import Img from "gatsby-image"
 import React from 'react'
 
-import useLayout from '../../hooks/useLayout'
-import useNavigation from '../../hooks/useNavigation'
 import theme from "../../themes/theme-light"
 import NavDrawer from '../nav-drawer/NavDrawer'
 import NavMenu from '../nav-menu'
-import SignOutButton from '../sign-out-button/index'
+import SignOutButton from '../sign-out-button'
 import useStyles from './Layout.styles'
 
 export default function PersistentDrawerLeft(props: { children: any, title?: string }) {

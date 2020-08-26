@@ -5,12 +5,12 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const fs_1 = __importDefault(require("fs"));
 const contentful_1 = require("./contentful");
-const e2e_prompts_1 = require("./e2e-prompts");
+const e2e_1 = require("./e2e");
 const pipelines_1 = require("./pipelines");
 exports.default = (plop) => {
     const prompts = [
         ...contentful_1.prompts,
-        ...e2e_prompts_1.prompts,
+        ...e2e_1.prompts,
         ...pipelines_1.prompts,
     ];
     const recursivePrompts = (templateDir) => {

@@ -1,9 +1,11 @@
+import 'firebaseui/dist/firebaseui.css'
+
+import * as firebaseui from 'firebaseui'
+import firebase from 'gatsby-plugin-firebase'
 // import { navigate } from 'gatsby'
 import { useEffect, useState } from 'react'
 import  { useContext } from 'react'
 
-import firebase from '../lib/firebase'
-import firebaseui from '../lib/firebaseUI'
 import { TransitionContext, TransitionContextActionType } from '../providers/TransitionProvider'
 
 export default (props: { location: { origin: string, pathname: string }, redirectUrl: string  | '/dashboard' }) => {

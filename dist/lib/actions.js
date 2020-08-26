@@ -6,6 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const fs_1 = __importDefault(require("fs"));
 const path_1 = __importDefault(require("path"));
 const contentful_1 = require("./contentful");
+const e2e_1 = require("./e2e");
 const pipelines_1 = require("./pipelines");
 const workspaces_1 = require("./workspaces");
 const getAppendAction = (file, templateDir, action) => {
@@ -44,7 +45,7 @@ exports.default = (plop, data) => {
         const files = fs_1.default.readdirSync(templateDir);
         files.forEach(file => {
             const isFile = file.includes('.') || file.endsWith('file');
-            const doSkip = !file.includes('.storybook') && !file.includes('.custom');
+            const doSkip = !file.includes('.storybook') && !file.includes('.custom') && !file.includes('.github');
             if (isFile && doSkip) {
                 let action = {
                     type: 'add',
@@ -65,14 +66,7 @@ exports.default = (plop, data) => {
         return actions;
     };
     actions = recursiveFiles(startingPath, startingTemplatePath);
-    if (data.includeE2E || data.workspace === 'cypress-e2e') {
-        actions = recursiveFiles(`${startingPath}-e2e/`, `${plop.getPlopfilePath()}/templates/cypress-e2e`);
-        actions.push({
-            type: 'npmInstall',
-            path: `${startingPath}-e2e/`,
-            verbose: true
-        });
-    }
+    e2e_1.e2eActionsHandler(data, actions, recursiveFiles, startingPath, plop);
     pipelines_1.pipelinesActionHandler(data.CICD, actions, startingPath, startingTemplatePath);
     contentful_1.actionsHandler(data);
     workspaces_1.generateWorkspaceConfig(data);

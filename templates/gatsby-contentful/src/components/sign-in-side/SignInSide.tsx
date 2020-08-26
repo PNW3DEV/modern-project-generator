@@ -107,6 +107,7 @@ export const SignInForm = ({ classes }: any) => (
         variant="contained"
         color="primary"
         className={classes.submit}
+        data-testid={'sign-in-button'}
       >
         Sign In
       </Button>

@@ -2,7 +2,6 @@ import { Grid } from "@material-ui/core"
 import useMediaQuery from "@material-ui/core/useMediaQuery"
 import React from "react"
 import { isIE } from "react-device-detect"
-import { Helmet } from "react-helmet"
 import { useTranslation } from "react-i18next"
 
 import Alerts from "../../components/alerts/Alerts"
@@ -31,24 +30,19 @@ const LandingPage = (props: {
   }
 
   return (
-    <>
-      <Helmet>
-        <body style="overflow:hidden" />
-      </Helmet>
-      <Layout title={"App Login"}>
-        <SEO title={t("landing.title")} />
-        <Grid container={true} direction="row" style={gridStyle}>
-          <SignInSide {...childProps} />
-          {isIE ? (
-            <Alerts
-              title={t("landing.warning")}
-              severity={"warning"}
-              isOpen={true}
-            />
-          ) : null}
-        </Grid>
-      </Layout>
-    </>
+    <Layout title={"App Login"}>
+      <SEO title={t("landing.title")} />
+      <Grid container={true} direction="row" style={gridStyle}>
+        <SignInSide {...childProps} />
+        {isIE ? (
+          <Alerts
+            title={t("landing.warning")}
+            severity={"warning"}
+            isOpen={true}
+          />
+        ) : null}
+      </Grid>
+    </Layout>
   )
 }
 

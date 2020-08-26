@@ -1,6 +1,6 @@
+import firebase from "gatsby-plugin-firebase"
 import { useContext, useState } from "react"
 
-import firebase from "../lib/firebase"
 import { SnackBarContext } from "../providers/SnackbarProvider"
 import storage from "../util/storage"
 
