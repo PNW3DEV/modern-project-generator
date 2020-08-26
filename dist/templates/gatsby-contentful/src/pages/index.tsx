@@ -27,11 +27,11 @@ const LandingPage = () => {
         className={classes.container}
       >
         {(isIE) ? <Alerts title={t('landing.warning')} severity={'warning'} isOpen={true}/> : null }
-        {cards?.map((card: any) => (
-          <Grid item className={classes.content}>
+        {cards?.map((card: any, idx: number) => (
+          <Grid key={idx.toString()} item className={classes.content}>
             <LandingCard post={card} />
           </Grid>
-          ))}
+        ))}
         <Grid item className={classes.content}>
           <Typography color={"primary"}>{pageText}</Typography>
         </Grid>

@@ -21,8 +21,8 @@ export default (props: any) => {
         {d.headerLine2Label && <h1>{d.headerLine2Label}</h1>}
         {d.subHeaderLabel && <h3>{d.subHeaderLabel}</h3>}
         {d.heroCopy && <p>{d.heroCopy}</p>}
-        {headerCtAs.map((cta: any) => (
-          <a href={cta.url} style={cursor}>{cta.label}</a>
+        {headerCtAs.map((cta: any, idx: number) => (
+          <a href={cta.url} key={`hcta-${idx.toString()}`} style={cursor}>{cta.label}</a>
         ))}
       </Container>
     </BackgroundImage>
