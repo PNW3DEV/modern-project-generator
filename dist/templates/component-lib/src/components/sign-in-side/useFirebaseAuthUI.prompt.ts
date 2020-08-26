@@ -1,10 +1,9 @@
 import 'firebaseui/dist/firebaseui.css'
 
 import * as firebaseui from 'firebaseui'
+import firebase from 'gatsby-plugin-firebase'
 // import { navigate } from 'gatsby'
 import { useEffect, useState } from 'react'
-
-import firebase from '../lib/firebase'
 
 // import { TransitionContext, TransitionContextActionType } from '../providers/TransitionProvider'
 

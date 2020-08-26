@@ -1,13 +1,14 @@
 import { graphql, useStaticQuery } from 'gatsby'
 import { useTranslation } from 'react-i18next'
 
-import { NavQueryQuery } from '../../graphql-types'
-import useVersion from "./useVersion"
+// import { NavQueryQuery } from '@{{organization}}/shared-lib/graphql-types'
+
+// import useVersion from "./useVersion"
 
 export default () => {
-  useVersion()
+  // useVersion()
   const { t } = useTranslation()
-  const data: NavQueryQuery = useStaticQuery(graphql`
+  const data = useStaticQuery(graphql`
     query NavQuery {
       file(relativePath: { eq: "icon.png" }) {
         childImageSharp {

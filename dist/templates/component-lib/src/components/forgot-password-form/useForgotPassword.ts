@@ -1,11 +1,11 @@
 import { navigate } from "gatsby"
+import firebase from "gatsby-plugin-firebase"
 import { useContext, useState } from "react"
 
-import firebase from "../lib/firebase"
-import { SnackBarContext } from "../providers/SnackbarProvider"
-import ROUTES from "../routes"
+import { SnackBarContext } from "../../providers/SnackbarProvider"
+import ROUTES from "../../routes"
 
-export default () => {
+export default ({ redirect = ROUTES.LOGIN }) => {
   const snackbar = useContext(SnackBarContext)
   const [state, setState] = useState({
     email: "",
@@ -27,7 +27,7 @@ export default () => {
       .sendPasswordResetEmail(state.email)
       .then(() => {
         snackbar.showFeedback({ message: "Reset Password Link Sent!" })
-        return navigate(ROUTES.LOGIN)
+        return navigate(redirect)
       })
       .catch((error: any) => {
         const errorMessage = error.message

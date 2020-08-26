@@ -45,6 +45,3 @@ export * from './components/sign-up'
 
 export { default as Toast } from './components/toast'
 export * from './components/toast'
-
-export { default as hooks } from './hooks'
-export * from './hooks'

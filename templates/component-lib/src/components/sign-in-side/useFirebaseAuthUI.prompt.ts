@@ -1,13 +1,14 @@
+import 'firebaseui/dist/firebaseui.css'
+
+import * as firebaseui from 'firebaseui'
+import firebase from 'gatsby-plugin-firebase'
 // import { navigate } from 'gatsby'
 import { useEffect, useState } from 'react'
-import  { useContext } from 'react'
 
-import firebase from '../lib/firebase'
-import firebaseui from '../lib/firebaseUI'
-import { TransitionContext, TransitionContextActionType } from '../providers/TransitionProvider'
+// import { TransitionContext, TransitionContextActionType } from '../providers/TransitionProvider'
 
 export default (props: { location: { origin: string, pathname: string }, redirectUrl: string  | '/dashboard' }) => {
-  const { dispatch: updateTransition, state: loadingState } = useContext(TransitionContext)
+  // const { dispatch: updateTransition, state: loadingState } = useContext(TransitionContext)
   const [token, setToken] = useState(typeof window !== 'undefined' && localStorage.token || '') // check fb auth
   const isSignedIn = token && props.location.pathname === "/"
 
@@ -65,14 +66,14 @@ export default (props: { location: { origin: string, pathname: string }, redirec
         }
       })
 
-      if (ui.isPendingRedirect()) {
-        updateTransition({
-          type: TransitionContextActionType.START
-        })
-      }
+      // if (ui.isPendingRedirect()) {
+        // updateTransition({
+        //   type: TransitionContextActionType.START
+        // })
+      // }
 
       return () => {}
-    }, [loadingState])
+    }, [])
   }
 
   return {

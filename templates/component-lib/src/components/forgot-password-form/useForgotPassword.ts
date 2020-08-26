@@ -2,8 +2,8 @@ import { navigate } from "gatsby"
 import firebase from "gatsby-plugin-firebase"
 import { useContext, useState } from "react"
 
-import { SnackBarContext } from "../providers/SnackbarProvider"
-import ROUTES from "../routes"
+import { SnackBarContext } from "../../providers/SnackbarProvider"
+import ROUTES from "../../routes"
 
 export default ({ redirect = ROUTES.LOGIN }) => {
   const snackbar = useContext(SnackBarContext)
