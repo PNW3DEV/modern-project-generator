@@ -1,7 +1,7 @@
 const activeEnv =
   process.env.GATSBY_ACTIVE_ENV || process.env.NODE_ENV || "development"
 require('dotenv').config({
-  path: `./environments/.env.${activeEnv}`
+  path: `./.env.${activeEnv}`
 })
 const siteTitle = "{{name}}"
 const siteDescription =
@@ -42,6 +42,21 @@ module.exports = {
         disableAutoprefixing: false,
         disableMinification: false,
       },
+    },
+    {
+      resolve: "gatsby-plugin-firebase",
+      options: {
+        credentials: {
+          apiKey: process.env.REACT_APP_API_KEY || "",
+          authDomain: process.env.REACT_APP_AUTH_DOMAIN || "",
+          databaseURL: process.env.REACT_APP_DATABASE_URL || "",
+          projectId: process.env.REACT_APP_PROJECT_ID || "",
+          storageBucket: process.env.REACT_APP_STORAGE_BUCKET || "",
+          messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID || "",
+          appId: process.env.REACT_APP_APP_ID || "",
+          measurementId: process.env.REACT_APP_MEASUREMENT_ID || "",
+        },
+      }
     },
     // {
     //   resolve: "gatsby-plugin-react-axe",
@@ -122,8 +137,8 @@ module.exports = {
             "X-XSS-Protection: 1; mode=block",
             "Referrer-Policy: no-referrer",
             "Feature-Policy: microphone 'self'",
-            "Expect-CT: max-age=86400, report-uri='https://YOURKEY.report-uri.com/b/g/h'",
-            "Report-To: 'group':'default', 'max_age':31536000, 'endpoints':[{'url':'https://YOURKEY.report-uri.com/b/g/h'}],'include_subdomains':true'",
+            // "Expect-CT: max-age=86400, report-uri='https://YOURKEY.report-uri.com/b/g/h'",
+            // "Report-To: 'group':'default', 'max_age':31536000, 'endpoints':[{'url':'https://YOURKEY.report-uri.com/b/g/h'}],'include_subdomains':true'",
           ]}, // option to add more headers. `Link` headers are transformed by the below criteria
         allPageHeaders: [], // option to add headers for all pages. `Link` headers are transformed by the below criteria
         mergeSecurityHeaders: true, // boolean to turn off the default security headers

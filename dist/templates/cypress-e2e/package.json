@@ -4,15 +4,15 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "test": "NODE_ENV=test JEST=true jest --detectOpenHandles --verbose",
+    "test": "NODE_ENV=test JEST=true npm run test:e2e",
     "precy:open": "gatsby develop & wait-on http://localhost:8000",
     "precy:open:prod": "GATSBY_ACTIVE_ENV=development npm run build && NODE_ENV=development GATSBY_ACTIVE_ENV=development npm run serve & wait-on http://localhost:5000",
     "cy:open": "NODE_ENV=development CYPRESS_BASE_URL=http://localhost:8000 cypress open",
     "cy:open:prod": "GATSBY_ACTIVE_ENV=development NODE_ENV=development CYPRESS_BASE_URL=http://localhost:5000 cypress open",
     "pretest:ci": "NODE_ENV=local E2E=true GATSBY_ACTIVE_ENV=local REACT_APP_API_HOST=http://localhost:4000",
     "pretest:e2e": "npm run pretest:ci",
-    "test:e2e": "lerna exec --scope @{{organization}}/server npm run start:ci & npm run start:ci & wait-on http://localhost:5000 && NODE_ENV=local CYPRESS_BASE_URL=http://localhost:5000 cypress run --headless",
-    "test:ci": "npm run start:ci & wait-on http://localhost:5000 && NODE_ENV=local CYPRESS_BASE_URL=http://localhost:5000 cypress run --headless"
+    "test:e2e": "lerna exec --scope @{{organization}}/{{dashCase name}} npm run build && lerna exec --scope @{{organization}}/{{dashCase name}} npm run serve & wait-on http://localhost:5000 && NODE_ENV=local CYPRESS_BASE_URL=http://localhost:5000 cypress run --headless",
+    "test:ci": "wait-on http://localhost:5000 && NODE_ENV=local CYPRESS_BASE_URL=http://localhost:5000 cypress run --headless"
   },
   "dependencies": {
     "dotenv": "^8.2.0",

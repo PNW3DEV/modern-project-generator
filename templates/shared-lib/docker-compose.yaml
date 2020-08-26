@@ -1,0 +1,21 @@
+version: '3'
+services:
+  d-storybook:
+    container_name: d-storybook
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    expose:
+      - '6006'
+    ports:
+      - '6006:6006'
+    volumes:
+      - './src:/app/src'
+    env_file: .env.development
+    entrypoint: npm run storybook
+    # makes this less noisy
+    logging:
+      driver: 'none'
+    depends_on:
+      - d-client
+      # - d-api

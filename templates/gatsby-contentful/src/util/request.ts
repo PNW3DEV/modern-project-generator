@@ -1,4 +1,4 @@
-import firebase from "../lib/firebase"
+import firebase from "gatsby-plugin-firebase"
 
 const log = console.log
 

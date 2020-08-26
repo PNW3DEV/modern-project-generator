@@ -1,7 +1,7 @@
+import firebase from 'gatsby-plugin-firebase'
 import { useContext, useEffect, useState } from "react"
 import { uuid } from "uuidv4"
 
-import firebase from '../lib/firebase'
 import { SnackBarContext } from "../providers/SnackbarProvider"
 
 export type UploadFile = {

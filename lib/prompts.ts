@@ -4,7 +4,7 @@ import { Prompts } from 'node-plop'
 import { NodePlopAPI } from 'plop'
 
 import { prompts as contentfulPrompts } from './contentful'
-import { prompts as e2ePrompts } from './e2e-prompts'
+import { prompts as e2ePrompts } from './e2e'
 import { prompts as cicdPrompts } from './pipelines'
 
 export default (plop: NodePlopAPI) => {

@@ -4,10 +4,16 @@ import path from 'path'
 import { NodePlopAPI } from 'plop'
 
 import { actionsHandler as contentfulActionsHandler } from './contentful'
+import { e2eActionsHandler } from './e2e'
+import { gatsbyActionHandler } from './gatsby'
 import { pipelinesActionHandler } from './pipelines';
 import { generateWorkspaceConfig } from './workspaces'
 
 type AnyObj = { [k: string]: any }
+
+// const blacklistedRecursiveTemplates = [
+//   'component-library'
+// ]
 
 const getAppendAction = (file: string, templateDir: string, action: AnyObj) => {
   if (file.includes('append')) {
@@ -49,7 +55,7 @@ export default (plop: NodePlopAPI, data: AnyObj) => {
     const files = fs.readdirSync(templateDir)
     files.forEach(file => {
       const isFile = file.includes('.') || file.endsWith('file')
-      const doSkip = !file.includes('.storybook') && !file.includes('.custom')
+      const doSkip = !file.includes('.storybook') && !file.includes('.custom') && !file.includes('.github')
       if (isFile && doSkip) {
         let action: any = {
           type: 'add',
@@ -74,25 +80,16 @@ export default (plop: NodePlopAPI, data: AnyObj) => {
 
   /* APPEND CUSTOM ACTION HANDLERS BELOW */
   /***************👇👇👇*************** */
-
   /* CYPRESS/E2E FILES */
-  if (data.includeE2E || data.workspace === 'cypress-e2e') {
-    actions = recursiveFiles(`${startingPath}-e2e/`, `${plop.getPlopfilePath()}/templates/cypress-e2e`)
-    actions.push({
-      type: 'npmInstall',
-      path: `${startingPath}-e2e/`,
-      verbose: true
-    })
-  }
-
+  e2eActionsHandler(data, actions, recursiveFiles, startingPath, plop)
   /* CICD SUPPORT */
   pipelinesActionHandler(data.CICD, actions, startingPath, startingTemplatePath)
-
   /* CONTENTFUL SUPPORT */
   contentfulActionsHandler(data)
-
   /* ADD TO LERNA/YARN WORKSPACES */
   generateWorkspaceConfig(data)
+  /* GATSBY CUSTOM HANDLERS */
+  // gatsbyActionHandler(data.workspace, actions, recursiveFiles, startingPath, plop)
 
   /* INSTALL DEPENDENCIES */
   console.info('Install Dependencies')
