@@ -8,16 +8,19 @@ describe('Sign In Page Smoke/E2E Testing', {
     openMode: 2
   }
 }, () => {
-  // beforeEach(() => {
-  //   Cypress.env('REACT_APP_API_HOST', 'http://localhost:4000')
-  // })
-  it('should redirect to the user account page upon successful login', () => {
+  it('should navigate to the sign in page', () => {
+    cy.visit('/')
+    cy.get("[data-testid='sign-in-out-button']").click({ force: true})
+    cy.wait(2000)
+    cy.url().should('include', '/auth/sign-in')
+  })
+  it('should accept input into sign in form fields', () => {
     const ssn = 'testemail@domain.com'
-    const pin = 'Password123!' // get from environment variable or mock auth call
-    cy.visit('/auth/sign-in')
+    const pin = 'Password123!'
+
     cy.get('input[name=email]').type(ssn)
     cy.get('input[name=password]').type(pin)
-    cy.get("[data-testid='sign-in-button']").click({ force: true})
+
     // cy.wait(2000)
     // cy.url().should('include', '/dashboard')
   })

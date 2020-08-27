@@ -20,6 +20,7 @@ const SignOutButton: FunctionComponent<SignOutButtonProps> = (props) => {
       color="inherit"
       onClick={user ? signOut : signInHandler}
       endIcon={user && <ExitToAppIcon />}
+      data-testid={'sign-in-out-button'}
     >
       {user ? props.signOutButtonLabel : props.signInButtonLabel}
     </Button>

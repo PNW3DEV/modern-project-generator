@@ -11,28 +11,18 @@ describe('Sign Up Page Smoke/E2E Testing', () => {
     cy.visit('/')
     cy.get("[data-testid='sign-up-link']").click({ force: true})
     cy.wait(2000)
-    cy.url().should('include', '/registration')
+    cy.url().should('include', '/auth/registration')
   })
   xit('should fill out the sign up form', () => {
     const first = 'A'
     const middle = 'Fake'
     const last = 'Name'
     const email = 'afakename@gmail.com'
-    const phoneNumber = '9719987939'
-    const dob = '08/09/1999'
-    const ssn = '536439811'
-    const pin = '5311'
+
     cy.get('input[name=firstName]').type(first)
     cy.get('input[name=middleName]').type(middle)
     cy.get('input[name=lastName]').type(last)
     cy.get('input[name=email]').type(email)
-    cy.get('input[name=phoneNumber]').type(phoneNumber)
-    cy.get('input[name=dob]').type(dob)
-    cy.get('input[name=ssn]').type(ssn)
-    cy.get('input[name=pin]').type(pin)
-    cy.get("[data-testid='select-female']").click({ force: true})
-    cy.get("input[name='language']").parent().click()
-    cy.get("#menu-language > div.MuiPaper-root.MuiMenu-paper.MuiPopover-paper.MuiPaper-elevation8.MuiPaper-rounded > ul > li:nth-child(1)").click()
 
     cy.wait(2000)
 
