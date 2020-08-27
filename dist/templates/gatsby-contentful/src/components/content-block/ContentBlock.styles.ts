@@ -8,7 +8,7 @@ export const useStyles = makeStyles((theme: Theme) =>
       width: '100%',
       flexGrow: 1,
       backgroundColor: (props: ContentBlockProps) =>
-        props.imgPosition === 'left' ? '#dee0df' : '#f7f7f7',
+        props.imgPosition === 'left' ? '#b8bfc2' : '#f7f7f7',
       height: '25em',
       padding: '2em 1em',
       [theme.breakpoints.down('sm')]: {
