@@ -1,3 +1,4 @@
+import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid'
 import React, { FunctionComponent } from 'react'
 
@@ -12,15 +13,13 @@ export interface LandingCardListProps {
 const LandingCardList: FunctionComponent<LandingCardListProps> = ({ cards = [] }) => {
   const classes = useStyles()
   return (
-    <>
-      <Grid item>
-        {cards?.map((card: any, idx: number) => (
-          <Grid key={idx.toString()} item className={classes.content}>
-            <LandingCard post={card} />
-          </Grid>
-        ))}
-      </Grid>
-    </>
+    <Container className={classes.container}>
+      {cards?.map((card: any, idx: number) => (
+        <Grid key={idx.toString()} item className={classes.content} xs={12}>
+          <LandingCard post={card} />
+        </Grid>
+      ))}
+    </Container>
   )
 }
 

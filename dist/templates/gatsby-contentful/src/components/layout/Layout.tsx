@@ -9,7 +9,7 @@ import useMediaQuery from "@material-ui/core/useMediaQuery"
 import MenuIcon from '@material-ui/icons/Menu'
 import clsx from 'clsx'
 import Img from "gatsby-image"
-import React from 'react'
+import React, { ReactNode } from 'react'
 import { isIE } from 'react-device-detect'
 import { useTranslation } from 'react-i18next'
 
@@ -22,7 +22,7 @@ import NavMenu from '../nav-menu'
 import SignOutButton from '../sign-out-button/index'
 import useStyles from './Layout.styles'
 
-export const Layout = (props: { children: any, title?: string }) => {
+export const Layout = (props: { children?: ReactNode, title?: string }) => {
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"))
   const { menus, file, signInButtonLabel, signOutButtonLabel } = useLayout()
   const classes = useStyles()

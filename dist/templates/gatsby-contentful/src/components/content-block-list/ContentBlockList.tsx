@@ -6,7 +6,9 @@ import ContentBlock, { ContentBlockProps } from '../content-block/ContentBlock'
 
 const useStyles = makeStyles(() =>
   createStyles({
-    content: { padding: '1.5em' }
+    content: {
+      // padding: '1.5em'
+    }
   })
 )
 
@@ -19,7 +21,7 @@ const ContentBlockList: FunctionComponent<ContentBlockListProps> = (props) => {
   return (
     <>
       {props.blocks.map((block, idx) => (
-        <Grid item className={classes.content}>
+        <Grid key={`grid-cblock-${idx}`} item className={classes.content}>
           <ContentBlock
             key={`cblock-${idx}`}
             imgPosition={idx%2 === 0 ? 'left' : 'right'}

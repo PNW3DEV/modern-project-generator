@@ -22,8 +22,8 @@ const LandingPage = () => {
       <Hero data={heroData} />
       <Grid
         container
-        direction="row"
-        spacing={3}
+        direction="column"
+        // spacing={3}
         className={classes.container}
       >
         <ContentBlockList blocks={blocks} />

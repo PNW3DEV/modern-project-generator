@@ -28,10 +28,10 @@ export interface LandingCardProps {
 
 const useStyles = makeStyles({
   root: {
-    maxWidth: 345,
+    maxWidth: 1345,
   },
   media: {
-    height: 140,
+    height: 1140,
   },
 });
 
@@ -49,7 +49,11 @@ export default ({ post }: LandingCardProps) => {
           <Typography gutterBottom variant="h5" component="h2">
             {post.title}
           </Typography>
-          <Typography variant="body2" color="textSecondary" component="p" dangerouslySetInnerHTML={markdown} />
+          <Typography
+            variant="body2"
+            color="textSecondary"
+            component="p"
+            dangerouslySetInnerHTML={markdown} />
           <small>{post.publishDate}</small>
         </CardContent>
       </CardActionArea>

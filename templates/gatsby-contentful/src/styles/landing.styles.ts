@@ -4,21 +4,17 @@ const useStyles = makeStyles(() =>
   createStyles({
     container: {
       display: "flex",
-      marginTop: "2em",
+      // marginTop: "2em",
       justifyContent: "center",
       alignItems: "center",
-      flexDirection: "column",
+      flexDirection: "row",
       marginBottom: 100,
       width: '100%',
-      padding: '2em'
+      // padding: '2em'
     },
     content: {
-      margin: '1em 2em',
+      // margin: '1em 2em',
       width: '100%',
-      // justifyContent: 'center',
-      // alignItems: 'center',
-      // display: 'flex',
-      // flexDirection: 'row'
     }
   })
 )
