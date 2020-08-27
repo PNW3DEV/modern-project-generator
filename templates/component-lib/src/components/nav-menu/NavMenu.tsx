@@ -45,14 +45,14 @@ export default (props: MenuProps) => {
   const handleToggle = async (menu: IMenuItem) => {
     setOpen((prevOpen) => !prevOpen);
     if (!menu?.isExternal && menu?.url) return navigate(menu.url)
-    if (menu?.isExternal && menu.url) window.open(menu.url)
+    if (menu?.isExternal && menu.url) window.open(menu.url, '_blank')
   };
 
   const handleClose = async(event: React.MouseEvent<EventTarget>) => {
     if (anchorRef.current && anchorRef.current.contains(event.target as HTMLElement)) return;
     setOpen(false);
     if (!props?.isExternal && props?.url) return navigate(props.url)
-    if (props?.isExternal && props.url) window.open(props.url)
+    if (props?.isExternal && props.url) window.open(props.url, '_blank')
   };
 
   async function handleListKeyDown(event: React.KeyboardEvent) {
@@ -61,7 +61,7 @@ export default (props: MenuProps) => {
       setOpen(false);
     }
     if (!props?.isExternal && props?.url) return navigate(props.url)
-    if (props?.isExternal && props.url) window.open(props.url)
+    if (props?.isExternal && props.url) window.open(props.url, '_blank')
   }
 
   // return focus to the button when we transitioned from !open -> open

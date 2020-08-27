@@ -27,7 +27,7 @@ export interface NavDrawerProps {
 
 export const handleMenuClick = async (menu: MenuItem) => {
   if (!menu?.isExternal && menu?.url) return navigate(menu.url)
-  if (menu?.isExternal && menu?.url) window.open(menu.url)
+  if (menu?.isExternal && menu?.url) window.open(menu.url, '_blank')
 }
 
 const NavDrawer: FunctionComponent<NavDrawerProps> = (props) => {
