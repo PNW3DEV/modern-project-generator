@@ -70,7 +70,7 @@ const useStyles = makeStyles((theme: Theme) =>
       position: 'absolute',
       right: 0
     },
-    toolbar: { marginRight: '2em' }
+    toolbar: { marginRight: '2em' },
   }),
 )
 

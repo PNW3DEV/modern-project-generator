@@ -54,6 +54,13 @@ export default () => {
                 title
               }
             }
+            contentBlocks {
+              imageURL
+              subHeader {
+                subHeader
+              }
+              header
+            }
           }
         }
       }
@@ -63,11 +70,17 @@ export default () => {
   const pageText = data.allContentfulPage?.edges?.[0]?.node?.content?.content
   const node = data.allContentfulPage?.edges[0]?.node
   const heroData = { name: '', ...node, heroImage: data.allContentfulPage?.edges[0]?.node?.heroImages?.[1] }
+  const contentBlocks = data.allContentfulPage?.edges?.[0]?.node?.contentBlocks?.map?.(contentBlock => ({
+    image: contentBlock?.imageURL,
+    subHeader: contentBlock?.subHeader?.subHeader,
+    header: contentBlock?.header,
+  }))
 
   return {
     pageText,
     heroData,
     data: node,
-    cards: node.cards
+    cards: node.cards,
+    contentBlocks,
   }
 }

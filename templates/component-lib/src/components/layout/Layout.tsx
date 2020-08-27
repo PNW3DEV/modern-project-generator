@@ -10,33 +10,25 @@ import MenuIcon from '@material-ui/icons/Menu'
 import clsx from 'clsx'
 import Img from "gatsby-image"
 import React from 'react'
+import { isIE } from 'react-device-detect'
+import { useTranslation } from 'react-i18next'
 
+import useLayout from '../../hooks/useLayout'
+import useNavigation from '../../hooks/useNavigation'
 import theme from "../../themes/theme-light"
+import Alerts from '../alerts'
 import NavDrawer from '../nav-drawer/NavDrawer'
 import NavMenu from '../nav-menu'
-import SignOutButton from '../sign-out-button'
+import SignOutButton from '../sign-out-button/index'
 import useStyles from './Layout.styles'
 
-export default function PersistentDrawerLeft(props: { children: any, title?: string }) {
+export const Layout = (props: { children: any, title?: string }) => {
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"))
   const { menus, file, signInButtonLabel, signOutButtonLabel } = useLayout()
   const classes = useStyles()
   const { handleDrawerClose, open, handleDrawerOpen } = useNavigation()
-  const style = {
-    containerStyle: { display: "flex" },
-    placeholderStyle: { visibility: "hidden" },
-    h6Style: { textTransform: 'capitalize' },
-    divStyle: { flex: "1 1 auto" },
-    personIconStyle: { fontSize: 68 },
-    drawerClasses: {
-      paper: classes.drawerPaper,
-    },
-    alert: {
-      display: "flex",
-      justifyContent: "center",
-      marginTop: "1em"
-    }
-  }
+  const { t } = useTranslation()
+  const placeholderStyle = { visibility: "hidden" }
 
   return (
     <div className={classes.root}>
@@ -63,8 +55,8 @@ export default function PersistentDrawerLeft(props: { children: any, title?: str
             <div className={classes.image}>
               <Img
                 loading="eager"
-                fixed={file?.childImageSharp?.fixed}
-                placeholderStyle={style.placeholderStyle}
+                fixed={file?.childImageSharp?.fixed as any}
+                placeholderStyle={placeholderStyle}
               />
             </div>
           </Hidden>
@@ -75,19 +67,22 @@ export default function PersistentDrawerLeft(props: { children: any, title?: str
             {!isMobile && menus?.map((menu: any, index: number) => (
               <NavMenu key={`${menu.label}-${index}`} {...menu} />
             ))}
-            <SignOutButton {...{ signInButtonLabel, signOutButtonLabel }} />
+            <SignOutButton {...{ signInButtonLabel, signOutButtonLabel } as any} />
           </Grid>
         </Toolbar>
       </AppBar>
-      <NavDrawer {...{ open, handleDrawerClose, menus }} />
+      <NavDrawer {...{ open, handleDrawerClose, menus } as any} />
       <main
         className={clsx(classes.content, {
           [classes.contentShift]: open,
         })}
       >
         <div className={classes.drawerHeader} />
+        {(isIE) ? <Alerts title={t('landing.warning')} severity={'warning'} isOpen={true}/> : null }
         {props.children}
       </main>
     </div>
   )
 }
+
+export default Layout

@@ -1,19 +1,19 @@
-import { Grid, Typography } from "@material-ui/core"
+import { Grid } from "@material-ui/core"
 import React from "react"
-import { isIE } from "react-device-detect"
 import { useTranslation } from "react-i18next"
 
-import Alerts from "../components/alerts/Alerts"
+import ContentBlockList from "../components/content-block-list"
 import Hero from "../components/hero/Hero"
-import LandingCard from '../components/landing-card/LandingCard'
+import LandingCardList from '../components/landing-card-list'
 import Layout from "../components/layout"
+import PageContent from '../components/page-content'
 import SEO from "../components/seo"
 import useLandingPage from '../hooks/useLandingPage'
 import useStyles from '../styles/landing.styles'
 
 const LandingPage = () => {
   const classes = useStyles()
-  const { pageText, heroData, data, cards = [] } = useLandingPage()
+  const { pageText, heroData, data, cards = [], contentBlocks: blocks = [] } = useLandingPage()
   const { t } = useTranslation()
 
   return (
@@ -26,15 +26,9 @@ const LandingPage = () => {
         spacing={3}
         className={classes.container}
       >
-        {(isIE) ? <Alerts title={t('landing.warning')} severity={'warning'} isOpen={true}/> : null }
-        {cards?.map((card: any, idx: number) => (
-          <Grid key={idx.toString()} item className={classes.content}>
-            <LandingCard post={card} />
-          </Grid>
-        ))}
-        <Grid item className={classes.content}>
-          <Typography color={"primary"}>{pageText}</Typography>
-        </Grid>
+        <ContentBlockList blocks={blocks} />
+        <LandingCardList cards={cards as any[]} />
+        <PageContent pageText={pageText} />
       </Grid>
     </Layout>
   )
