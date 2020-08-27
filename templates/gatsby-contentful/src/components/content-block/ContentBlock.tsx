@@ -30,7 +30,7 @@ export const ContentBlock: FunctionComponent<ContentBlockProps> = (props) => {
     </Grid>
   )
   const Image = () => (
-    <Grid item className={classes.image} xs={12} md={3}>
+    <Grid item className={classes.image} xs={12} md={4}>
       <img className={classes.img} height="290px" width="350px" src={image} />
     </Grid>
   )
