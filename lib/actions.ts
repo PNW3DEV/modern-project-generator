@@ -1,19 +1,16 @@
 import fs  from 'fs'
 import path from 'path'
 
+import { Actions } from 'node-plop';
 import { NodePlopAPI } from 'plop'
 
 import { actionsHandler as contentfulActionsHandler } from './contentful'
 import { e2eActionsHandler } from './e2e'
-import { gatsbyActionHandler } from './gatsby'
+// import { gatsbyActionHandler } from './gatsby'
 import { pipelinesActionHandler } from './pipelines';
 import { generateWorkspaceConfig } from './workspaces'
 
 type AnyObj = { [k: string]: any }
-
-// const blacklistedRecursiveTemplates = [
-//   'component-library'
-// ]
 
 const getAppendAction = (file: string, templateDir: string, action: AnyObj) => {
   if (file.includes('append')) {
@@ -43,8 +40,8 @@ const getPromptAction = (file: string, tmpDir: string, data: any, action: AnyObj
   return promptAction
 }
 
-export default (plop: NodePlopAPI, data: AnyObj) => {
-  let actions: AnyObj[] = []
+export default (plop: NodePlopAPI, data: AnyObj): Actions => {
+  let actions: Actions&any[] = []
   const cwd = process.cwd()
   const startingPath = `${cwd}/${data.name}`
   const startingTemplatePath = path.resolve(`${plop.getPlopfilePath()}/templates/${data.workspace}/`)

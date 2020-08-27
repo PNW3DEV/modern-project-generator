@@ -1,1 +1,1 @@
-{"version":3,"file":"component-lib.d.ts","sourceRoot":"","sources":["../../lib/component-lib.ts"],"names":[],"mappings":"AAAA,eAAO,MAAM,OAAO;;oBAGA;QAAE,SAAS,EAAE,MAAM,CAAA;KAAE;;;GAQxC,CAAA"}
+{"version":3,"file":"component-lib.d.ts","sourceRoot":"","sources":["../../lib/component-lib.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,cAAc,EAAE,MAAM,WAAW,CAAA;AAE1C,eAAO,MAAM,OAAO,EAAE,cAAc,EAWnC,CAAA"}

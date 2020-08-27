@@ -4,10 +4,12 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const fs_1 = __importDefault(require("fs"));
+const plop_init_1 = require("./bin/plop-init");
 const actions_1 = __importDefault(require("./lib/actions"));
 const prompts_1 = __importDefault(require("./lib/prompts"));
 const validations_1 = require("./lib/validations");
 exports.default = (plop) => {
+    plop_init_1.initMessage();
     plop.load('plop-pack-npm-install', null, null);
     plop.setGenerator('project', {
         description: 'Web Project Files',

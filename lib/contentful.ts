@@ -4,13 +4,13 @@ import { writeFileSync } from "fs"
 import path from "path"
 
 import chalk from "chalk"
-
 // import spaceImport from "contentful-import"
 // import spaceExport from "contentful-export"
+import { PromptQuestion } from 'node-plop';
 
 const argv = require("yargs-parser")(process.argv.slice(2));
 
-export const initMessage = (message: string) => {
+export const initMessage = (message: string): void => {
   console.log(`
   To set up this project you need to provide your Space ID
   and the belonging API access tokens. Please use an empty space for this.
@@ -38,7 +38,7 @@ export const initMessage = (message: string) => {
 `);
 }
 
-const when = (message: string, answers: { workspace: string }) => {
+const when = (message: string, answers: { workspace: string }): boolean => {
   const isWorkspace = answers.workspace === 'gatsby-contentful'
   if (isWorkspace) {
     console.log(message)
@@ -47,7 +47,7 @@ const when = (message: string, answers: { workspace: string }) => {
   return false
 }
 
-export const prompts = [
+export const prompts: PromptQuestion[] = [
   {
     name: "spaceId",
     message: "Enter Your Contentful Space ID",
@@ -95,7 +95,7 @@ export const actionsHandler = ({
   previewAccessToken,
   name: appName,
   workspace }: { [key: string]: string
-}) => {
+}): void => {
   if (workspace !== 'gatsby-contentful') return
   const cwd = process.cwd()
   const startingPath = `${cwd}/${appName}`

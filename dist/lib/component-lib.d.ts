@@ -1,9 +1,3 @@
-export declare const prompts: {
-    name: string;
-    when: (answers: {
-        workspace: string;
-    }) => boolean;
-    message: string;
-    type: string;
-}[];
+import { PromptQuestion } from 'node-plop';
+export declare const prompts: PromptQuestion[];
 //# sourceMappingURL=component-lib.d.ts.map

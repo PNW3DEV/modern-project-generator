@@ -1,4 +1,6 @@
-export const prompts = [
+import { PromptQuestion } from 'node-plop'
+
+export const prompts: PromptQuestion[] = [
   {
     name: "includeBootstrappedComponentLib",
     when: (answers: { workspace: string }) => {

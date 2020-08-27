@@ -1,6 +1,7 @@
+import { Actions, PromptQuestion } from 'node-plop';
 import { NodePlopAPI } from 'plop'
 
-export const prompts = [
+export const prompts: PromptQuestion[] = [
   {
     name: "includeE2E",
     when: (answers: { workspace: string }) => {
@@ -19,7 +20,7 @@ export const e2eActionsHandler = (
   recursiveFiles: (s: string, s2: string) => any,
   startingPath: string,
   plop: NodePlopAPI
-) => {
+): Actions => {
   if (data.includeE2E || data.workspace === 'cypress-e2e') {
     actions = recursiveFiles(`${startingPath}-e2e/`, `${plop.getPlopfilePath()}/templates/cypress-e2e`)
     actions.push({

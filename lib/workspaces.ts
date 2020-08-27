@@ -1,6 +1,6 @@
 import editJSONFile  from 'edit-json-file'
 
-export const generateWorkspaceConfig = (data: any, skipScripts = false) => {
+export const generateWorkspaceConfig = (data: any, skipScripts = false): void => {
   const cwd = process.cwd()
   const lernaFile = editJSONFile(`${cwd}/lerna.json`)
   const rootPackageFile = editJSONFile(`${cwd}/package.json`)

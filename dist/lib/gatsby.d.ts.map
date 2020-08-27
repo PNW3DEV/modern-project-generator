@@ -1,1 +1,1 @@
-{"version":3,"file":"gatsby.d.ts","sourceRoot":"","sources":["../../lib/gatsby.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,WAAW,EAAE,MAAM,MAAM,CAAA;AAElC,eAAO,MAAM,mBAAmB,cACnB,MAAM,WACR,GAAG,EAAE,sBACM,MAAM,MAAM,MAAM,KAAK,GAAG,EAAE,gBAClC,MAAM,QACd,WAAW,UAqBlB,CAAA"}
+{"version":3,"file":"gatsby.d.ts","sourceRoot":"","sources":["../../lib/gatsby.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,OAAO,EAAE,MAAM,WAAW,CAAC;AACpC,OAAO,EAAE,WAAW,EAAE,MAAM,MAAM,CAAA;AAElC,eAAO,MAAM,mBAAmB,cACnB,MAAM,WACR,GAAG,EAAE,sBACM,MAAM,MAAM,MAAM,KAAK,GAAG,EAAE,gBAClC,MAAM,QACd,WAAW,KAChB,OAmBF,CAAA"}

@@ -1,4 +1,6 @@
-export const prompts = [
+import { Actions, PromptQuestion } from 'node-plop'
+
+export const prompts: PromptQuestion[] = [
   {
     name: "CICD",
     when: (answers: { workspace: string }) => {
@@ -30,7 +32,7 @@ export const pipelinesActionHandler = (
   actions: any[],
   destination: string,
   templatePath: string
-) => {
+): Actions => {
   if (!type) return actions
 
   const templateFiles = {

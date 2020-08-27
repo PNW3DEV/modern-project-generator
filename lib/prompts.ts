@@ -1,14 +1,14 @@
 import fs from 'fs'
 
-import { Prompts } from 'node-plop'
+import { PromptQuestion } from 'node-plop'
 import { NodePlopAPI } from 'plop'
 
 import { prompts as contentfulPrompts } from './contentful'
 import { prompts as e2ePrompts } from './e2e'
 import { prompts as cicdPrompts } from './pipelines'
 
-export default (plop: NodePlopAPI) => {
-  const prompts: Prompts&any[] = [
+export default (plop: NodePlopAPI): PromptQuestion[] => {
+  const prompts: PromptQuestion[]&any[] = [
     /* APPEND CUSTOM PROMPTS HERE */
     /**********👇👇👇*********** */
     ...contentfulPrompts,
@@ -17,7 +17,7 @@ export default (plop: NodePlopAPI) => {
   ]
 
   /* GENERATE PROMPTS RECURSIVELY */
-  const recursivePrompts = (templateDir: string) => {
+  const recursivePrompts = (templateDir: string): PromptQuestion[] => {
     const dir = fs.readdirSync(templateDir)
     dir.forEach((file, idx) => {
       const path = `${templateDir}/${file}`
