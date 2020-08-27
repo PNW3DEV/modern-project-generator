@@ -1,11 +1,13 @@
+import { NextFunction, Response } from "express"
 import type { RequestHandler } from "express-serve-static-core"
-import { NextFunction, Request, Response } from "express"
+
+import { ExtendedRequest } from '../interfaces/request'
 import firebase from '../util/firebase'
 
 const auth = firebase.auth()
 
 export const decodeToken: RequestHandler = async (
-  req: Request,
+  req: ExtendedRequest,
   res: Response,
   next: NextFunction,
 ) => {
@@ -34,7 +36,7 @@ export const decodeToken: RequestHandler = async (
 
 // Checks if a user is authenticated from firebase admin
 export const isAuthorized: RequestHandler = async (
-  req: Request,
+  req: ExtendedRequest,
   res: Response,
   next: NextFunction,
 ) => {
@@ -53,7 +55,7 @@ export const isAuthorized: RequestHandler = async (
 
 // Checks if a user has the required permission from token claims stored for the user - you would use this for the admin/backend api's
 export const hasAdminRole: RequestHandler = async (
-  req: Request,
+  req: ExtendedRequest,
   res: Response,
   next: NextFunction,
 ) => {

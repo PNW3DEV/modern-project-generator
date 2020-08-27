@@ -10,6 +10,7 @@ import xssFilter from 'x-xss-protection'
 
 import { HealthCheck } from './interfaces/health-check.interface'
 import corsMiddleware, { corsOptions } from './middleware/cors.middleware'
+import daoMiddleware from './middleware/dao.middleware'
 import loggerMiddleware from './middleware/logger.middleware'
 import routes from './routes'
 
@@ -43,6 +44,9 @@ app.use(cors(corsOptions))
 
 // Add cors headers
 app.use(corsMiddleware)
+
+// Add DAO
+app.use(daoMiddleware)
 
 // Sets "X-XSS-Protection: 1; mode=block".
 app.use(xssFilter({ reportUri: '/report-xss-violation' }))

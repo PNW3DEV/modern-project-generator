@@ -2,6 +2,8 @@ import Ajv from 'ajv'
 // import type { RequestHandler } from 'express-serve-static-core'
 import { NextFunction, Request, Response } from 'express'
 
+import { ExtendedRequest } from '../interfaces/request'
+
 const removeNulls = (req: Request|any) => {
   Object.keys(req.body).forEach((key: string) => {
     if (req.body[key] === null) {
@@ -14,7 +16,7 @@ const removeNulls = (req: Request|any) => {
   })
 }
 
-export function validateSchema (schema: any, req: Request, res: Response, next: NextFunction) {
+export function validateSchema (schema: any, req: ExtendedRequest, res: Response, next: NextFunction) {
   const ajv = new Ajv()
   removeNulls(req)
   ajv.validate(schema, req.body)

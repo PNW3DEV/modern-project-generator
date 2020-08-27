@@ -1,6 +1,6 @@
 import { Request, Response } from 'express'
 
-import { getVersion } from '../services/version-service'
+import { getVersion } from '../datasources/version-service'
 
 export const get = (req: Request, res: Response) => {
   try {
