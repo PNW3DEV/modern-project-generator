@@ -1,9 +1,7 @@
 import Divider from '@material-ui/core/Divider'
 import Drawer from '@material-ui/core/Drawer'
 import IconButton from '@material-ui/core/IconButton'
-import { useTheme } from '@material-ui/core/styles'
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft'
-import ChevronRightIcon from '@material-ui/icons/ChevronRight'
+import CloseIcon from '@material-ui/icons/Close'
 import { navigate } from 'gatsby'
 import React, { FunctionComponent } from 'react'
 
@@ -32,7 +30,6 @@ export const handleMenuClick = async (menu: MenuItem) => {
 
 const NavDrawer: FunctionComponent<NavDrawerProps> = (props) => {
   const classes = useStyles()
-  const theme = useTheme()
   const { open, handleDrawerClose } = props
   const style = {
     drawerClasses: {
@@ -50,7 +47,7 @@ const NavDrawer: FunctionComponent<NavDrawerProps> = (props) => {
     >
       <div className={classes.drawerHeader}>
         <IconButton onClick={handleDrawerClose}>
-          {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
+          <CloseIcon />
         </IconButton>
       </div>
       <Divider />
