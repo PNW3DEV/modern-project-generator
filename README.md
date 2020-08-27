@@ -25,6 +25,25 @@ CLI Example: `npm run plop` OR after running `npm link` you can run the cli `plo
 
 This command will scaffold/bootstrap the selected project using the template files in the plop generator repo.
 
+## Generators
+
+| NAME                            | Description                                                                              | Status            |
+| ------------------------------- | -----------------------------------------------------------------------------------------| -------------------
+| `CREATE-REACT-APP`              | NPX CRA with some flavor(structure), CI/CD Build Pipelines                               | NOT STARTED       |
+| `COMPONENT-LIB`                 | React Component Library with Storybook and CI/CD Build Pipelines                         | IN PROGRESS       |
+| `CYPRESS E2E`                   | Cypress Headless Browser Functional/Integration/E2E Test Suite                           | READY             |
+| `GATSBY`                        | React-based open source framework for creating websites and apps. CI/CD Build Pipelines  | IN REVIEW         |
+| `GATSBY-CONTENTFUL`             | Gatsby/Contentful CMS Project Template with CI/CD Build Pipelines                        | READY             |
+| `NEXT`                          | React framework with Storybook, CI/CD Build Pipelines and some flavor                    | NOT STARTED       |
+| `NODE-BACKEND-SERVICE`          | Non-REST Internal NodeJS/Typescript Service with CI/CD Pipelines                         | READY             |
+| `NODE-EXPRESS`                  | NodesJS/Express HTTP REST Server with middleware, utils, and CI/CD pipelines             | READY             |
+| `NODE-FASTIFY`                  | NodesJS/Fastify HTTP REST API Server with middleware, utils, and CI/CD pipelines         | IN PROGRESS       |
+| `NODE-GQL`                      | NodesJS Apollo GraphQL Server with middleware, utils, and CI/CD pipelines                | IN PROGRESS       |
+| `SERVERLESS-CLOUD-FUNCTIONS`    | Google/Firebase Cloud Functions with CI/CD pipelines                                     | READY             |
+| `SERVERLESS-AZURE-FUNCTIONS`    | Azure SAM Functions with CI/CD pipelines                                                 | NOT STARTED       |
+| `SERVERLESS-LAMBDA-FUNCTIONS`   | AWS SAM Lambda Functions with CI/CD pipelines                                            | NOT STARTED       |
+| `SHARED-LIB`                    | Shared/Common Util Workspace                                                             | IN PROGRESS       |
+
 ## Full Example
 ```
 > plop
