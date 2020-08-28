@@ -4,7 +4,8 @@ import { Stream } from 'stream'
 import bunyan, { LogLevel } from 'bunyan'
 import bunyanMiddleware from 'bunyan-middleware'
 import colors from 'colors'
-import { Request } from 'express'
+
+// import { Request } from 'express'
 
 const myRawStream = (color: 'error' | 'info' | 'warn') => {
   const write: Stream | any = (rec: any) => {
