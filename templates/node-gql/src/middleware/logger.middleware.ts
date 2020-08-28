@@ -21,8 +21,8 @@ const myRawStream = (color: 'error' | 'info' | 'warn') => {
 }
 
 const filePath =  process.env.NODE_ENV === 'production'
-  ? `/var/log/gql-life.log`
-  : `${__dirname}/../../logs/gql-life.log`
+  ? `/var/log/{{dashCase name}}.log`
+  : `${__dirname}/../../logs/{{dashCase name}}.log`
 
 const logDir = `${__dirname}/../../logs/`
 
@@ -32,7 +32,7 @@ if (!fs.existsSync(logDir)) {
 }
 
 export const logger: any = bunyan.createLogger({
-  name: 'gql-life app',
+  name: '{{dashCase name}} app',
   level: (process.env.LOG_LEVEL as LogLevel) || 'info',
   streams: [
     {
