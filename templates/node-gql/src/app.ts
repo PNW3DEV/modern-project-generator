@@ -5,20 +5,20 @@ require('dotenv').config({
 import { ApolloError, ApolloServer } from 'apollo-server-express'
 import express, { Response } from 'express'
 import { makeExecutableSchema } from 'graphql-tools'
+import helmet from 'helmet'
+import xssFilter from 'x-xss-protection'
 
+import { context } from './context'
+import datasources from './datasources'
+import corsMiddleware from './middleware/cors.middleware'
+import loggingMiddleware from './middleware/logger.middleware'
 import resolvers from './resolvers'
 import typeDefs from './schema'
-import { context } from './util/context'
-
-// import { GraphQLError } from 'graphql'
 
 const schema = makeExecutableSchema({ typeDefs, resolvers })
-const dataSources = () => ({
-  // custPrefAPI: new preferencesAPI()
-})
 const server: ApolloServer = new ApolloServer({
   schema: schema,
-  dataSources,
+  dataSources: () => datasources,
   context,
   // formatError: (error: ApolloError) => {
   //   console.error('boom!', error.message)
@@ -32,7 +32,13 @@ const server: ApolloServer = new ApolloServer({
 
 // Initialize the app
 export const app = express()
-// app.use()
+app.use(loggingMiddleware) // add logger middleware
+
+if (process.env.NODE === 'production') {
+  app.use(corsMiddleware) // add cors middleware
+  app.use(xssFilter())
+  app.use(helmet()) // add xss/helmet protection middleware
+}
 
 // GraphQL endpoint
 server.applyMiddleware({ app, path: '/graphql' })

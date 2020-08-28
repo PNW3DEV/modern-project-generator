@@ -1,7 +1,7 @@
 import { NextFunction, Request, RequestHandler, Response } from 'express'
 import { RateLimiterMemory } from 'rate-limiter-flexible'
 
-import log from '../util/logger'
+import { logger as log } from './logger.middleware'
 
 const maxRequestsByIPPerMinute = 3000
 
