@@ -7,21 +7,51 @@ Project Generator - Micro-generator framework that makes it easy for an entire t
 
 ### Getting Started
 **Add modern-project-generator to your project**
+
+Until we publish, to install run:
 ```
-npm i modern-project-generator -D
+npm i -D https://github.com/PNW3DEV/modern-project-generator.git
 ```
 
-## Usage
+After we publish, to install run:
+```
+npm i -D modern-project-generator
+```
+
+Create a sym link so you can use the cli command:
+
+`npm link modern-project-generator`
+
+## Usage with custom cli command
+
+`plop-project` - For example:
+
+```
+➜  modern-project-generator git:(master) ✗ plop-project
+? workspace: (Use arrow keys)
+  component-lib
+❯ create-react-app
+  cypress-e2e
+  gatsby
+  gatsby-contentful
+  next
+  node-backend-service
+(Move up and down to reveal more choices)
+```
+
+## Usage without custom cli command
+
 ```
 // package.json
 {
   "scripts": {
-      "plop": "./node_modules/modern-project-generator/bin/cli.js"
+    "plop": "./node_modules/modern-project-generator/bin/cli.js"
   },
   ...
 }
 ```
-CLI Example: `npm run plop` OR after running `npm link` you can run the cli `plop-project`
+
+NPM Example: `npm run plop`
 
 This command will scaffold/bootstrap the selected project using the template files in the plop generator repo.
 
@@ -38,13 +68,14 @@ This command will scaffold/bootstrap the selected project using the template fil
 | `NODE-BACKEND-SERVICE`          | Non-REST Internal NodeJS/Typescript Service with CI/CD Pipelines                         | READY             |
 | `NODE-EXPRESS`                  | NodesJS/Express HTTP REST Server with middleware, utils, and CI/CD pipelines             | READY             |
 | `NODE-FASTIFY`                  | NodesJS/Fastify HTTP REST API Server with middleware, utils, and CI/CD pipelines         | IN PROGRESS       |
-| `NODE-GQL`                      | NodesJS Apollo GraphQL Server with middleware, utils, and CI/CD pipelines                | IN PROGRESS       |
+| `NODE-GQL`                      | NodesJS Apollo GraphQL Server with middleware, utils, and CI/CD pipelines                | READY             |
 | `SERVERLESS-CLOUD-FUNCTIONS`    | Google/Firebase Cloud Functions with CI/CD pipelines                                     | READY             |
 | `SERVERLESS-AZURE-FUNCTIONS`    | Azure SAM Functions with CI/CD pipelines                                                 | NOT STARTED       |
 | `SERVERLESS-LAMBDA-FUNCTIONS`   | AWS SAM Lambda Functions with CI/CD pipelines                                            | NOT STARTED       |
 | `SHARED-LIB`                    | Shared/Common Util Workspace                                                             | IN PROGRESS       |
 
 ## Full Example
+
 ```
 > plop
 
@@ -60,28 +91,6 @@ This command will scaffold/bootstrap the selected project using the template fil
 ? organization name test-org
 ? workspace name test-app
 ⠋ Install Dependencies
-====================================
-actions [
-  {
-    type: 'add',
-    path: '/Users/desmondjones/code/github.com/project-generator/test-app/.env',
-    templateFile: './templates/node-gql/.env',
-    force: true
-  },
-  {
-    type: 'add',
-    path: '/Users/desmondjones/code/github.com/project-generator/test-app/Dockerfile',
-    templateFile: './templates/node-gql/Dockerfile',
-    force: true
-  },
-  ...
-  {
-    type: 'npmInstall',
-    path: '/Users/desmondjones/code/github.com/project-generator/test-app',
-    verbose: true
-  }
-]
-====================================
 ✔  ++ /test-app/.env
 ✔  ++ /test-app/Dockerfile
 ✔  ++ /test-app/codegen.yml
@@ -96,6 +105,10 @@ actions [
 ...
 ```
 
+## Development
+
+> TODO: Add docs on how to add/extend generators
+
 ## Contributions
 
-See how to contribute [here](./docs/CONTRIBUTING.md).
+Read the contribution [documentation](./docs/CONTRIBUTING.md).
