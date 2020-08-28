@@ -1,11 +1,22 @@
-const queryVersion = async (_: any, { payload }: any, context: any): Promise<any> => {
-  context.log.info('getting package version', payload)
-  return context?.datasources?.versionAPI?.getVersion(payload, context)
+import { MutateVersionResponse, MutateVersionResponseEnum, QueryVersionResponse } from '../../types'
+
+const queryVersion = async (
+  _: undefined,
+  __: undefined,
+  context: { dataSources: any, log: any }
+): Promise<QueryVersionResponse> => {
+  context.log.info('getting package version')
+  const versionInfo = await context?.dataSources?.versionAPI?.getVersion()
+  return versionInfo
 }
 
-const mutateVersion = async (_: any, { payload }: any, context: any): Promise<any> => {
+const mutateVersion = async (
+  _: any,
+  { payload }: any,
+  context: { dataSources: any, log: any }
+): Promise<MutateVersionResponse> => {
   context.log.info('simulating package version mutation', payload)
-  return { response: 'OK' }
+  return { response: MutateVersionResponseEnum.Ok }
 }
 
 export default {

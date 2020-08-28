@@ -25,15 +25,15 @@ export const context = async (
 ): Promise<PGEGraphQLContext> => {
   const user = await getDecodedToken(req.headers)
 
-  if (user === null) {
-    if (!req.body.query.trim().startsWith('query Introspection')) {
-      const isAccessible = isPublic(req.body.operationName)
+  // if (user === null) {
+  //   if (!req.body.query.trim().startsWith('query Introspection')) {
+  //     const isAccessible = isPublic(req.body.operationName)
 
-      if(!isAccessible) {
-        throw new ForbiddenError('Must Authenticate');
-      }
-    }
-  }
+  //     if(!isAccessible) {
+  //       throw new ForbiddenError('Must Authenticate');
+  //     }
+  //   }
+  // }
   return {
     // req
     headers: req.headers,

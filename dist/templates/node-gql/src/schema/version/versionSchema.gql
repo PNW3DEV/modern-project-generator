@@ -1,26 +1,26 @@
-enum MutateVersionResponse {
+enum MutateVersionResponseEnum {
   OK
   ERROR
 }
 
-type queryVersionResponse {
+type QueryVersionResponse {
   name: String
   version: String
   node: String
 }
 
-type mutateVersionResponse {
-  response: MutateVersionResponse
+type MutateVersionResponse {
+  response: MutateVersionResponseEnum
 }
 
-input mutateVersionRequest {
+input MutateVersionRequest {
   body: String
 }
 
 extend type Query {
-  queryVersion: queryVersionResponse
+  queryVersion: QueryVersionResponse
 }
 
 extend type Mutation {
-  mutateVersion(payload: mutateVersionRequest): mutateVersionResponse
+  mutateVersion(payload: MutateVersionRequest): MutateVersionResponse
 }

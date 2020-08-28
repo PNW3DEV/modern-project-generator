@@ -14,11 +14,11 @@ export type MutateVersionRequest = {
 };
 
 export type MutateVersionResponse = {
-   __typename?: 'mutateVersionResponse',
-  response?: Maybe<MutateVersionResponse>,
+   __typename?: 'MutateVersionResponse',
+  response?: Maybe<MutateVersionResponseEnum>,
 };
 
-export enum MutateVersionResponse {
+export enum MutateVersionResponseEnum {
   Ok = 'OK',
   Error = 'ERROR'
 }
@@ -41,7 +41,7 @@ export type Query = {
 };
 
 export type QueryVersionResponse = {
-   __typename?: 'queryVersionResponse',
+   __typename?: 'QueryVersionResponse',
   name?: Maybe<Scalars['String']>,
   version?: Maybe<Scalars['String']>,
   node?: Maybe<Scalars['String']>,
@@ -119,52 +119,52 @@ export type DirectiveResolverFn<TResult = {}, TParent = {}, TContext = {}, TArgs
 /** Mapping between all available schema types and the resolvers types */
 export type ResolversTypes = {
   Query: ResolverTypeWrapper<{}>,
-  queryVersionResponse: ResolverTypeWrapper<QueryVersionResponse>,
+  QueryVersionResponse: ResolverTypeWrapper<QueryVersionResponse>,
   String: ResolverTypeWrapper<Scalars['String']>,
   Mutation: ResolverTypeWrapper<{}>,
-  mutateVersionRequest: MutateVersionRequest,
-  mutateVersionResponse: ResolverTypeWrapper<MutateVersionResponse>,
-  MutateVersionResponse: MutateVersionResponse,
+  MutateVersionRequest: MutateVersionRequest,
+  MutateVersionResponse: ResolverTypeWrapper<MutateVersionResponse>,
+  MutateVersionResponseEnum: MutateVersionResponseEnum,
   Boolean: ResolverTypeWrapper<Scalars['Boolean']>,
 };
 
 /** Mapping between all available schema types and the resolvers parents */
 export type ResolversParentTypes = {
   Query: {},
-  queryVersionResponse: QueryVersionResponse,
+  QueryVersionResponse: QueryVersionResponse,
   String: Scalars['String'],
   Mutation: {},
-  mutateVersionRequest: MutateVersionRequest,
-  mutateVersionResponse: MutateVersionResponse,
+  MutateVersionRequest: MutateVersionRequest,
   MutateVersionResponse: MutateVersionResponse,
+  MutateVersionResponseEnum: MutateVersionResponseEnum,
   Boolean: Scalars['Boolean'],
 };
 
-export type MutateVersionResponseResolvers<ContextType = any, ParentType extends ResolversParentTypes['mutateVersionResponse'] = ResolversParentTypes['mutateVersionResponse']> = {
-  response?: Resolver<Maybe<ResolversTypes['MutateVersionResponse']>, ParentType, ContextType>,
+export type MutateVersionResponseResolvers<ContextType = any, ParentType extends ResolversParentTypes['MutateVersionResponse'] = ResolversParentTypes['MutateVersionResponse']> = {
+  response?: Resolver<Maybe<ResolversTypes['MutateVersionResponseEnum']>, ParentType, ContextType>,
 };
 
 export type MutationResolvers<ContextType = any, ParentType extends ResolversParentTypes['Mutation'] = ResolversParentTypes['Mutation']> = {
-  mutateVersion?: Resolver<Maybe<ResolversTypes['mutateVersionResponse']>, ParentType, ContextType, MutationMutateVersionArgs>,
+  mutateVersion?: Resolver<Maybe<ResolversTypes['MutateVersionResponse']>, ParentType, ContextType, MutationMutateVersionArgs>,
   root?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
 };
 
 export type QueryResolvers<ContextType = any, ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']> = {
-  queryVersion?: Resolver<Maybe<ResolversTypes['queryVersionResponse']>, ParentType, ContextType>,
+  queryVersion?: Resolver<Maybe<ResolversTypes['QueryVersionResponse']>, ParentType, ContextType>,
   root?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
 };
 
-export type QueryVersionResponseResolvers<ContextType = any, ParentType extends ResolversParentTypes['queryVersionResponse'] = ResolversParentTypes['queryVersionResponse']> = {
+export type QueryVersionResponseResolvers<ContextType = any, ParentType extends ResolversParentTypes['QueryVersionResponse'] = ResolversParentTypes['QueryVersionResponse']> = {
   name?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
   version?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
   node?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
 };
 
 export type Resolvers<ContextType = any> = {
-  mutateVersionResponse?: MutateVersionResponseResolvers<ContextType>,
+  MutateVersionResponse?: MutateVersionResponseResolvers<ContextType>,
   Mutation?: MutationResolvers<ContextType>,
   Query?: QueryResolvers<ContextType>,
-  queryVersionResponse?: QueryVersionResponseResolvers<ContextType>,
+  QueryVersionResponse?: QueryVersionResponseResolvers<ContextType>,
 };
 
 
