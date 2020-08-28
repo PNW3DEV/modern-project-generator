@@ -35,19 +35,6 @@ const getPromptAction = (file, tmpDir, data, action) => {
     }
     return promptAction;
 };
-const getAction = (file, templateDir, tmpDir, data) => {
-    let action = {
-        type: 'add',
-        path: `${path_1.default}/${file}`.replace('.prompt', ''),
-        templateFile: `${templateDir}/${file}`,
-        skipIfExists: !file.includes('.modify') && !file.includes('.append'),
-        abortOnFail: true,
-        skip: () => false,
-    };
-    action = getAppendAction(file, templateDir, action);
-    action = getPromptAction(file, tmpDir, data, action);
-    return action;
-};
 exports.default = (plop, data) => {
     let actions = [];
     const cwd = process.cwd();
@@ -57,16 +44,23 @@ exports.default = (plop, data) => {
         const tmpDir = templateDir.replace('.', '');
         const files = fs_1.default.readdirSync(templateDir);
         files.forEach(file => {
-            if (!file.includes('.prompt') && !file.includes('.custom')) {
-                return recursiveFiles(`${path}/${file}`, `${templateDir}/${file}`);
-            }
             const isFile = file.includes('.') || file.endsWith('file');
-            const doSkip = !file.includes('.storybook')
-                && !file.includes('.custom')
-                && !file.includes('.github');
+            const doSkip = !file.includes('.storybook') && !file.includes('.custom') && !file.includes('.github');
             if (isFile && doSkip) {
-                const action = getAction(file, templateDir, tmpDir, data);
+                let action = {
+                    type: 'add',
+                    path: `${path}/${file}`.replace('.prompt', ''),
+                    templateFile: `${templateDir}/${file}`,
+                    skipIfExists: !file.includes('.modify') && !file.includes('.append'),
+                    abortOnFail: true,
+                    skip: () => false,
+                };
+                action = getAppendAction(file, templateDir, action);
+                action = getPromptAction(file, tmpDir, data, action);
                 actions.push(action);
+            }
+            else if (!file.includes('.prompt') && !file.includes('.custom')) {
+                return recursiveFiles(`${path}/${file}`, `${templateDir}/${file}`);
             }
         });
         return actions;
