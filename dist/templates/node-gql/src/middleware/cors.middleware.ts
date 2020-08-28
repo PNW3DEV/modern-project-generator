@@ -1,6 +1,6 @@
 import { NextFunction, Response } from 'express'
 
-import { ExtendedRequest } from '../interfaces/request';
+import { ExtendedRequest } from '../interfaces/request.interface';
 
 const headers1 = 'Origin, X-Requested-With, Content-Type, Accept'
 const headers2 = 'Authorization, Access-Control-Allow-Credentials, x-access-token'

@@ -1,9 +1,4 @@
-import {
-  MutateVersionRequest,
-  MutateVersionResponse,
-  MutateVersionResponseEnum,
-  QueryVersionResponse
-} from '../../types'
+import { MutateVersionResponse, MutateVersionResponseEnum, QueryVersionResponse } from '../../types'
 
 export const queryVersion = async (
   _: undefined,
@@ -17,10 +12,10 @@ export const queryVersion = async (
 
 export const mutateVersion = async (
   _: any,
-  { body }: MutateVersionRequest,
+  { payload }: any,
   context: { dataSources: any, log: any }
 ): Promise<MutateVersionResponse> => {
-  context.log.info('simulating package version mutation', body)
+  context.log.info('simulating package version mutation', payload)
   return { response: MutateVersionResponseEnum.Ok }
 }
 

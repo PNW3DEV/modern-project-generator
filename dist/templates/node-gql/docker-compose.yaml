@@ -1,7 +1,7 @@
 version: '3'
 services:
-  pge-moonshot-api:
-    container_name: {{ name }}
+  {{dashCase name}}-graphql:
+    container_name: {{dashCase name}}
     build:
       context: ./
     expose:
@@ -18,3 +18,20 @@ services:
       - CI_TEST=true
       # - GOOGLE_APPLICATION_CREDENTIALS=./sa.json
     entrypoint: npm start
+  {{dashCase name}}-graphql-test:
+    container_name: {{dashCase name}}-graphql-test
+    build:
+      context: ./
+    expose:
+      - '3001'
+    ports:
+      - '3001:3001'
+    volumes:
+      # - './environments:/appp/environments'
+      # - './service-accounts:/appp/service-accounts'
+      - './src:/appp/src'
+      - './coverage:/appp/coverage'
+    environment:
+      - CI_TEST=true
+    #   - GOOGLE_APPLICATION_CREDENTIALS=./service-accounts/sa.development.json
+    entrypoint: npm test

@@ -2,13 +2,13 @@ timeout: 50m0s
 steps:
   - id: Install NPM Dependencies
     name: node:12.18.3
-    dir: 'server'
+    dir: '{{dashCase name}}'
     entrypoint: npm
     args: ['ci']
 
   - id: Run Build
     name: node:12.18.3
-    dir: 'server'
+    dir: '{{dashCase name}}'
     entrypoint: npm
     args: ['run', 'build']
     env:
@@ -18,9 +18,15 @@ steps:
 
   - id: Run Prune
     name: node:12.18.3
-    dir: 'server'
+    dir: '{{dashCase name}}'
     entrypoint: npm
     args: ['prune', '--production']
+
+  - id: build container and run unit/integration test
+    name: 'gcr.io/cloud-builders/docker'
+    env:
+      - NODE_ENV=development
+    args: ['build', '-f', './{{dashCase name}}/docker/Test.Dockerfile', '-t', 'gcr.io/$PROJECT_ID/{{dashCase name}}-test:$COMMIT_SHA', '.']
 
   - id: build container
     name: 'gcr.io/cloud-builders/docker'
@@ -28,7 +34,7 @@ steps:
       - ACTIVE_ENV=$_ACTIVE_ENV
       - NODE_ENV=$_NODE_ENV
       - CLIENT_URL=$_CLIENT_URL
-    args: ['build', '--build-arg', 'active_env=$_ACTIVE_ENV', '-f', './server/docker/Server.Dockerfile', '-t', 'gcr.io/$PROJECT_ID/{{name}}:$COMMIT_SHA', '.']
+    args: ['build', '--build-arg', 'active_env=$_ACTIVE_ENV', '-f', './{{dashCase name}}/docker/Server.Dockerfile', '-t', 'gcr.io/$PROJECT_ID/{{dashCase name}}:$COMMIT_SHA', '.']
 
   - id: push the container image to Container Registry
     name: 'gcr.io/cloud-builders/docker'
@@ -36,7 +42,7 @@ steps:
       - ACTIVE_ENV=$_ACTIVE_ENV
       - NODE_ENV=$_NODE_ENV
       - CLIENT_URL=$_CLIENT_URL
-    args: ['push', 'gcr.io/$PROJECT_ID/{{name}}:$COMMIT_SHA']
+    args: ['push', 'gcr.io/$PROJECT_ID/{{dashCase name}}:$COMMIT_SHA']
 
   # - id: Deploy container image to GKE Cluster for Cloud Run with Anthos
   #   name: 'gcr.io/cloud-builders/gcloud'
@@ -47,13 +53,13 @@ steps:
   #   args:
   #     - 'run'
   #     - 'deploy'
-  #     - '{{name}}'
+  #     - '{{dashCase name}}-server'
   #     - '--image'
-  #     - 'gcr.io/$PROJECT_ID/{{name}}:$COMMIT_SHA'
+  #     - 'gcr.io/$PROJECT_ID/{{dashCase name}}:$COMMIT_SHA'
   #     - '--platform'
   #     - 'gke'
   #     - '--cluster'
-  #     - '{{name}}-cluster'
+  #     - '{{dashCase name}}-cluster'
   #     - '--cluster-location'
   #     - 'us-west1-a'
   #     - '--connectivity'
