@@ -8,11 +8,6 @@ Project Generator - Micro-generator framework that makes it easy for an entire t
 ### Getting Started
 **Add modern-project-generator to your project**
 
-Until we publish, to install run:
-```
-npm i -D https://github.com/PNW3DEV/modern-project-generator.git
-```
-
 After we publish, to install run:
 ```
 npm i -D modern-project-generator

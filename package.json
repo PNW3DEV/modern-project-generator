@@ -1,6 +1,6 @@
 {
   "name": "modern-project-generator",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Plop Generator to scaffold js/ts projects",
   "main": "index.js",
   "scripts": {
