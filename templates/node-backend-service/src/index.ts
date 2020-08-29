@@ -3,7 +3,7 @@ require('dotenv').config({
 })
 
 import initService from "./services"
-import log from './util/logger.prompt'
+import log from './util/logger'
 
 export default (async (): Promise<void|Error> => {
   try {

@@ -1,10 +1,11 @@
 import fs from 'fs'
+import { Stream } from 'stream'
 
 import bunyan, { LogLevel } from 'bunyan'
 import colors from 'colors'
 
-const myRawStream: any = (color: any)  => {
-  const write = (rec: any) => {
+const myRawStream = (color: 'error' | 'info' | 'warn') => {
+  const write: Stream | any = (rec: any) => {
     if (color === 'error') {
       console.error(colors.red(rec))
     }
@@ -18,8 +19,8 @@ const myRawStream: any = (color: any)  => {
 }
 
 const filePath =  process.env.NODE_ENV === 'production'
-  ? '/var/log/OregonState-PUA-Batch-Service.log'
-  : `${__dirname}/../../logs/OregonState-PUA-Batch-Service.log`
+  ? `/var/log/{{ name }}.log`
+  : `${__dirname}/../../logs/{{ name }}.log`
 
 const logDir = `${__dirname}/../../logs/`
 
@@ -28,19 +29,19 @@ if (!fs.existsSync(logDir)) {
   fs.mkdirSync(logDir)
 }
 
-const log = bunyan.createLogger({
-  name: 'OregonState-PUA-Batch-Service:App',
+export const logger: any = bunyan.createLogger({
+  name: '{{ name }} app',
   level: (process.env.LOG_LEVEL as LogLevel) || 'info',
   streams: [
     {
       // stream: process.stdout,
       level: 'info',
-      stream: myRawStream('info')
+      stream: myRawStream('info') as any
     },
     {
       // stream: process.stdout,
       level: 'error',
-      stream: myRawStream('error')
+      stream: myRawStream('error') as any
     },
     {
       type: 'rotating-file',
@@ -51,4 +52,4 @@ const log = bunyan.createLogger({
   ],
 })
 
-export default log
+export default logger
