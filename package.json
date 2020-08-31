@@ -2,7 +2,7 @@
   "name": "modern-project-generator",
   "version": "1.0.3",
   "description": "Plop Generator to scaffold js/ts projects",
-  "main": "index.js",
+  "main": "./bin/cli.js",
   "scripts": {
     "test": "echo Error: no test specified",
     "start": "plop",
