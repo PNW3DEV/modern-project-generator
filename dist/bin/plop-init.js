@@ -6,6 +6,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.initMessage = void 0;
 const chalk_1 = __importDefault(require("chalk"));
 exports.initMessage = () => {
-    console.info(`${chalk_1.default.green('Welcome to the IGNW Project Generator! Please start by selecting a project generator below:')}`);
+    console.info(`${chalk_1.default.green('Welcome to the Modern Project Generator! Please start by selecting a project generator below:')}`);
 };
 //# sourceMappingURL=plop-init.js.map

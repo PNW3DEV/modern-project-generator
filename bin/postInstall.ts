@@ -11,7 +11,7 @@ console.log(`
   // ${chalk.yellow.bold("package.json")}
   {
     "scripts": {
-        "plop": "plop --plopfile ./node_modules/project-generator/plopfile.ts"
+        "plop": "plop --plopfile ./node_modules/modern-project-generator/plopfile.ts"
     },
     ...
   }
@@ -26,5 +26,5 @@ console.log(`
   )} to use the monorepo project generator and follow the prompts.
 
   For further information check the readme of the project
-  (https://github.com/PNW3DEV/project-generator)
+  (https://github.com/PNW3DEV/modern-project-generator)
 `);
