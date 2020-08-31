@@ -6,11 +6,11 @@ Project Generator - Micro-generator framework that makes it easy for an entire t
 * NodeJS LTS
 
 ### Getting Started
-**Add modern-project-generator to your project**
+**Install modern-project-generator**
 
 After we publish, to install run:
 ```
-npm i -D modern-project-generator
+npm i -g modern-project-generator
 ```
 
 Create a sym link so you can use the cli command:

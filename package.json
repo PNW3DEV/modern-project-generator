@@ -1,6 +1,6 @@
 {
   "name": "modern-project-generator",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Plop Generator to scaffold js/ts projects",
   "main": "./bin/cli.js",
   "scripts": {
@@ -56,6 +56,7 @@
     "typescript": "^3.9.7"
   },
   "directories": {
+    "doc": "docs",
     "lib": "lib"
   },
   "repository": {
@@ -65,5 +66,42 @@
   "bugs": {
     "url": "https://github.com/PNW3DEV/modern-project-generator/issues"
   },
-  "homepage": "https://github.com/PNW3DEV/modern-project-generator#readme"
+  "homepage": "https://github.com/PNW3DEV/modern-project-generator#readme",
+  "keywords": [
+    "Plop",
+    "Project",
+    "Generator",
+    "Typescript",
+    "Javascript",
+    "React",
+    "GatsbyJS",
+    "NextJS",
+    "NodeJS",
+    "Apollo",
+    "GraphQL",
+    "CICD",
+    "GCP",
+    "AWS",
+    "Azure",
+    "Firebase",
+    "Google",
+    "Cloud",
+    "Express",
+    "Serverless",
+    "Cloud",
+    "Functions",
+    "Component",
+    "Library",
+    "Storybook",
+    "Material",
+    "UI",
+    "Cypress",
+    "E2E",
+    "Cloud",
+    "Build",
+    "GitHub",
+    "Actions",
+    "Shared",
+    "Library"
+  ]
 }
