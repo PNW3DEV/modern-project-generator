@@ -8,7 +8,6 @@ Project Generator - Micro-generator framework that makes it easy for an entire t
 ### Getting Started
 **Install modern-project-generator**
 
-After we publish, to install run:
 ```
 npm i -g modern-project-generator
 ```
