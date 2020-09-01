@@ -4,7 +4,7 @@ export interface UseNavigationDrawer {
   handleDrawerOpen: () => void
   handleDrawerClose: () => void
   open: boolean
-  setOpen: SetStateAction<boolean>
+  setOpen: SetStateAction<boolean>|any
 }
 
 export default (): UseNavigationDrawer => {

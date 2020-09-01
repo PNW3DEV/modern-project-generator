@@ -59,7 +59,8 @@ exports.default = (plop, data) => {
                 action = getPromptAction(file, tmpDir, data, action);
                 actions.push(action);
             }
-            else if (!file.includes('.prompt') && !file.includes('.custom')) {
+            else if (fs_1.default.existsSync(`${templateDir}/${file}`)
+                && fs_1.default.lstatSync(`${templateDir}/${file}`).isDirectory()) {
                 return recursiveFiles(`${path}/${file}`, `${templateDir}/${file}`);
             }
         });

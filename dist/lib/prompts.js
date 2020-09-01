@@ -17,7 +17,7 @@ exports.default = (plop) => {
         const dir = fs_1.default.readdirSync(templateDir);
         dir.forEach((file, idx) => {
             const path = `${templateDir}/${file}`;
-            if (!file.includes('.') && !file.endsWith('file')) {
+            if (fs_1.default.existsSync(path) && fs_1.default.lstatSync(path).isDirectory()) {
                 return recursivePrompts(path);
             }
             else if (idx === dir.length - 1) {

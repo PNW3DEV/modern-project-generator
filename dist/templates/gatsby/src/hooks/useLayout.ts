@@ -4,6 +4,14 @@ import { useTranslation } from 'react-i18next'
 import { NavQueryQuery } from '../../graphql-types'
 import useVersion from "./useVersion"
 
+export interface IMenuItem {
+  label: string
+  url?: string
+  isExternal?: boolean
+  icon?: any
+  menuItems: this[]
+}
+
 export default () => {
   useVersion()
   const { t } = useTranslation()
@@ -22,7 +30,7 @@ export default () => {
   `)
 
   return {
-    menus: [],
+    menus: [] as IMenuItem[],
     file: data.file,
     signInButtonLabel: t('auth.signInButtonLabel'),
     signOutButtonLabel: t('auth.signOutButtonLabel'),

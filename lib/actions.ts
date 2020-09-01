@@ -65,7 +65,8 @@ export default (plop: NodePlopAPI, data: AnyObj): Actions => {
         action = getAppendAction(file, templateDir, action)
         action = getPromptAction(file, tmpDir, data, action)
         actions.push(action)
-      } else if (!file.includes('.prompt') && !file.includes('.custom')) {
+      } else if (fs.existsSync(`${templateDir}/${file}`) 
+        && fs.lstatSync(`${templateDir}/${file}`).isDirectory()) {
         return recursiveFiles(`${path}/${file}`, `${templateDir}/${file}`)
       }
     })

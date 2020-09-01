@@ -28,7 +28,7 @@ enum templates {
 }
 
 export const pipelinesActionHandler = (
-  type: keyof templates,
+  type: templates,
   actions: any[],
   destination: string,
   templatePath: string
@@ -45,7 +45,7 @@ export const pipelinesActionHandler = (
   actions.push({
     type: "addMany",
     destination,
-    base: `${templatePath}`,
+    base: templatePath,
     templateFiles: templateFiles[type],
     stripExtensions: '.custom'
   })

@@ -40,7 +40,7 @@ exports.pipelinesActionHandler = (type, actions, destination, templatePath) => {
     actions.push({
         type: "addMany",
         destination,
-        base: `${templatePath}`,
+        base: templatePath,
         templateFiles: templateFiles[type],
         stripExtensions: '.custom'
     });

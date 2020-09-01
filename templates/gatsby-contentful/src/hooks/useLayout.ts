@@ -3,6 +3,14 @@ import { graphql, useStaticQuery } from "gatsby"
 import { NavQueryQuery } from '../../graphql-types'
 import useVersion from "./useVersion"
 
+export interface IMenuItem {
+  label: string
+  url?: string
+  icon?: any
+  isExternal?: boolean
+  menuItems: this[]
+}
+
 export default () => {
   useVersion()
   const data: NavQueryQuery = useStaticQuery(graphql`
