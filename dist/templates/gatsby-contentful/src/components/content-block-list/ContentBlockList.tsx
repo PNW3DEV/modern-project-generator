@@ -1,8 +1,7 @@
 import Grid from '@material-ui/core/Grid'
 import { createStyles, makeStyles } from '@material-ui/core/styles'
+import ContentBlock, { ContentBlockProps } from 'components/content-block/ContentBlock'
 import React, { FunctionComponent } from 'react'
-
-import ContentBlock, { ContentBlockProps } from '../content-block/ContentBlock'
 
 const useStyles = makeStyles(() =>
   createStyles({
@@ -24,7 +23,7 @@ const ContentBlockList: FunctionComponent<ContentBlockListProps> = (props) => {
         <Grid key={`grid-cblock-${idx}`} item className={classes.content}>
           <ContentBlock
             key={`cblock-${idx}`}
-            imgPosition={idx%2 === 0 ? 'left' : 'right'}
+            imgPosition={idx % 2 === 0 ? 'left' : 'right'}
             {...block}
           />
         </Grid>

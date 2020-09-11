@@ -1,7 +1,6 @@
 import { graphql, useStaticQuery } from "gatsby"
-
-import { NavQueryQuery } from '../../graphql-types'
-import useVersion from "./useVersion"
+import useVersion from "hooks/useVersion"
+import { NavQueryQuery } from "src/../graphql-types"
 
 export interface IMenuItem {
   label: string
@@ -59,7 +58,7 @@ export default () => {
   const {
     sortOrder: menus,
     signInButtonLabel,
-    signOutButtonLabel
+    signOutButtonLabel,
   } = data.allContentfulNavigationListSortOrder?.edges?.[0]?.node
 
   return {

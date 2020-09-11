@@ -1,13 +1,12 @@
-import { graphql, useStaticQuery } from 'gatsby';
-
-import { NewsIndexQueryQuery } from '../../graphql-types';
-import { useSiteMetadata } from './useSiteMetadata';
+import { graphql, useStaticQuery } from "gatsby"
+import { useSiteMetadata } from "hooks/useSiteMetadata"
+import { NewsIndexQueryQuery } from "src/../graphql-types"
 
 export default () => {
   const siteData = useSiteMetadata()
   const data: NewsIndexQueryQuery = useStaticQuery(graphql`
     query NewsIndexQuery {
-      allContentfulPage(filter: {slug: {eq: "news"}}) {
+      allContentfulPage(filter: { slug: { eq: "news" } }) {
         edges {
           node {
             title
@@ -47,7 +46,11 @@ export default () => {
     siteTitle: siteData?.site?.siteMetadata?.title,
     posts: data.allContentfulBlogPost.edges,
     appBarTitle: data.allContentfulPage?.edges?.[0]?.node?.appBarTitle,
-    headerLabel: data.allContentfulPage?.edges?.[0]?.node?.additionalProperties?.headerLabel,
-    contentBodylabel: data.allContentfulPage?.edges?.[0]?.node?.additionalProperties?.contentBodyLabel
+    headerLabel:
+      data.allContentfulPage?.edges?.[0]?.node?.additionalProperties
+        ?.headerLabel,
+    contentBodylabel:
+      data.allContentfulPage?.edges?.[0]?.node?.additionalProperties
+        ?.contentBodyLabel,
   }
 }

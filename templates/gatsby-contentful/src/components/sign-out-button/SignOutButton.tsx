@@ -1,10 +1,9 @@
 import Button from '@material-ui/core/Button'
 import ExitToAppIcon from "@material-ui/icons/ExitToApp"
 import { navigate } from 'gatsby'
+import { AuthContext } from 'providers/AuthProvider'
 import React, { FunctionComponent, useContext } from 'react'
-
-import { AuthContext } from '../../providers/AuthProvider'
-import ROUTES from '../../routes'
+import ROUTES from 'src/routes'
 
 interface SignOutButtonProps {
   signInButtonLabel: string

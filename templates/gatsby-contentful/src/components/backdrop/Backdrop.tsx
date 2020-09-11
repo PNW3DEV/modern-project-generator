@@ -2,9 +2,8 @@ import Backdrop from "@material-ui/core/Backdrop"
 import CircularProgress from "@material-ui/core/CircularProgress"
 import Fade from "@material-ui/core/Fade"
 import { Theme, createStyles, makeStyles } from "@material-ui/core/styles"
+import { TransitionContext } from "providers/TransitionProvider"
 import React, { useContext } from "react"
-
-import { TransitionContext } from "../../providers/TransitionProvider"
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({

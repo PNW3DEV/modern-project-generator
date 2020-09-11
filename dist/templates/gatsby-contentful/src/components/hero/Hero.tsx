@@ -1,4 +1,4 @@
-import './Hero.css'
+import 'components/hero/Hero.css'
 
 import Container from '@material-ui/core/Container'
 import BackgroundImage from 'gatsby-background-image'

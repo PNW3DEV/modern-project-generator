@@ -1,19 +1,18 @@
-import Avatar from '@material-ui/core/Avatar';
-import Box from '@material-ui/core/Box';
-import Button from '@material-ui/core/Button';
-import Checkbox from '@material-ui/core/Checkbox';
-import Container from '@material-ui/core/Container';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Grid from '@material-ui/core/Grid';
-import { Theme, makeStyles } from '@material-ui/core/styles';
-import TextField from '@material-ui/core/TextField';
-import Typography from '@material-ui/core/Typography';
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-import { Link } from 'gatsby';
+import Avatar from '@material-ui/core/Avatar'
+import Box from '@material-ui/core/Box'
+import Button from '@material-ui/core/Button'
+import Checkbox from '@material-ui/core/Checkbox'
+import Container from '@material-ui/core/Container'
+import CssBaseline from '@material-ui/core/CssBaseline'
+import FormControlLabel from '@material-ui/core/FormControlLabel'
+import Grid from '@material-ui/core/Grid'
+import { Theme, makeStyles } from '@material-ui/core/styles'
+import TextField from '@material-ui/core/TextField'
+import Typography from '@material-ui/core/Typography'
+import LockOutlinedIcon from '@material-ui/icons/LockOutlined'
+import { Link } from 'gatsby'
 import React, { FunctionComponent } from 'react'
-
-import ROUTES from '../../routes'
+import ROUTES from 'src/routes'
 
 function Copyright({ classes }: any) {
   return (
@@ -25,7 +24,7 @@ function Copyright({ classes }: any) {
       {new Date().getFullYear()}
       {'.'}
     </Typography>
-  );
+  )
 }
 
 const useStyles = makeStyles((theme: Theme) => ({
@@ -51,14 +50,14 @@ const useStyles = makeStyles((theme: Theme) => ({
     borderBottom: 'none',
     color: theme.palette.primary.main,
   }
-}));
+}))
 
 interface SignUpProps {
-    // TODO: INSERT PROP TYPES
+  // TODO: INSERT PROP TYPES
 }
 
 const SignUp: FunctionComponent<SignUpProps> = (props) => {
-  const classes = useStyles();
+  const classes = useStyles()
 
   return (
     <Container component="main" maxWidth="xs">
@@ -147,7 +146,7 @@ const SignUp: FunctionComponent<SignUpProps> = (props) => {
         <Copyright classes={classes} />
       </Box>
     </Container>
-  );
+  )
 }
 
 export default SignUp

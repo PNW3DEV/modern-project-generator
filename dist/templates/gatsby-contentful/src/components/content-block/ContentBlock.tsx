@@ -1,10 +1,9 @@
 import { Typography } from '@material-ui/core'
 import Grid from '@material-ui/core/Grid'
 import useMediaQuery from "@material-ui/core/useMediaQuery"
+import useStyles from 'components/content-block/ContentBlock.styles'
 import React, { FunctionComponent } from 'react'
-
-import theme from '../../themes/theme-light'
-import useStyles from './ContentBlock.styles'
+import theme from 'themes/theme-light'
 
 export interface ContentBlockProps {
   header?: string
@@ -12,7 +11,7 @@ export interface ContentBlockProps {
   fluid?: any
   subHeader?: any
   link?: any
-  imgPosition?: 'left'|'right'
+  imgPosition?: 'left' | 'right'
 }
 
 export const ContentBlock: FunctionComponent<ContentBlockProps> = (props) => {

@@ -1,10 +1,10 @@
-import Button from '@material-ui/core/Button';
-import Card from '@material-ui/core/Card';
-import CardActionArea from '@material-ui/core/CardActionArea';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import { makeStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button'
+import Card from '@material-ui/core/Card'
+import CardActionArea from '@material-ui/core/CardActionArea'
+import CardActions from '@material-ui/core/CardActions'
+import CardContent from '@material-ui/core/CardContent'
+import { makeStyles } from '@material-ui/core/styles'
+import Typography from '@material-ui/core/Typography'
 import { navigate } from 'gatsby'
 import Img from 'gatsby-image'
 import React from 'react'
@@ -12,9 +12,9 @@ import React from 'react'
 export interface PostCardProps {
   post: {
     heroImage: {
-      fluid: string|any
+      fluid: string | any
     }
-    publishDate: string|Date
+    publishDate: string | Date
     slug: string
     title: string
     description: {
@@ -32,10 +32,10 @@ const useStyles = makeStyles({
   media: {
     height: 140,
   },
-});
+})
 
 export default ({ post }: PostCardProps) => {
-  const classes = useStyles();
+  const classes = useStyles()
   const markdown = {
     __html: post.description.childMarkdownRemark.html,
   }
@@ -57,10 +57,10 @@ export default ({ post }: PostCardProps) => {
           size="small"
           color="primary"
           onClick={() => navigate(`/news/${post.slug}`)}
-          >
+        >
           Learn More
         </Button>
       </CardActions>
     </Card>
-  );
+  )
 }

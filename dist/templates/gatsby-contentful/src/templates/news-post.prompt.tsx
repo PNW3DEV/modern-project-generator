@@ -1,12 +1,12 @@
-import '../components/hero/Hero.css'
+import 'components/hero/Hero.css'
 
+import Layout from 'components/layout'
 import { graphql } from 'gatsby'
 import Img from 'gatsby-image'
+import { useSiteMetadata } from 'hooks/useSiteMetadata'
 import React from 'react'
 import { Helmet } from 'react-helmet'
 
-import Layout from '../components/layout'
-import { useSiteMetadata } from '../hooks/useSiteMetadata'
 import useStyles from './news-post.styles'
 
 const NewsPostTemplate = (props: any) => {
@@ -37,11 +37,11 @@ const NewsPostTemplate = (props: any) => {
             {!post && <h4>No Contentful entries have been created for this dynamic page yet.</h4>}
             {
               process.env.GATSBY_ACTIVE_ENV !== 'production' && <div className={classes.editBox}>
-              <p>You can <a href={`https://app.contentful.com/spaces/${process.env.CONTENTFUL_SPACE_ID}/entries/${page.contentful_id}`}>
-                edit this page in Contentful
+                <p>You can <a href={`https://app.contentful.com/spaces/${process.env.CONTENTFUL_SPACE_ID}/entries/${page.contentful_id}`}>
+                  edit this page in Contentful
                 </a>
-                {' '}if you have permissions.</p>
-            </div>
+                  {' '}if you have permissions.</p>
+              </div>
             }
           </div>
 

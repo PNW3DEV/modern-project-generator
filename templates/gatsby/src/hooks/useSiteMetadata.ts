@@ -9,11 +9,12 @@ export const useSiteMetadata = () => {
             title
             siteUrl
             description
-            # image
+            image
           }
         }
       }
     `
   )
+
   return site.siteMetadata
 }

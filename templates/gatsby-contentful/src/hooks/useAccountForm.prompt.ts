@@ -1,8 +1,7 @@
 import firebase from "gatsby-plugin-firebase"
+import { SnackBarContext } from "providers/SnackbarProvider"
 import { useContext, useState } from "react"
-
-import { SnackBarContext } from "../providers/SnackbarProvider"
-import storage from "../util/storage"
+import storage from "util/storage"
 
 export default () => {
   const snackbar = useContext(SnackBarContext)
@@ -38,7 +37,9 @@ export default () => {
     return user.updateProfile(profile)
   }
 
-  const updatePassword = async (password = state.password): Promise<any> => {
+  const updatePassword = async (
+    password = state.password
+  ): Promise<any | void> => {
     if (
       state.providerId === "password" &&
       !!password &&
@@ -65,7 +66,7 @@ export default () => {
     return Promise.resolve()
   }
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (): Promise<void> => {
     try {
       await Promise.all([updateProfile(), updateEmail(), updatePassword()])
       snackbar.showFeedback({ message: "Saved" })

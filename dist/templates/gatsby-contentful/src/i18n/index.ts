@@ -1,7 +1,6 @@
 import i18next, { InitOptions } from "i18next"
 import LanguageDetector from "i18next-browser-languagedetector"
-
-import { languages } from '../locales/supportedLanguages'
+import { languages } from "src/locales/supportedLanguages"
 
 const detectionOptions = {
   // order and from where user language should be detected
@@ -39,11 +38,15 @@ const detectionOptions = {
   cookieOptions: { path: "/" },
 }
 
-const i18nResources = languages.reduce((resources: InitOptions['resources'], language): InitOptions['resources'] => {
-  resources[language.code] = { translations: require(`../locales/${language.code}/translations.json`) };
-  return resources;
-}, {});
-
+const i18nResources = languages.reduce(
+  (resources: InitOptions["resources"], language): InitOptions["resources"] => {
+    resources[language.code] = {
+      translations: require(`../locales/${language.code}/translations.json`),
+    }
+    return resources
+  },
+  {}
+)
 
 i18next.use(LanguageDetector).init({
   whitelist: languages.map(({ code }) => code),

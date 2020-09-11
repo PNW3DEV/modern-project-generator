@@ -1,7 +1,6 @@
 import { graphql, useStaticQuery } from "gatsby"
 import { useEffect } from "react"
-
-import storage from "../util/storage"
+import storage from "util/storage"
 
 export default () => {
   const data = useStaticQuery(graphql`
@@ -20,7 +19,7 @@ export default () => {
         localStorage.clear()
         storage.save("version", siteMetadata.version)
         console.info("Cleared Storage for new App Version.")
-        if ('caches' in window) {
+        if ("caches" in window) {
           // Service worker cache should be cleared with caches.delete()
           caches.keys().then((names: string[]) => {
             for (const name of names) caches.delete(name)

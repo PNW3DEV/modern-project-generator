@@ -1,4 +1,5 @@
 import Alert from "@material-ui/lab/Alert"
+import { AlertSeverity } from "components/alerts/Alerts"
 import React, {
   Context,
   Dispatch,
@@ -7,8 +8,6 @@ import React, {
   useState,
 } from "react"
 import { toast } from "react-toastify"
-
-import { AlertSeverity } from "../components/alerts/Alerts"
 
 interface FeedbackOptions {
   message?: string
@@ -36,7 +35,7 @@ const SnackbarAlert = (props: { options: FeedbackOptions }) => {
 export const SnackBarContext: Context<SnackBarContext> = createContext<
   SnackBarContext
 >({
-  setState: () => {},
+  setState: () => { },
   showFeedback: (options?: FeedbackOptions | any) => {
     toast(<SnackbarAlert options={options} />, {
       position: toast.POSITION.TOP_RIGHT,
@@ -56,7 +55,7 @@ export const SnackBarContext: Context<SnackBarContext> = createContext<
 })
 
 export const SnackBarProvider = () => {
-  const [state, setState] = useState(SnackBarContext)
+  const [ state, setState ] = useState(SnackBarContext)
 
   const value = {
     ...state,

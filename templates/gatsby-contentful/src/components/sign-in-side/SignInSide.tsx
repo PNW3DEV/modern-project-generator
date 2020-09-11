@@ -1,33 +1,32 @@
-import Avatar from '@material-ui/core/Avatar';
-import Box from '@material-ui/core/Box';
-import Button from '@material-ui/core/Button';
-import Checkbox from '@material-ui/core/Checkbox';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
-import { Theme, makeStyles } from '@material-ui/core/styles';
-import TextField from '@material-ui/core/TextField';
-import Typography from '@material-ui/core/Typography';
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-import { Link } from 'gatsby';
+import Avatar from '@material-ui/core/Avatar'
+import Box from '@material-ui/core/Box'
+import Button from '@material-ui/core/Button'
+import Checkbox from '@material-ui/core/Checkbox'
+import CssBaseline from '@material-ui/core/CssBaseline'
+import FormControlLabel from '@material-ui/core/FormControlLabel'
+import Grid from '@material-ui/core/Grid'
+import Paper from '@material-ui/core/Paper'
+import { Theme, makeStyles } from '@material-ui/core/styles'
+import TextField from '@material-ui/core/TextField'
+import Typography from '@material-ui/core/Typography'
+import LockOutlinedIcon from '@material-ui/icons/LockOutlined'
+import { SignInProps } from 'components/sign-in/SignIn'
+import { Link } from 'gatsby'
+import useFirebaseAuthUI from 'hooks/useFirebaseAuthUI'
 import React, { FunctionComponent } from 'react'
-
-import useFirebaseAuthUI from '../../hooks/useFirebaseAuthUI'
-import ROUTES from '../../routes'
-import { SignInProps } from '../sign-in/SignIn'
+import ROUTES from 'src/routes'
 
 function Copyright({ classes }: any) {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
       <Link color="inherit" to="#" className={classes.link}>
-        Contentful Demo
+        Lyfe Apps
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
     </Typography>
-  );
+  )
 }
 
 const useStyles = makeStyles((theme: Theme) => ({
@@ -37,8 +36,9 @@ const useStyles = makeStyles((theme: Theme) => ({
   image: {
     backgroundImage: 'url(https://source.unsplash.com/random)',
     backgroundRepeat: 'no-repeat',
-    backgroundColor:
-      theme.palette.type === 'light' ? theme.palette.grey[50] : theme.palette.grey[900],
+    backgroundColor: theme.palette.type === 'light'
+      ? theme.palette.grey[ 50 ]
+      : theme.palette.grey[ 900 ],
     backgroundSize: 'cover',
     backgroundPosition: 'center',
   },
@@ -64,9 +64,9 @@ const useStyles = makeStyles((theme: Theme) => ({
     borderBottom: 'none',
     color: theme.palette.primary.main,
   }
-}));
+}))
 
-export const SignInForm = ({ classes }: any) => (
+export const SignInForm = ({ handleChange, handleSubmit, classes }: any) => (
   <div className={classes.paper}>
     <Avatar className={classes.avatar}>
       <LockOutlinedIcon />
@@ -85,6 +85,7 @@ export const SignInForm = ({ classes }: any) => (
         name="email"
         autoComplete="email"
         autoFocus
+        onChange={handleChange}
       />
       <TextField
         variant="outlined"
@@ -96,6 +97,7 @@ export const SignInForm = ({ classes }: any) => (
         type="password"
         id="password"
         autoComplete="current-password"
+        onChange={handleChange}
       />
       <FormControlLabel
         control={<Checkbox value="remember" color="primary" />}
@@ -108,6 +110,7 @@ export const SignInForm = ({ classes }: any) => (
         color="primary"
         className={classes.submit}
         data-testid={'sign-in-button'}
+        onClick={handleSubmit}
       >
         Sign In
       </Button>
@@ -132,7 +135,7 @@ export const SignInForm = ({ classes }: any) => (
 )
 
 export const SignInSide: FunctionComponent<SignInProps> = (props) => {
-  const classes = useStyles();
+  const classes = useStyles()
   useFirebaseAuthUI(props)
 
   return (
@@ -140,10 +143,10 @@ export const SignInSide: FunctionComponent<SignInProps> = (props) => {
       <CssBaseline />
       <Grid item xs={false} sm={4} md={7} className={classes.image} />
       <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
-        <SignInForm classes={classes} />
+        <SignInForm {...props} classes={classes} />
       </Grid>
     </Grid>
-  );
+  )
 }
 
 export default SignInSide

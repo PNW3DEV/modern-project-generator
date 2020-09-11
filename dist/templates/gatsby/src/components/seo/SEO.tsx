@@ -1,7 +1,7 @@
 import { graphql, useStaticQuery } from "gatsby"
 import React from "react"
 import { Helmet } from "react-helmet"
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from 'react-i18next'
 
 type MetaItem = {
   name: string
@@ -51,7 +51,7 @@ export const SEO: React.FC<SEOProps> = (props) => {
   const siteUrl = props.url || url
   const siteAuthor = props.author || author
   const siteImage = props.image || image
-  const siteKeywords = [...keywords, props.keywords].join(",")
+  const siteKeywords = [ ...keywords, props.keywords ].join(",")
   const metaData = [
     {
       name: "canonical",

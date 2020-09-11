@@ -9,9 +9,8 @@ import Typography from "@material-ui/core/Typography"
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined"
 import { Link } from "gatsby"
 import React from "react"
-import { useTranslation } from 'react-i18next';
-
-import ROUTES from "../../routes"
+import { useTranslation } from 'react-i18next'
+import ROUTES from "src/routes"
 
 const useStyles = makeStyles((theme: Theme) => ({
   paper: {

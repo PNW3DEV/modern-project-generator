@@ -1,12 +1,11 @@
 import Grid from '@material-ui/core/Grid'
-import Typography from '@material-ui/core/Typography';
+import Typography from '@material-ui/core/Typography'
+import Layout from 'components/layout/Layout'
+import PostCard from 'components/post-card/PostCard'
+import useNewsPage from 'hooks/useNewsPage'
 import React from 'react'
 import { Helmet } from 'react-helmet'
-
-import Layout from '../components/layout/Layout'
-import PostCard from '../components/post-card/PostCard'
-import useNewsPage from '../hooks/useNewsPage'
-import useStyles from '../styles/news.styles'
+import useStyles from 'styles/news.styles'
 
 const NewPage = () => {
   const { siteTitle, posts, appBarTitle, headerLabel, contentBodylabel } = useNewsPage()
