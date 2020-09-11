@@ -3,9 +3,23 @@
  *
  * See: https://www.gatsbyjs.org/docs/node-apis/
  */
-const path = require('path')
+const path = require("path")
 
 exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
+  actions.setWebpackConfig({
+    resolve: {
+      modules: [path.resolve(__dirname, "src"), "node_modules"],
+      alias: {
+        src: path.resolve(__dirname, "src"),
+        components: path.resolve(__dirname, "components"),
+        hooks: path.resolve(__dirname, "hooks"),
+        providers: path.resolve(__dirname, "providers"),
+        styles: path.resolve(__dirname, "styles"),
+        themes: path.resolve(__dirname, "themes"),
+        util: path.resolve(__dirname, "util"),
+      },
+    },
+  })
   if (stage === "build-html") {
     actions.setWebpackConfig({
       module: {
@@ -24,7 +38,7 @@ exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions
 
   return new Promise((resolve, reject) => {
-    const blogPost = path.resolve('./src/templates/news-post.tsx')
+    const blogPost = path.resolve("./src/templates/news-post.tsx")
     resolve(
       graphql(
         `
