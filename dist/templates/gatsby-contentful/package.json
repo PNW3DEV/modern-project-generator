@@ -131,6 +131,7 @@
     "babel-plugin-transform-remove-console": "^6.9.4",
     "babel-preset-gatsby": "^0.5.5",
     "contentful-export": "^7.10.7",
+    "contentful-import": "^7.9.8",
     "edit-json-file": "^1.4.0",
     "eslint": "^7.6.0",
     "eslint-config-gojutin": "0.1.1",

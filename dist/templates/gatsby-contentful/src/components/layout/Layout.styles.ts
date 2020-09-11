@@ -11,6 +11,7 @@ const useStyles = makeStyles((theme: Theme) =>
         easing: theme.transitions.easing.sharp,
         duration: theme.transitions.duration.leavingScreen,
       }),
+      zIndex: theme.zIndex.drawer + 1
     },
     appBarShift: {
       width: `calc(100% - ${drawerWidth}px)`,
@@ -70,7 +71,7 @@ const useStyles = makeStyles((theme: Theme) =>
       position: 'absolute',
       right: 0
     },
-    toolbar: { marginRight: '2em' },
+    toolbar: { marginRight: '2em' }
   }),
 )
 
