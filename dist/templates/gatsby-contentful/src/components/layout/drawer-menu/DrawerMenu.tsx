@@ -1,9 +1,8 @@
 import List from '@material-ui/core/List'
 import { createStyles, makeStyles } from '@material-ui/core/styles'
+import DrawerMenuItem from 'components/layout/drawer-menu-item-list/DrawerMenuItemList'
+import { IMenuItem } from 'hooks/useLayout'
 import React from 'react'
-
-import { IMenuItem } from '../../../hooks/useLayout'
-import DrawerMenuItem from '../drawer-menu-item-list/DrawerMenuItemList'
 
 const drawerWidth = 240
 

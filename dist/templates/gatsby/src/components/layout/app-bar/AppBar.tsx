@@ -8,14 +8,13 @@ import useMediaQuery from "@material-ui/core/useMediaQuery"
 import CloseIcon from '@material-ui/icons/Close'
 import MenuIcon from '@material-ui/icons/Menu'
 import clsx from 'clsx'
+import AppBarMenu from 'components/layout/app-bar-menu/AppBarMenu'
+import useStyles from 'components/layout/Layout.styles'
+import SignOutButton from 'components/sign-out-button/SignOutButton'
 import Img from "gatsby-image"
+import { IMenuItem } from 'hooks/useLayout'
 import React, { FunctionComponent } from 'react'
-
-import { IMenuItem } from '../../../hooks/useLayout'
-import theme from "../../../themes/theme-light"
-import SignOutButton from '../../sign-out-button/SignOutButton'
-import AppBarMenu from '../app-bar-menu/AppBarMenu'
-import useStyles from '../Layout.styles'
+import theme from "themes/theme-light"
 
 export interface AppBarProps {
   title?: string
@@ -51,23 +50,23 @@ export const AppBar: FunctionComponent<AppBarProps> = (props) => {
         <Hidden mdUp>
           {!open
             ? <IconButton
-                color="inherit"
-                aria-label="open drawer"
-                onClick={handleDrawerOpen}
-                edge="start"
-                className={clsx(classes.menuButton, open && classes.hide)}
-              >
-                <MenuIcon />
-              </IconButton>
-            :  <IconButton
-                color="inherit"
-                aria-label="close drawer"
-                onClick={handleDrawerClose}
-                edge="start"
-                className={clsx(classes.menuButton, !open)}
-              >
-                <CloseIcon />
-              </IconButton>
+              color="inherit"
+              aria-label="open drawer"
+              onClick={handleDrawerOpen}
+              edge="start"
+              className={clsx(classes.menuButton, open && classes.hide)}
+            >
+              <MenuIcon />
+            </IconButton>
+            : <IconButton
+              color="inherit"
+              aria-label="close drawer"
+              onClick={handleDrawerClose}
+              edge="start"
+              className={clsx(classes.menuButton, !open)}
+            >
+              <CloseIcon />
+            </IconButton>
           }
         </Hidden>
         <Hidden smDown={true}>

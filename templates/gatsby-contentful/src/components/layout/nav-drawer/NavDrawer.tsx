@@ -2,12 +2,11 @@ import Divider from '@material-ui/core/Divider'
 import Drawer from '@material-ui/core/Drawer'
 import IconButton from '@material-ui/core/IconButton'
 import CloseIcon from '@material-ui/icons/Close'
+import DrawerMenu from 'components/layout/drawer-menu/DrawerMenu'
+import useStyles from 'components/layout/Layout.styles'
 import { navigate } from 'gatsby'
+import { IMenuItem } from 'hooks/useLayout'
 import React, { FunctionComponent } from 'react'
-
-import { IMenuItem } from '../../../hooks/useLayout'
-import DrawerMenu from '../drawer-menu/DrawerMenu'
-import useStyles from '../Layout.styles'
 
 export interface NavDrawerProps {
   open: boolean

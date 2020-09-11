@@ -6,12 +6,11 @@ import ListItemText from '@material-ui/core/ListItemText'
 import { createStyles, makeStyles } from '@material-ui/core/styles'
 import IconExpandLess from '@material-ui/icons/ExpandLess'
 import IconExpandMore from '@material-ui/icons/ExpandMore'
+import DrawerMenuItemComponent from 'components/layout/drawer-menu-item/DrawerMenuItem'
+import { handleMenuClick } from 'components/layout/nav-drawer/NavDrawer'
+import { IMenuItem } from 'hooks/useLayout'
 import PropTypes from 'prop-types'
 import React from 'react'
-
-import { IMenuItem } from '../../../hooks/useLayout'
-import DrawerMenuItemComponent from '../drawer-menu-item/DrawerMenuItem'
-import { handleMenuClick } from '../nav-drawer/NavDrawer'
 
 const useStyles = makeStyles(() =>
   createStyles({
@@ -52,7 +51,7 @@ const DrawerMenuItemList: React.FC<AppMenuItemProps> = props => {
   const { label, url, icon: Icon, menuItems = [], onClick = handleMenuClick } = props
   const classes = useStyles()
   const isExpandable = menuItems && menuItems.length > 0
-  const [open, setOpen] = React.useState(false)
+  const [ open, setOpen ] = React.useState(false)
 
   const handleClick = () => {
     setOpen(!open)
@@ -64,7 +63,7 @@ const DrawerMenuItemList: React.FC<AppMenuItemProps> = props => {
       className={classes.menuItem}
       link={url}
       onClick={handleClick}
-      >
+    >
       {/* Display an icon if any */}
       {!!Icon && (
         <ListItemIcon className={classes.menuItemIcon}>
