@@ -1,23 +1,57 @@
 {
-  "include": ["./src/**/*"],
-  "exclude": ["node_modules"],
   "compilerOptions": {
+    "strict": false,
+    "noImplicitAny": false,
     "target": "es2019",
-    "jsx": "react",
+    "downlevelIteration": true,
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "allowJs": true,
     "skipLibCheck": true,
-    "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch": true,
-    // "typeRoots": ["node_modules/@types/", "./src/@types/", "./src/**/@types/"],
-    "strict": true,
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "jsx": "preserve",
+    "module": "commonjs",
+    "isolatedModules": true,
     "resolveJsonModule": true,
+    "moduleResolution": "node",
+    "baseUrl": ".",
     "paths": {
       "src/*": [
         "./src/*"
+      ],
+      "components/*": [
+        "./src/components/*"
+      ],
+      "hooks/*": [
+        "./src/hooks/*"
+      ],
+      "providers/*": [
+        "./src/providers/*"
+      ],
+      "themes/*": [
+        "./src/themes/*"
+      ],
+      "util/*": [
+        "./src/util/*"
+      ],
+      "styles/*": [
+        "./src/styles/*"
       ]
     }
-  }
+  },
+  "include": [
+    "src",
+    "public/static/locales",
+    "bin"
+  ],
+  "exclude": [
+    "node_modules",
+    "*.test*"
+  ]
 }
