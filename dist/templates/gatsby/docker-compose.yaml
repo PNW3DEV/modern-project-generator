@@ -3,15 +3,14 @@ services:
   # {{dashCase name}}-api:
   #   container_name: {{dashCase name}}-api
   #   build:
-  #     context: ./api
-  #     dockerfile: ../../{{dashCase name}}-api/Dockerfile
+  #     context: ../{{dashCase name}}-api
+  #     dockerfile: ../{{dashCase name}}-api/Dockerfile
   #   expose:
   #     - '4000'
   #   ports:
   #     - '4000:4000'
   #   volumes:
   #     - '../../{{dashCase name}}-api/src:/app/src'
-  #     - '../../{{dashCase name}}-api/tests:/app/tests'
   #     - '../../{{dashCase name}}-api/coverage:/app/coverage'
   #     - '../../{{dashCase name}}-api/.env:/app/.env'
   #   # env_file: ./api/.env

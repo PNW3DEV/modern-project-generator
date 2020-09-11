@@ -3,8 +3,8 @@ services:
   {{dashCase name}}-api:
     container_name: {{dashCase name}}-api
     build:
-      context: ./api
-      dockerfile: ../../{{dashCase name}}-api/Dockerfile
+      context: ../{{dashCase name}}-api
+      dockerfile: ../{{dashCase name}}-api/Dockerfile
     expose:
       - '4000'
     ports:
