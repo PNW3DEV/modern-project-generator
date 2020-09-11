@@ -1,1 +1,1 @@
-{"version":3,"file":"plop-init.js","sourceRoot":"","sources":["../../bin/plop-init.ts"],"names":[],"mappings":";;;;;;AAAA,kDAAyB;AAEZ,QAAA,WAAW,GAAG,GAAG,EAAE;IAC9B,OAAO,CAAC,IAAI,CACV,GAAG,eAAK,CAAC,KAAK,CAAC,+FAA+F,CAAC,EAAE,CAClH,CAAA;AACH,CAAC,CAAA"}
+{"version":3,"file":"plop-init.js","sourceRoot":"","sources":["../../bin/plop-init.ts"],"names":[],"mappings":";;;;;;AAAA,kDAAyB;AAEzB,kDAAyC;AAE5B,QAAA,WAAW,GAAG,GAAG,EAAE;IAC9B,OAAO,CAAC,IAAI,CACV,GAAG,eAAK,CAAC,KAAK,CACZ,iDAAiD,EACjD,sBAAO,GAAG,GAAG,CACd,uDAAuD,CACzD,CAAA;AACH,CAAC,CAAA"}

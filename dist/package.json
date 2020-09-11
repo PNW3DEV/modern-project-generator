@@ -1,0 +1,107 @@
+{
+    "name": "modern-project-generator",
+    "version": "1.0.7",
+    "description": "Plop Generator to scaffold js/ts projects",
+    "main": "./bin/cli.js",
+    "scripts": {
+        "test": "echo Error: no test specified",
+        "start": "plop",
+        "plop": "plop",
+        "prebuild": "rm -rf dist/",
+        "build": "tsc --build ./tsconfig.build.json",
+        "tsc": "npm run build",
+        "postbuild": "cp -R ./templates/ ./dist/templates"
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "npm run build && git add dist/"
+        }
+    },
+    "author": "Desmond G. Jones <desmondpnw3dev>",
+    "license": "UNLICENSED",
+    "dependencies": {
+        "edit-json-file": "^1.4.1",
+        "lerna": "^3.22.1",
+        "minimist": "^1.2.5",
+        "node-plop": "^0.26.2",
+        "plop": "^2.7.4",
+        "plop-pack-npm-install": "^0.3.0"
+    },
+    "bin": {
+        "plop-project": "bin/cli.js"
+    },
+    "devDependencies": {
+        "@babel/types": "^7.11.0",
+        "@types/babel__generator": "^7.6.1",
+        "@types/edit-json-file": "^1.4.0",
+        "@types/jest": "^26.0.9",
+        "@types/node": "^13.13.15",
+        "@typescript-eslint/eslint-plugin": "^2.34.0",
+        "@typescript-eslint/eslint-plugin-tslint": "^2.34.0",
+        "@typescript-eslint/parser": "^2.34.0",
+        "eslint": "^6.8.0",
+        "eslint-config-prettier": "^6.11.0",
+        "eslint-plugin-immutable": "^1.0.0",
+        "eslint-plugin-import": "^2.22.0",
+        "eslint-plugin-jest": "^23.20.0",
+        "eslint-plugin-prettier": "^3.1.4",
+        "fs": "0.0.1-security",
+        "husky": "^4.2.5",
+        "prettier": "^2.0.5",
+        "ts-jest": "^25.5.1",
+        "ts-lint": "^4.5.1",
+        "ts-node": "^8.10.2",
+        "ts-node-dev": "^1.0.0-pre.56",
+        "ts-to-json": "^0.65.4",
+        "typescript": "^3.9.7"
+    },
+    "directories": {
+        "doc": "docs",
+        "lib": "lib"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/PNW3DEV/modern-project-generator.git"
+    },
+    "bugs": {
+        "url": "https://github.com/PNW3DEV/modern-project-generator/issues"
+    },
+    "homepage": "https://github.com/PNW3DEV/modern-project-generator#readme",
+    "keywords": [
+        "Plop",
+        "Project",
+        "Generator",
+        "Typescript",
+        "Javascript",
+        "React",
+        "GatsbyJS",
+        "NextJS",
+        "NodeJS",
+        "Apollo",
+        "GraphQL",
+        "CICD",
+        "GCP",
+        "AWS",
+        "Azure",
+        "Firebase",
+        "Google",
+        "Cloud",
+        "Express",
+        "Serverless",
+        "Cloud",
+        "Functions",
+        "Component",
+        "Library",
+        "Storybook",
+        "Material",
+        "UI",
+        "Cypress",
+        "E2E",
+        "Cloud",
+        "Build",
+        "GitHub",
+        "Actions",
+        "Shared",
+        "Library"
+    ]
+}
