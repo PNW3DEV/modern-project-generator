@@ -27,6 +27,7 @@ const useStyles = makeStyles((theme) => ({
   submit: {
     margin: theme.spacing(3, 0, 2),
   },
+  container: { marginTop: '1em' }
 }))
 
 export interface ManageAccountFormProps {
@@ -53,7 +54,7 @@ export default (props: ManageAccountFormProps) => {
         <Typography color={"primary"} component="h1" variant="h5">
           Manage Account
         </Typography>
-        <Grid container={true} spacing={2} style={{ marginTop: "1em" }}>
+        <Grid container={true} spacing={2} className={classes.container}>
           <Grid item={true} xs={12} md={6}>
             <TextField
               autoComplete="name"

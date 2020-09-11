@@ -1,5 +1,5 @@
 {
-  "name": "@{{organization}}/{{name}}",
+  "name": "@{{organization}}/{{name}}-e2e",
   "description": "Gatsby/React/Typescript Application",
   "version": "0.0.0",
   "license": "MIT",
