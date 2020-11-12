@@ -21,25 +21,34 @@ exports.prompts = [
         type: 'list'
     }
 ];
-var templates;
-(function (templates) {
-    templates[templates["cloudbuild"] = 0] = "cloudbuild";
-    templates[templates["github"] = 1] = "github";
-    templates[templates["gitlab"] = 2] = "gitlab";
-    templates[templates["azure"] = 3] = "azure";
-})(templates || (templates = {}));
+var Template;
+(function (Template) {
+    Template[Template["cloudbuild"] = 0] = "cloudbuild";
+    Template[Template["github"] = 1] = "github";
+    Template[Template["gitlab"] = 2] = "gitlab";
+    Template[Template["azure"] = 3] = "azure";
+})(Template || (Template = {}));
+const getCustomBasePath = (type, defaultPath) => {
+    const customBasePath = {
+        cloudbuild: defaultPath,
+        github: `${process.env.cwd}/.github/workflows/`,
+        gitlab: process.cwd(),
+        azure: defaultPath,
+    };
+    return customBasePath[type];
+};
 exports.pipelinesActionHandler = (type, actions, destination, templatePath) => {
     if (!type)
         return actions;
     const templateFiles = {
         cloudbuild: [`${templatePath}/pipelines/cloud*`],
-        github: [],
+        github: [`${templatePath}/.github/**`],
         gitlab: [],
         azure: [],
     };
     actions.push({
         type: "addMany",
-        destination,
+        destination: getCustomBasePath(type, destination),
         base: templatePath,
         templateFiles: templateFiles[type],
         stripExtensions: '.custom'

@@ -28,6 +28,8 @@ export const AuthContext: Context<AuthContext> = createContext<AuthContext>({
 })
 
 export const AuthProvider: FC = ({ children }) => {
+  console.log(process.env.GATSBY);
+
   if (!!!process.env.GATSBY_FIREBASE_API_KEY || process.env.STORYBOOK) {
     return (
       <AuthContext.Provider
@@ -88,8 +90,8 @@ export const AuthProvider: FC = ({ children }) => {
     if (loading) return
 
     if (!user) {
-      !PUBLIC_ROUTES.includes(location.pathname.replace(/\/$/, ''))
-        && navigate(ROUTES.LOGIN, { replace: true })
+      // !PUBLIC_ROUTES.includes(location.pathname.replace(/\/$/, ''))
+      //   && navigate(ROUTES.LOGIN, { replace: true })
       return
     }
 

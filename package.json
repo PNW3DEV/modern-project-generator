@@ -10,7 +10,11 @@
     "prebuild": "rm -rf dist/",
     "build": "tsc --build ./tsconfig.build.json",
     "tsc": "npm run build",
-    "postbuild": "cp -R ./templates/ ./dist/templates"
+    "postbuild": "cp -R ./templates/ ./dist/templates",
+    "bootstrap": "lerna exec npm install",
+    "build:sdf": "lerna exec --scope @sdf/sdf npm run build",
+    "start:sdf": "lerna exec --scope @sdf/sdf npm start",
+    "test:sdf": "lerna exec --scope @sdf/sdf npm test"
   },
   "husky": {
     "hooks": {
@@ -103,5 +107,8 @@
     "Actions",
     "Shared",
     "Library"
+  ],
+  "workspaces": [
+    "sdf"
   ]
 }
