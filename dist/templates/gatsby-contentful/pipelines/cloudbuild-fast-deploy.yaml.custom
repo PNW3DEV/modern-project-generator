@@ -2,13 +2,13 @@
 timeout: 35m0s
 steps:
   - id:  Install Dependencies
-    name: node:12.18.3
+    name: node:14.15.0
     dir: 'client'
     entrypoint: npm
     args: ['ci']
 
   - id:  Build Deployment Client Static Bundle
-    name: node:12.18.3
+    name: node:14.15.0
     dir: 'client'
     entrypoint: npm
     args: ['run', 'build']
@@ -29,7 +29,7 @@ steps:
       - GATSBY_ACTIVE_ENV=$_GATSBY_ACTIVE_ENV
 
   - id:  Deploy static build to firebase hosting
-    name: node:12.18.3
+    name: node:14.15.0
     dir: 'client'
     env:
       - NODE_ENV=$_NODE_ENV

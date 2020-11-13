@@ -1,13 +1,13 @@
 timeout: 50m0s
 steps:
   - id:  Install NPM
-    name: node:12.18.3
+    name: node:14.15.0
     dir: '{{dashCase name}}'
     entrypoint: npm
     args: ['ci']
 
   - id:  Run Unit and Integration Tests
-    name: node:12.18.3
+    name: node:14.15.0
     dir: '{{dashCase name}}'
     entrypoint: npm
     env:
@@ -15,7 +15,7 @@ steps:
     args: ['test']
 
   - id:  Run Build
-    name: node:12.18.3
+    name: node:14.15.0
     dir: '{{dashCase name}}'
     entrypoint: npm
     args: ['run', 'build']

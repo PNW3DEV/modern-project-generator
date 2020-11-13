@@ -1,13 +1,13 @@
 timeout: 50m0s
 steps:
   - id: Install NPM Dependencies
-    name: node:12.18.3
+    name: node:14.15.0
     dir: 'server'
     entrypoint: npm
     args: ['ci']
 
   - id: Run Build
-    name: node:12.18.3
+    name: node:14.15.0
     dir: 'server'
     entrypoint: npm
     args: ['run', 'build']
@@ -17,7 +17,7 @@ steps:
       - CLIENT_URL=$_CLIENT_URL
 
   - id: Run Prune
-    name: node:12.18.3
+    name: node:14.15.0
     dir: 'server'
     entrypoint: npm
     args: ['prune', '--production']
