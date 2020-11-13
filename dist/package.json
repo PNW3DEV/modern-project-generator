@@ -104,8 +104,5 @@
         "Actions",
         "Shared",
         "Library"
-    ],
-    "workspaces": [
-        "sdf"
     ]
 }
