@@ -11,7 +11,6 @@
         "build": "tsc --build ./tsconfig.build.json",
         "tsc": "npm run build",
         "postbuild": "cp -R ./templates/ ./dist/templates",
-        "bootstrap": "lerna exec npm install",
         "postinstall": "node ./bin/postInstall.ts"
     },
     "husky": {
