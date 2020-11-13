@@ -20,15 +20,25 @@ export const prompts: PromptQuestion[] = [
   }
 ]
 
-enum templates {
+enum Template {
   'cloudbuild',
   'github',
   'gitlab',
   'azure'
 }
 
+const getCustomBasePath = (type: Template, defaultPath: string) => {
+  const customBasePath = {
+    cloudbuild: defaultPath,
+    github: `${process.env.cwd}/.github/workflows/`,
+    gitlab: process.cwd(),
+    azure: defaultPath,
+  }
+  return customBasePath[type]
+}
+
 export const pipelinesActionHandler = (
-  type: templates,
+  type: Template,
   actions: any[],
   destination: string,
   templatePath: string
@@ -37,14 +47,14 @@ export const pipelinesActionHandler = (
 
   const templateFiles = {
     cloudbuild: [`${templatePath}/pipelines/cloud*`],
-    github: [],
+    github: [`${templatePath}/.github/**`],
     gitlab: [],
     azure: [],
   }
 
   actions.push({
     type: "addMany",
-    destination,
+    destination: getCustomBasePath(type, destination),
     base: templatePath,
     templateFiles: templateFiles[type],
     stripExtensions: '.custom'

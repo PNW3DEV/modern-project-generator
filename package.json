@@ -1,6 +1,6 @@
 {
   "name": "modern-project-generator",
-  "version": "1.0.11",
+  "version": "1.0.13",
   "description": "Plop Generator to scaffold js/ts projects",
   "main": "./bin/cli.js",
   "scripts": {
@@ -10,7 +10,12 @@
     "prebuild": "rm -rf dist/",
     "build": "tsc --build ./tsconfig.build.json",
     "tsc": "npm run build",
-    "postbuild": "cp -R ./templates/ ./dist/templates"
+    "postbuild": "cp -R ./templates/ ./dist/templates",
+    "bootstrap": "lerna exec npm install",
+    "build:sdf": "lerna exec --scope @sdf/sdf npm run build",
+    "start:sdf": "lerna exec --scope @sdf/sdf npm start",
+    "test:sdf": "lerna exec --scope @sdf/sdf npm test",
+    "postinstall": "node ./bin/postInstall.ts"
   },
   "husky": {
     "hooks": {
@@ -103,5 +108,8 @@
     "Actions",
     "Shared",
     "Library"
+  ],
+  "workspaces": [
+    "sdf"
   ]
 }

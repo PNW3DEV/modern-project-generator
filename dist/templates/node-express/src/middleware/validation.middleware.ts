@@ -1,10 +1,10 @@
 import Ajv from 'ajv'
 // import type { RequestHandler } from 'express-serve-static-core'
-import { NextFunction, Request, Response } from 'express'
+import { NextFunction, Response } from 'express'
 
 import { ExtendedRequest } from '../interfaces/request'
 
-const removeNulls = (req: Request|any) => {
+const removeNulls = (req: ExtendedRequest|any) => {
   Object.keys(req.body).forEach((key: string) => {
     if (req.body[key] === null) {
       delete req.body[key]

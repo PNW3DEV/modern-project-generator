@@ -1,5 +1,6 @@
-import { NextFunction, Request, RequestHandler, Response } from 'express'
+import { NextFunction, RequestHandler, Response } from 'express'
 import { RateLimiterMemory } from 'rate-limiter-flexible'
+import { ExtendedRequest } from 'src/interfaces/request'
 
 import { logger as log } from './logger.middleware'
 
@@ -11,7 +12,7 @@ const limiterSlowBruteByIP = new RateLimiterMemory({
   blockDuration: 60 * 2,
 })
 
-export const rateLimiterMiddleware: RequestHandler = (req: Request|any, res: Response, next: NextFunction) => {
+export const rateLimiterMiddleware: RequestHandler = (req: ExtendedRequest|any, res: Response, next: NextFunction) => {
   const key = req?.user?.uid ? req?.user?.uid : req.ip
   log.info('rate limiter ids/keys', key, req.ip)
   const pointsToConsume = req?.user?.uid ? 1 : 30
@@ -20,7 +21,7 @@ export const rateLimiterMiddleware: RequestHandler = (req: Request|any, res: Res
     .catch(() => { res.status(429).send('Too Many Requests') })
 }
 
-export const limitRequestsByIP: RequestHandler = async (req: Request, res: Response, next: NextFunction) => {
+export const limitRequestsByIP: RequestHandler = async (req: ExtendedRequest, res: Response, next: NextFunction) => {
   const ipAddress = `${req.ip}_${req.body.ssn}`
   const resSlowByIP = await limiterSlowBruteByIP.get(ipAddress)
 

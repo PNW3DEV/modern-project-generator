@@ -1,11 +1,16 @@
-import chalk from "chalk"
+const chalk = require("chalk")
 
-import pkg from "../package.json"
+const pkg = require("../package.json")
 
-console.log(`
+console.info(`
   ${chalk.green("Hey there! 👋")}
 
   Thanks for giving the ${pkg.name} a try. 🎉
+
+  ## Usage with custom cli command via:
+  ${chalk.yellow.bold("plop-project")}
+
+  OR
 
   ## To get you going really quickly this project includes a setup step.
   // ${chalk.yellow.bold("package.json")}
