@@ -1,6 +1,6 @@
 {
   "include": ["lib/*.ts", "plopfile.ts"],
-  "exclude": ["node_modules", "**/**/**.test.ts", "templates"],
+  "exclude": ["node_modules", "**/**/**.test.ts", "templates", "bin"],
   "compilerOptions": {
     "module": "commonjs",
     "target": "es2019",
