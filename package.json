@@ -12,9 +12,6 @@
     "tsc": "npm run build",
     "postbuild": "cp -R ./templates/ ./dist/templates",
     "bootstrap": "lerna exec npm install",
-    "build:sdf": "lerna exec --scope @sdf/sdf npm run build",
-    "start:sdf": "lerna exec --scope @sdf/sdf npm start",
-    "test:sdf": "lerna exec --scope @sdf/sdf npm test",
     "postinstall": "node ./bin/postInstall.ts"
   },
   "husky": {
